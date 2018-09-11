@@ -18,5 +18,15 @@
     "grant type": "password",
     "client id": "3MVG9mclR62wycM0WJ.8j_N7CopCg916XoLJUdk3fmjmaq73k2e2frwkTgowja90bC2aT26PnTX8VBNg8yzla",
     "client secret": "6382952843294971814"
+  },
+  "yerel": {
+    "user name": "yerels@estuden.com",
+    "user password": "Est4l1n123",
+    "first name": "Estalin Yerel",
+    "Last name": "Arias",
+    "user token": "",
+    "grant type": "",
+    "client id": "",
+    "client secret": ""
   }
 }

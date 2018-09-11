@@ -2,7 +2,8 @@ package com.jalasoft.sfdc.ui.pages.all_apps_page;
 
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageClassic;
-import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageLight;
+import com.jalasoft.sfdc.ui.pages.pageContact.ContactListPage;
+import com.jalasoft.sfdc.ui.pages.pageContact.ContactListPageClassic;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPage;
 import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPageClassic;
@@ -18,6 +19,8 @@ public class AllAppsPageClassic extends AllAppsPage {
     @FindBy(xpath = "//*[@title='Accounts']")
     private WebElement accountsBtn;
 
+    @FindBy(css = "a.contactBlock")
+    private WebElement contactBtn;
 
     @Override
     public AccountsListPage goToaccount() {
@@ -38,6 +41,15 @@ public class AllAppsPageClassic extends AllAppsPage {
     @Override
     public PriceBookListPage goToPriceBooks() {
         return null;
+    }
+
+    @Override
+    public ContactListPage goToContact() {
+
+        driverTools.scrollDown(3);
+        wait.until(ExpectedConditions.visibilityOf(contactBtn));
+        driverTools.clickElement(contactBtn);
+        return new ContactListPageClassic();
     }
 
     @Override
