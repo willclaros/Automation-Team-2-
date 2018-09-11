@@ -2,6 +2,8 @@ package com.jalasoft.sfdc.ui.pages.all_apps_page;
 
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageLight;
+import com.jalasoft.sfdc.ui.pages.pageContact.ContactListPage;
+import com.jalasoft.sfdc.ui.pages.pageContact.ContactListPageLight;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPage;
@@ -13,6 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AllAppsPageLight extends AllAppsPage {
 
+    @FindBy(linkText = "Contacts")
+    private WebElement contactBtn;
 
     @FindBy(linkText = "Accounts")
     private WebElement accountButton;
@@ -61,5 +65,14 @@ public class AllAppsPageLight extends AllAppsPage {
         driverTools.scrollDown(3);
         driver.manage().window();
         return new PriceBookListPageLight();
+    }
+
+    @Override
+    public ContactListPage goToContact() {
+
+        driverTools.scrollDown(4);
+        wait.until(ExpectedConditions.visibilityOf(contactBtn));
+        driverTools.clickElement(contactBtn);
+        return new ContactListPageLight();
     }
 }
