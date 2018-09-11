@@ -1,9 +1,9 @@
-package com.jalasoft.sfdc.ui.pages.all_apps_page;
+package com.jalasoft.sfdc.ui.pages.allappspage;
 
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageLight;
-import com.jalasoft.sfdc.ui.pages.pageContact.ContactListPage;
-import com.jalasoft.sfdc.ui.pages.pageContact.ContactListPageLight;
+import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
+import com.jalasoft.sfdc.ui.pages.contacts.ContactListPageLight;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPage;

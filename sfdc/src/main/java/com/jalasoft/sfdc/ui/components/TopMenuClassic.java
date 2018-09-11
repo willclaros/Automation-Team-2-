@@ -1,7 +1,7 @@
 package com.jalasoft.sfdc.ui.components;
 
-import com.jalasoft.sfdc.ui.pages.all_apps_page.AllAppsPage;
-import com.jalasoft.sfdc.ui.pages.all_apps_page.AllAppsPageClassic;
+import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.profiles.ProfilePage;
@@ -15,8 +15,6 @@ public class TopMenuClassic extends TopMenu {
     @FindBy(css = ".allTabsArrow")
     private WebElement louncherBtn;
 
-    @FindBy(xpath = "//*[@class='listRelatedObject productBlock title']")
-    private WebElement productsBtn;
 
     @Override
     public AllAppsPage goToAllPages() {
@@ -31,8 +29,7 @@ public class TopMenuClassic extends TopMenu {
 
     @Override
     public ProfilePage goToProfilePage() {
-        wait.until(ExpectedConditions.visibilityOf(productsBtn));
-        driverTools.clickElement(productsBtn);
+        wait.until(ExpectedConditions.visibilityOf(louncherBtn));
         return new ProfilePageClassic();
     }
 

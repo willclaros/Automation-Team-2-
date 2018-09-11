@@ -6,18 +6,29 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountDetailsPageLight extends AccountDetailsPage {
 
+    private static final String NAME_ACCOUNT = "(//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon']//child::span)[1]";
 
-    @FindBy(xpath = "(//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon']//child::span)[1]")
+    @FindBy(xpath = NAME_ACCOUNT)
     private WebElement nameDetailsLbl;
 
+    /**
+     * Take the webElement chain.
+     *
+     * @return the text of the webElement.
+     */
     @Override
-    public String verifyElement() {
+    public String getNameAccount() {
+
         wait.until(ExpectedConditions.visibilityOf(nameDetailsLbl));
         return nameDetailsLbl.getText();
     }
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
+
         wait.until(ExpectedConditions.visibilityOf(nameDetailsLbl));
     }
 

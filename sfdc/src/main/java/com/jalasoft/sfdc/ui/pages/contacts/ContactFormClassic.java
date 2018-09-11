@@ -1,4 +1,4 @@
-package com.jalasoft.sfdc.ui.pages.pageContact;
+package com.jalasoft.sfdc.ui.pages.contacts;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
