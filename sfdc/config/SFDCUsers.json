@@ -1,12 +1,22 @@
 {
   "admin user": {
-    "user name":"will@williamcompany.com",
-    "user password":"Wallace#2811",
+    "user name": "will@williamcompany.com",
+    "user password": "Wallace#2811",
     "first name": "Will",
     "Last name": "Claros",
     "user token": "X8WZQYtjjZDT6k1dZYY8F8wR",
     "grant type": "password",
     "client id": "3MVG9mclR62wycM0WJ.8j_N7CopCg916XoLJUdk3fmjmaq73k2e2frwkTgowja90bC2aT26PnTX8VBNg8yzla",
     "client secret": "6382952843294971814"
-    }
+  },
+  "user admin": {
+    "user name": "cesar@jala.com",
+    "user password": "loko12345678",
+    "first name": "cesar",
+    "Last name": "augusto",
+    "user token": "X8WZQYtjjZDT6k1dZYY8F8wR",
+    "grant type": "password",
+    "client id": "3MVG9mclR62wycM0WJ.8j_N7CopCg916XoLJUdk3fmjmaq73k2e2frwkTgowja90bC2aT26PnTX8VBNg8yzla",
+    "client secret": "6382952843294971814"
+  }
 }

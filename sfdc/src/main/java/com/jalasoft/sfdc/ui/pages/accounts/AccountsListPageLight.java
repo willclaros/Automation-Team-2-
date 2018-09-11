@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 public class AccountsListPageLight extends AccountsListPage {
 
     @FindBy(xpath = "//a[@title='New']")
-    private WebElement newAccount;
+    private WebElement accountsBtn;
 
-    public NewPageAccountLight createNewAccount() {
-        driverTools.clickElement(newAccount);
-        return new NewPageAccountLight();
+    public AccountForm createNewAccount() {
+        driverTools.clickElement(accountsBtn);
+        return new AccountFormLight();
     }
 
     @Override

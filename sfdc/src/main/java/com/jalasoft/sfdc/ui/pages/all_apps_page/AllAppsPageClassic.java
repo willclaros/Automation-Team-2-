@@ -1,6 +1,8 @@
 package com.jalasoft.sfdc.ui.pages.all_apps_page;
 
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
+import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageClassic;
+import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageLight;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPage;
 import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPageClassic;
@@ -12,11 +14,16 @@ public class AllAppsPageClassic extends AllAppsPage {
 
     @FindBy(xpath = "//*[@class='listRelatedObject productBlock title']")
     private WebElement productsBtn;
-    //*[@class="listRelatedObject productBlock title"]
+
+    @FindBy(xpath = "//*[@title='Accounts']")
+    private WebElement accountsBtn;
+
 
     @Override
     public AccountsListPage goToaccount() {
-        return null;
+        wait.until(ExpectedConditions.visibilityOf(accountsBtn));
+        driverTools.clickElement(accountsBtn);
+        return new AccountsListPageClassic();
     }
 
     @Override
@@ -35,6 +42,6 @@ public class AllAppsPageClassic extends AllAppsPage {
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        wait.until(ExpectedConditions.visibilityOf(accountsBtn));
     }
 }
