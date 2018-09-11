@@ -3,14 +3,15 @@ package com.jalasoft.sfdc.ui.pages.accounts;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class NewPageAccountLight extends NewPage {
+public class AccountFormLight extends AccountForm {
 
     //WebDriverTools webDriverTools = new WebDriverTools();
-    @FindBy(xpath = "//*[@id='231:3032;a']")
+    @FindBy(xpath = "//*[@class='input uiInput uiInputText uiInput--default uiInput--input']")
     private WebElement nameAccount;
 
-    @FindBy(xpath = "//*[@class='slds-button slds-button--neutral uiButton--default uiButton--brand uiButton forceActionButton']")
+    @FindBy(css = ".slds-button[title|='Save']")
     private WebElement buttonSave;
+
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
@@ -21,12 +22,18 @@ public class NewPageAccountLight extends NewPage {
         driverTools.setInputField(nameAccount, name);
     }
 
-    private AccoutDetailsPage clickSaveBtn(){
+    @Override
+    public AccountDetailsPage goToDetailsPage() {
+        driverTools.clickElement(buttonSave);
+        return new AccountDetailsPageLight();
+    }
+
+    private AccountsListPage clickSaveBtn(){
         //return new AccoutDetailsPageLight();
         return null;
     }
 
-    public AccoutDetailsPage createAccount() {
+    public AccountsListPage createAccount() {
         //setFormular();
         return clickSaveBtn();
     }

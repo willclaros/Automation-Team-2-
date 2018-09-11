@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class AllAppsPageLight extends AllAppsPage {
 
 
-    @FindBy(xpath = "(//span[@class='label slds-truncate slds-text-link'])[1]")
+    @FindBy(linkText = "Accounts")
     private WebElement accountButton;
 
     @FindBy(css = ".app-launcher-link[title|='Products']")

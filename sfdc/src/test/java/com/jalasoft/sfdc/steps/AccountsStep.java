@@ -1,20 +1,24 @@
 package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.ui.PageFactory;
+import com.jalasoft.sfdc.ui.pages.accounts.AccountDetailsPage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
+import com.jalasoft.sfdc.ui.pages.accounts.AccountForm;
 import com.jalasoft.sfdc.ui.pages.all_apps_page.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.accounts.NewPageAccountLight;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static org.testng.Assert.assertEquals;
+
 public class AccountsStep {
     private AllAppsPage appLauncher;
     private AccountsListPage accountsPage;
     private HomePage homePage;
-    private NewPageAccountLight newAccount;
+    private AccountForm newAccount;
+    private AccountDetailsPage accountDetailsPage;
 
 
     @When("^I go to app list$")
@@ -58,5 +62,13 @@ public class AccountsStep {
     }
 
 
+    @And("^I click Save button$")
+    public void iClickSaveButton() {
+        accountDetailsPage = newAccount.goToDetailsPage();
+    }
 
+    @Then("^the created account \"([^\"]*)\" should be displayed in details account page$")
+    public void theCreatedAccountShouldBeDisplayedInDetailsAccountPage(String nameAccount) throws Throwable {
+        assertEquals(nameAccount,accountDetailsPage.verifyElement());
+    }
 }
