@@ -1,4 +1,4 @@
-package com.jalasoft.sfdc.ui.pages.pageContact;
+package com.jalasoft.sfdc.ui.pages.contacts;
 
 import com.jalasoft.sfdc.ui.BasePage;
 

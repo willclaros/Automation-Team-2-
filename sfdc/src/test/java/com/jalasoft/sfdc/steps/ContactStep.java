@@ -2,11 +2,11 @@ package com.jalasoft.sfdc.steps;
 
 
 import com.jalasoft.sfdc.ui.PageFactory;
-import com.jalasoft.sfdc.ui.pages.all_apps_page.AllAppsPage;
-import com.jalasoft.sfdc.ui.pages.pageContact.ContactDetails;
+import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.contacts.ContactDetails;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.pageContact.ContactForm;
-import com.jalasoft.sfdc.ui.pages.pageContact.ContactListPage;
+import com.jalasoft.sfdc.ui.pages.contacts.ContactForm;
+import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

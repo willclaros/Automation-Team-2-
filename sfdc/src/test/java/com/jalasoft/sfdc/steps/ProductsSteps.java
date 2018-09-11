@@ -1,7 +1,7 @@
 package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.ui.PageFactory;
-import com.jalasoft.sfdc.ui.pages.all_apps_page.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.new_page_product.NewPageProducts;
 import com.jalasoft.sfdc.ui.pages.products.product_detail_page.ProductsDetailPage;

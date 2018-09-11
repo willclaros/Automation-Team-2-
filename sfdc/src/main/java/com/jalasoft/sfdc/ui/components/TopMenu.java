@@ -2,7 +2,7 @@ package com.jalasoft.sfdc.ui.components;
 
 import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
-import com.jalasoft.sfdc.ui.pages.all_apps_page.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.profiles.ProfilePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 
