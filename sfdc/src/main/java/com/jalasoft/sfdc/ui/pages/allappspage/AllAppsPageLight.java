@@ -6,10 +6,9 @@ import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPageLight;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPageLight;
-import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPage;
-import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPageLight;
+import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
+import com.jalasoft.sfdc.ui.pages.products.ProductsListPageLight;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -29,32 +28,19 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        //wait.until(ExpectedConditions.visibilityOf(productsBtn));
         driverTools.scrollToBottomOfPage();
+        wait.until(ExpectedConditions.visibilityOf(productsBtn));
     }
-
-    public void moveOverElement(WebElement productsButton)
-    {
-        Actions actions = new Actions(driver);
-        actions.clickAndHold(productsButton).moveByOffset(0,5000).release().perform();
-    }
-
 
     @Override
     public AccountsListPage goToaccount() {
-        //driverTools.scrollDown(3);
         driverTools.clickElement(accountButton);
         return new AccountsListPageLight();
     }
 
     @Override
-    public ProductsListPage goToProducts() {
-        //driverTools.scrollDown(4);
-        //driver.manage().window();
-        //moveOverElement(productsButton);
-        wait.until(ExpectedConditions.visibilityOf(productsBtn));
+    public ProductsListPage goToProductsListPage() {
         driverTools.scrollToBottomOfPage();
-        //wait.until(ExpectedConditions.visibilityOf(productsBtn));
         driverTools.clickElement(productsBtn);
         return new ProductsListPageLight();
     }
@@ -69,7 +55,6 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @Override
     public ContactListPage goToContact() {
-
         driverTools.scrollDown(4);
         wait.until(ExpectedConditions.visibilityOf(contactBtn));
         driverTools.clickElement(contactBtn);

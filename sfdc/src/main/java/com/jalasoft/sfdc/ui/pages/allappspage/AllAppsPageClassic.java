@@ -5,8 +5,8 @@ import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageClassic;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPageClassic;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
-import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPage;
-import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPageClassic;
+import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
+import com.jalasoft.sfdc.ui.pages.products.ProductsListPageClassic;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,10 +30,8 @@ public class AllAppsPageClassic extends AllAppsPage {
     }
 
     @Override
-    public ProductsListPage goToProducts() {
+    public ProductsListPage goToProductsListPage() {
         wait.until(ExpectedConditions.visibilityOf(productsBtn));
-        //driverTools.scrollToBottomOfPage();
-        //wait.until(ExpectedConditions.visibilityOf(productsBtn));
         driverTools.clickElement(productsBtn);
         return new ProductsListPageClassic();
     }
@@ -45,7 +43,6 @@ public class AllAppsPageClassic extends AllAppsPage {
 
     @Override
     public ContactListPage goToContact() {
-
         driverTools.scrollDown(3);
         wait.until(ExpectedConditions.visibilityOf(contactBtn));
         driverTools.clickElement(contactBtn);
