@@ -13,15 +13,19 @@
  */
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.entities.Products;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsForm;
 import com.jalasoft.sfdc.ui.pages.products.ProductsDetailPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
@@ -38,16 +42,12 @@ public class ProductsSteps {
     private HomePage homePage;
     private ProductsForm productsForm;
     private ProductsDetailPage productsDetailPage;
+    private Products products;
 
-
-    @When("^I go to app list product$")
-    public void iGoToAppListProduct() {
+    @When("^I go to Products page$")
+    public void iGoToProductsPage() {
         homePage = PageFactory.getHomePage();
         allAppsPage = homePage.topMenu.goToAllPages();
-    }
-
-    @And("^I go to Products page$")
-    public void iGoToProductsPage() {
         productsListPage = allAppsPage.goToProductsListPage();
     }
 
@@ -56,9 +56,10 @@ public class ProductsSteps {
         productsForm = productsListPage.clickNewBtn();
     }
 
-    @And("^Fill the following information \"([^\"]*)\"$")
-    public void fillTheFollowingInformation(String name) {
-        productsForm.setFormProduct(name);
+    @And("^I fill the following information$")
+    public void iFillTheFollowingInformation(final List<Products> productsList) {
+        this.products = productsList.get(0);
+        productsForm.setFormProduct(products);
     }
 
     @And("^I click the Save button$")
@@ -66,8 +67,8 @@ public class ProductsSteps {
         productsDetailPage = productsForm.clickSaveBtn();
     }
 
-    @Then("^The product information created \"([^\"]*)\" should be displayed in the Products List Page$")
-    public void theProductInformationCreatedShouldBeDisplayedInTheProductsListPage(String product) {
-        assertEquals(product, productsDetailPage.getProductNameTxt(), "The product was correctly created and saved.");
+    @Then("^The product information created should be displayed in the Products List Page$")
+    public void theProductInformationCreatedShouldBeDisplayedInTheProductsListPage() {
+        assertEquals(products.getProductName(), productsDetailPage.getProductNameTxt(), "The product name wasn't correctly created and saved.");
     }
 }

@@ -29,4 +29,7 @@ public abstract class ProductsDetailPage extends BasePage {
      * @return returns the text of the WebElement.
      */
     public abstract String getProductNameTxt();
+
+    public abstract boolean getStatusChkBox();
+
 }
