@@ -4,13 +4,13 @@ import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
-import com.jalasoft.sfdc.ui.pages.products.product_list_page.ProductsListPage;
+import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
 
 public abstract class AllAppsPage extends BasePage {
 
     public abstract AccountsListPage goToaccount();
 
-    public abstract ProductsListPage goToProducts();
+    public abstract ProductsListPage goToProductsListPage();
 
     public abstract PriceBookListPage goToPriceBooks();
 

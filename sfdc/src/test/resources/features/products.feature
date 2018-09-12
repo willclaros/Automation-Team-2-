@@ -10,7 +10,7 @@ Feature: Create a product.
       And I click New button Products
       And Fill the following information "<Product name>"
       And I click the Save button
-    Then I verify that product is created "<Product name>"
+    Then The product information created "<Product name>" should be displayed in the Products List Page
 
     Examples:
       | Product name |
