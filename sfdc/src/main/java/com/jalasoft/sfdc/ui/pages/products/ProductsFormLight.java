@@ -13,8 +13,10 @@
  */
 package com.jalasoft.sfdc.ui.pages.products;
 
+import com.jalasoft.sfdc.entities.Products;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Class that has the form to create and update the information of a product of the light skin.
@@ -25,7 +27,16 @@ import org.openqa.selenium.support.FindBy;
 public class ProductsFormLight extends ProductsForm {
 
     @FindBy(xpath = "//*[@aria-required='true']")
-    private WebElement nameProductTxt;
+    private WebElement productNameTxt;
+
+    @FindBy(xpath = "(//div[@class ='uiInput uiInputText uiInput--default uiInput--input']/child::input)[2]")
+    private WebElement productCodeTxt;
+
+    @FindBy(css = ".textarea")
+    private WebElement productDescripTxt;
+
+    @FindBy(css = ".uiInput--checkbox input")
+    private WebElement activeChkBox;
 
     @FindBy(xpath = "(//span[text()='Save'])[2]")
     private WebElement saveBtn;
@@ -33,11 +44,16 @@ public class ProductsFormLight extends ProductsForm {
     /**
      * Method that performs the setting of the information of the fields of the form.
      *
-     * @param name value of the field to be set.
+     * @param products value of the field to be set.
      */
     @Override
-    public void setFormProduct(String name) {
-        driverTools.setInputField(nameProductTxt, name);
+    public void setFormProduct(Products products) {
+        driverTools.setInputField(productNameTxt, products.getProductName());
+        driverTools.setInputField(productCodeTxt, products.getProductCode());
+        driverTools.setInputField(productDescripTxt, products.getProductDescription());
+        if(!products.isActive()){
+            driverTools.clickElement(activeChkBox);
+        }
     }
 
     /**
@@ -56,6 +72,6 @@ public class ProductsFormLight extends ProductsForm {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        driverTools.clickElement(saveBtn);
+        wait.until(ExpectedConditions.visibilityOf(saveBtn));
     }
 }

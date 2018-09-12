@@ -26,14 +26,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ProductsDetailPageClassic extends ProductsDetailPage {
 
     @FindBy(css = ".pageDescription")
-    private WebElement productName;
+    private WebElement productNameTxt;
+
+    @FindBy(css = ".checkImg")
+    private WebElement activeChkBox;
+
 
     /**
      * Method that waits until the object of the page is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(productName));
+        wait.until(ExpectedConditions.visibilityOf(productNameTxt));
     }
 
     /**
@@ -43,7 +47,17 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
      */
     @Override
     public String getProductNameTxt() {
-        wait.until(ExpectedConditions.visibilityOf(productName));
-        return productName.getText();
+        wait.until(ExpectedConditions.visibilityOf(productNameTxt));
+        return productNameTxt.getText();
+    }
+
+    /**
+     * Method that is responsible for obtaining the status of a WebElement.
+     *
+     * @return returns the status of the WebElement.
+     */
+    @Override
+    public boolean getStatusChkBox() {
+        return activeChkBox.isSelected();
     }
 }
