@@ -13,6 +13,7 @@
  */
 package com.jalasoft.sfdc.ui.pages.products;
 
+import com.jalasoft.sfdc.entities.Products;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,8 +26,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ProductsFormClassic extends ProductsForm {
 
-    @FindBy(xpath = "//*[@name = 'Name']")
+    @FindBy(xpath = "//input[@id='Name']")
     private WebElement productNameTxt;
+
+    @FindBy(xpath = "//input[@id='ProductCode']")
+    private WebElement productCodeTxt;
+
+    @FindBy(xpath = "//textarea[@id='Description']")
+    private WebElement productDescripTxt;
+
+    @FindBy(xpath = "//input[@name='IsActive']")
+    private WebElement activeChkBox;
 
     @FindBy(xpath = "//*[@name = 'save']")
     private WebElement saveBtn;
@@ -34,11 +44,16 @@ public class ProductsFormClassic extends ProductsForm {
     /**
      * Method that performs the setting of the information of the fields of the form.
      *
-     * @param name value of the field to be set.
+     * @param products value of the field to be set.
      */
     @Override
-    public void setFormProduct(String name) {
-        driverTools.setInputField(productNameTxt, name);
+    public void setFormProduct(Products products) {
+        driverTools.setInputField(productNameTxt, products.getProductName());
+        driverTools.setInputField(productCodeTxt, products.getProductCode());
+        driverTools.setInputField(productDescripTxt, products.getProductDescription());
+        if (!products.isActive()) {
+            driverTools.clickElement(activeChkBox);
+        }
     }
 
     /**

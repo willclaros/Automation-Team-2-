@@ -18,7 +18,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Class that has the productName detail page of the light skin.
+ * Class that has the productNameTxt detail page of the light skin.
  *
  * @author William Claros Revollo
  * @since 9/11/2018
@@ -26,7 +26,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ProductsDetailPageLight extends ProductsDetailPage {
 
     @FindBy(xpath = "//*[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']//child::span")
-    private WebElement productName;
+    private WebElement productNameTxt;
+
+    @FindBy(css = ".unchecked")
+    private WebElement activeChkBox;
+
 
     /**
      * Method that is responsible for obtaining the text of a WebElement.
@@ -35,7 +39,17 @@ public class ProductsDetailPageLight extends ProductsDetailPage {
      */
     @Override
     public String getProductNameTxt() {
-        return productName.getText();
+        return productNameTxt.getText();
+    }
+
+    /**
+     * Method that is responsible for obtaining the status of a WebElement.
+     *
+     * @return returns the status of the WebElement.
+     */
+    @Override
+    public boolean getStatusChkBox() {
+        return activeChkBox.isSelected();
     }
 
     /**
@@ -43,6 +57,6 @@ public class ProductsDetailPageLight extends ProductsDetailPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(productName));
+        wait.until(ExpectedConditions.visibilityOf(productNameTxt));
     }
 }
