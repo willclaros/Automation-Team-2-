@@ -37,7 +37,7 @@ public class AccountsStep {
         accountForm = accountsListPage.createNewAccount();
     }
 
-    @And("^I fill the following information$")
+    @And("^I fill the following information in accounts$")
     public void iFillTheFollowingInformation(List<Account> accountList) {
         this.account = accountList.get(0);
         accountDetailsPage = accountForm.fillAccountForm(account);

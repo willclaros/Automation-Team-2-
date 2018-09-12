@@ -118,7 +118,7 @@ public class AccountFormLight extends AccountForm {
         driverTools.setInputField(slaSerialNumberTxtBox, account.getSlaSerialNumber());
         driverTools.setInputField(descriptionTxtBox, account.getDescription());
         driverTools.clickElement(saveBtn);
-         return new AccountDetailsPageLight();
+        return new AccountDetailsPageLight();
     }
 
 }
