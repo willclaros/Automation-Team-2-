@@ -30,7 +30,8 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
     @FindBy(xpath = "//span[text()='Website']/parent::div/following-sibling::div/child::span/child::span")
     private WebElement webSiteLbl;
 
-
+    @FindBy(xpath = "//span[text()='Ticker Symbol']/parent::div/following-sibling::div/child::span/child::span")
+    private WebElement tickerLbl;
 
     /**
      * Take the webElement chain.
@@ -45,6 +46,16 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
         assertEquals(faxLbl.getText(),account.getFax());
         assertEquals(numberAccountLbl.getText(),account.getAccountNumber());
         assertEquals(webSiteLbl.getText(),account.getWebSite());
+    }
+
+    @Override
+    public void VerifyEditAccount(Account account) {
+        driverTools.clickElement(DetailsBtn);
+         assertEquals(nameDetailsLbl.getText(),account.getAccountName());
+        assertEquals(phoneLbl.getText(),account.getPhone());
+        assertEquals(faxLbl.getText(),account.getFax());
+        assertEquals(numberAccountLbl.getText(),account.getAccountNumber());
+        assertEquals(tickerLbl.getText(),account.getTicker());
     }
 
     /**

@@ -37,6 +37,10 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
     private WebElement webSiteLbl;
 
 
+    @FindBy(xpath = "//div[@id='acc13_ileinner']")
+    private WebElement tickerLbl;
+
+
 
     /**
      * Take the webElement chain.
@@ -45,12 +49,21 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
      */
     @Override
     public void verifyDataAccount(Account account) {
-        //driverTools.clickElement(DetailsBtn);
-        //assertEquals(nameAccountLbl.getText(),account.getAccountName());
+        driverTools.clickElement(DetailsBtn);
+        assertEquals(nameAccountLbl.getText(),account.getAccountName());
         assertEquals(phoneLbl.getText(),account.getPhone());
         assertEquals(faxLbl.getText(),account.getFax());
         assertEquals(numberAccountLbl.getText(),account.getAccountNumber());
-        //assertEquals(webSiteLbl.getText(),account.getWebSite());
+        assertEquals(tickerLbl.getText(),account.getTicker());
+    }
+
+    @Override
+    public void VerifyEditAccount(Account account) {
+        assertEquals(nameAccountLbl.getText(),account.getAccountName());
+        assertEquals(phoneLbl.getText(),account.getPhone());
+        assertEquals(faxLbl.getText(),account.getFax());
+        assertEquals(numberAccountLbl.getText(),account.getAccountNumber());
+        assertEquals(tickerLbl.getText(),account.getTicker());
     }
 
     /**
