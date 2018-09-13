@@ -1,9 +1,11 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
 import com.jalasoft.sfdc.entities.Account;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * AccountFormLight class.
@@ -20,81 +22,100 @@ public class AccountFormLight extends AccountForm {
     @FindBy(css = ".slds-button[title|='Save']" )
     private WebElement saveBtn;
 
-    @FindBy(xpath = "(//*[@class=' input'])[1]" )
+    @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input" )
     private WebElement phoneTxtBox;
 
-    @FindBy(xpath = "(//*[@type='tel'])[2]" )
+    @FindBy(xpath = "//span[text()='Fax']/parent::label/following-sibling::input" )
     private WebElement faxTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' input'])[3]" )
+    @FindBy(xpath = "//span[text()='Account Number']/parent::label/following-sibling::input" )
     private WebElement numberAccountTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' input'])[4]" )
+    @FindBy(xpath = "//span[text()='Website']/parent::label/following-sibling::input" )
     private WebElement webSiteTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' input'])[5]" )
+    @FindBy(xpath = "//span[text()='Account Site']/parent::label/following-sibling::input" )
     private WebElement siteAccountTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' input'])[6]" )
+    @FindBy(xpath = "//span[text()='Ticker Symbol']/parent::label/following-sibling::input" )
     private WebElement tickerTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' input'])[7]" )
+    @FindBy(xpath = "//span[text()='Employees']/parent::label/following-sibling::input" )
     private WebElement employeeTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' input'])[8]" )
+    @FindBy(xpath = "//span[text()='Annual Revenue']/parent::label/following-sibling::input" )
     private WebElement annualRevenueTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' input'])[9]" )
+    @FindBy(xpath = "//span[text()='SIC Code']/parent::label/following-sibling::input" )
     private WebElement sicCodeTxtBox;
 
-    @FindBy(xpath = "(//*[@class='street compoundTLRadius compoundTRRadius compoundBorderBottom textarea'])[1]" )
+    @FindBy(xpath = "//span[text()='Billing Street']/parent::label/following-sibling::textarea" )
     private WebElement billingStreeTxtBox;
 
-    @FindBy(xpath = "(//*[@class='city compoundBorderBottom compoundBorderRight input'])[1]" )
+    @FindBy(xpath = "//span[text()='Billing City']/parent::label/following-sibling::input" )
     private WebElement billingCityTxtBox;
 
-    @FindBy(xpath = "(//*[@class='state compoundBorderBottom input'])[1]" )
+    @FindBy(xpath = "//span[text()='Billing State/Province']/parent::label/following-sibling::input" )
     private WebElement billingStateTxtBox;
 
-    @FindBy(xpath = "(//*[@class='postalCode compoundBLRadius compoundBorderRight input'])[1]" )
+    @FindBy(xpath = "//span[text()='Billing Zip/Postal Code']/parent::label/following-sibling::input" )
     private WebElement billingZipTxtBox;
 
-    @FindBy(xpath = "(//*[@class='country compoundBRRadius input'])[1]" )
+    @FindBy(xpath = "//span[text()='Billing Country']/parent::label/following-sibling::input" )
     private WebElement billingCountryTxtBox;
 
-    @FindBy(xpath = "(//*[@class='street compoundTLRadius compoundTRRadius compoundBorderBottom textarea'])[2]" )
+    @FindBy(xpath = "//span[text()='Shipping Street']/parent::label/following-sibling::textarea" )
     private WebElement shippingStreetTxtBox;
 
-    @FindBy(xpath = "(//*[@class='city compoundBorderBottom compoundBorderRight input'])[2]" )
+    @FindBy(xpath = "//span[text()='Shipping City']/parent::label/following-sibling::input" )
     private WebElement shippingCityTxtBox;
 
-    @FindBy(xpath = "(//*[@class='state compoundBorderBottom input'])[2]" )
+    @FindBy(xpath = "//span[text()='Shipping State/Province']/parent::label/following-sibling::input" )
     private WebElement shippingStateTxtBox;
 
-    @FindBy(xpath = "(//*[@class='postalCode compoundBLRadius compoundBorderRight input'])[2]" )
+    @FindBy(xpath = "//span[text()='Shipping Zip/Postal Code']/parent::label/following-sibling::input" )
     private WebElement shippingZipTxtBox;
 
-    @FindBy(xpath = "(//*[@class='country compoundBRRadius input'])[2]" )
+    @FindBy(xpath = "//span[text()='Shipping Country']/parent::label/following-sibling::input" )
     private WebElement shippingCountryTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' input'])[11] ")
+    @FindBy(xpath = "//span[text()='SLA Expiration Date']/parent::label/following-sibling::div/child::input")
     private WebElement slaExpirationTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' input'])[12]" )
+    @FindBy(xpath = "//span[text()='SLA Serial Number']/parent::label/following-sibling::input" )
     private WebElement slaSerialNumberTxtBox;
 
-    @FindBy(xpath = "(//*[@class=' textarea'])" )
+    @FindBy(xpath = "//span[text()='Description']/parent::label/following-sibling::textarea" )
     private WebElement descriptionTxtBox;
 
+    @FindBy(xpath = "//span[text()='Number of Locations']/parent::label/following-sibling::input" )
+    private WebElement numberOfLocationsTxtBox;
+
+    @FindBy(xpath = "//span[text()='Rating']/parent::span/following-sibling::div/child::div/child::div/child::div/child::a" )
+    private WebElement ratingLstBox;
+//    Select ratingLstBoxSelect;
+//    ratingLstBoxSelect = new Select(ratingLstBox);
+//    ratingLstBoxSelect.selectByVisibleText(account.getRating());
+
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
         wait.until(ExpectedConditions.visibilityOf(nameAccountTxtBox));
     }
 
+    /**
+     * Method to access the account details page
+     *
+     */
+
     @Override
     public AccountDetailsPage fillAccountForm(Account account) {
         driverTools.setInputField(nameAccountTxtBox, account.getAccountName());
+        driverTools.clickElement(ratingLstBox);
+        //driverTools.clickElement(By.xpath("//span[text()='Rating']/parent::span/following-sibling::div/child::div/child::div/child::div/child::a[text()="+account.getRating()+"]"));
         driverTools.setInputField(numberAccountTxtBox, account.getAccountNumber());
         driverTools.setInputField(siteAccountTxtBox, account.getAccountSite());
         driverTools.setInputField(annualRevenueTxtBox, account.getAnnualRevenue());
@@ -116,6 +137,7 @@ public class AccountFormLight extends AccountForm {
         driverTools.setInputField(shippingCountryTxtBox, account.getShippingCountry());
         driverTools.setInputField(slaExpirationTxtBox, account.getSlaExpirationDate());
         driverTools.setInputField(slaSerialNumberTxtBox, account.getSlaSerialNumber());
+        driverTools.setInputField(numberOfLocationsTxtBox, account.getNumberOfLocations());
         driverTools.setInputField(descriptionTxtBox, account.getDescription());
         driverTools.clickElement(saveBtn);
         return new AccountDetailsPageLight();

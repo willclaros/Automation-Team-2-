@@ -30,8 +30,9 @@ public class Account {
     private String shippingCountry = "";
     private String slaExpirationDate = "";
     private String slaSerialNumber = "";
-    private int numberOfLocations = 0;
+    private String numberOfLocations = "";
     private String description = "";
+    private String rating ="";
 
     /**
      * Gets the account name.
@@ -405,7 +406,7 @@ public class Account {
      * Gets the account Number Of Locations.
      * @return the value of the account Number Of Locations.
      */
-    public int getNumberOfLocations() {
+    public String getNumberOfLocations() {
         return numberOfLocations;
     }
 
@@ -413,7 +414,7 @@ public class Account {
      * Sets the account Number Of Locations.
      * @param numberOfLocations account Number Of Locations to set.
      */
-    public void setNumberOfLocations(final int numberOfLocations) {
+    public void setNumberOfLocations(final String numberOfLocations) {
         this.numberOfLocations = numberOfLocations;
     }
 
@@ -433,4 +434,11 @@ public class Account {
         this.description = description;
     }
 
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 }

@@ -29,7 +29,9 @@ public class AccountsListPageClassic extends AccountsListPage {
      */
     @Override
     public AccountForm createNewAccount() {
-        driverTools.clickElement(exitBtn);
+        if(exitBtn.isDisplayed()) {
+            driverTools.clickElement(exitBtn);
+        }
         driverTools.clickElement(newBtn);
         return new AccountFormClassic();
     }
