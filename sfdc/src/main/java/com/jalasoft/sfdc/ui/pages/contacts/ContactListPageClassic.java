@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ContactListPageClassic extends ContactListPage {
 
-    private static final String TITLE_NEW = "//*[@title='New']";
+    private static final String TITLE_NEW = "//input[@title='New']";
     private static final String EXIT_BUTTON = "//*[@class='dialogClose']";
 
     @FindBy(xpath = TITLE_NEW)
@@ -28,9 +28,10 @@ public class ContactListPageClassic extends ContactListPage {
      */
     @Override
     public ContactForm goToContactNewForm() {
-
         wait.until(ExpectedConditions.visibilityOf(newButton));
-        driverTools.clickElement(exitBtn);
+        if (driverTools.isElementDisplayed(exitBtn)){
+            driverTools.clickElement(exitBtn);
+        }
         driverTools.clickElement(newButton);
         return new ContactFormClassic();
     }

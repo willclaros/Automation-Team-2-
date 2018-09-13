@@ -11,10 +11,19 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ContactDetailsClassic extends ContactDetails {
 
-    private static final String NAME_CONTACT = "h2.topName";
+    private static final String NAME_CONTACT = "#con2_ileinner";
+
+    @FindBy(css = "//span[text()='Details']")
+    private WebElement detailsLbl;
 
     @FindBy(css = NAME_CONTACT)
     private WebElement nameLbl;
+
+    @FindBy(css = "#con13_ileinner")
+    private WebElement phoneTextBox;
+
+    @FindBy(css = "#con15_ileinner a")
+    private WebElement emailTextBox;
 
     /**
      * get a element name of contact create.
@@ -23,9 +32,49 @@ public class ContactDetailsClassic extends ContactDetails {
      */
     @Override
     public String getContactNameLbl() {
-
         return nameLbl.getText();
     }
+
+    @Override
+    public void getValidateContact() {
+
+    }
+
+    @Override
+    public String getPhoneTextBox() {
+        return phoneTextBox.getText();
+    }
+
+    @Override
+    public String getFirstNameTextBox() {
+        return null;
+    }
+
+    @Override
+    public String getLastNameTextBox() {
+        return null;
+    }
+
+    @Override
+    public String getEmailTextBox() {
+        return emailTextBox.getText();
+    }
+
+    @Override
+    public String getOtherStreetTextBox() {
+        return null;
+    }
+
+    @Override
+    public String getOtherCityTextBox() {
+        return null;
+    }
+
+    @Override
+    public String getOtherStateTextBox() {
+        return null;
+    }
+
 
     @Override
     public void waitUntilPageObjectIsLoaded() { }

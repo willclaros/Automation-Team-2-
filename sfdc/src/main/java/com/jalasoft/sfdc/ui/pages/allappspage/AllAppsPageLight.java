@@ -26,6 +26,9 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(linkText = "Price Books")
     private WebElement priceBooks;
 
+    @FindBy(css = "[title|='Service']")
+    private WebElement serviceLink;
+
     @Override
     public void waitUntilPageObjectIsLoaded() {
         driverTools.scrollToBottomOfPage();

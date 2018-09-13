@@ -526,4 +526,9 @@ public class WebDriverTools {
         WebElement element = driver.findElement(selector);
         element.sendKeys(Keys.ENTER);
     }
+
+    public void scroll(){
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("window.scrollBy(0,250)", "");
+    }
 }
