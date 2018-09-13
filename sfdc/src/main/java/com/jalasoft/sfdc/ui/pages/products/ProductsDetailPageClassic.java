@@ -31,6 +31,10 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
     @FindBy(css = ".checkImg")
     private WebElement activeChkBox;
 
+    @FindBy(xpath = "//*[@name=’edit’]")
+    private WebElement editBtn;
+
+
 
     /**
      * Method that waits until the object of the page is loaded.
@@ -59,5 +63,11 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
     @Override
     public boolean getStatusChkBox() {
         return activeChkBox.isSelected();
+    }
+
+    @Override
+    public ProductsForm clickEditBtn(){
+        driverTools.clickElement(editBtn);
+        return new ProductsFormClassic();
     }
 }
