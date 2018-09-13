@@ -1,8 +1,11 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
+import com.jalasoft.sfdc.entities.Account;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * AccountFormLight class.
@@ -13,30 +16,130 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountFormLight extends AccountForm {
 
-    private static final String NAME_ACCOUNT = "//*[@class='input uiInput uiInputText uiInput--default uiInput--input']";
-    private static final String BUTTON_SAVE = ".slds-button[title|='Save']";
+    @FindBy(xpath = "//*[@class='input uiInput uiInputText uiInput--default uiInput--input']" )
+    private WebElement nameAccountTxtBox;
 
+    @FindBy(css = ".slds-button[title|='Save']" )
+    private WebElement saveBtn;
 
-    @FindBy(xpath = NAME_ACCOUNT )
-    private WebElement nameAccountTxtBox ;
+    @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input" )
+    private WebElement phoneTxtBox;
 
-    @FindBy(css = BUTTON_SAVE )
-    private WebElement buttonSave;
+    @FindBy(xpath = "//span[text()='Fax']/parent::label/following-sibling::input" )
+    private WebElement faxTxtBox;
 
+    @FindBy(xpath = "//span[text()='Account Number']/parent::label/following-sibling::input" )
+    private WebElement numberAccountTxtBox;
+
+    @FindBy(xpath = "//span[text()='Website']/parent::label/following-sibling::input" )
+    private WebElement webSiteTxtBox;
+
+    @FindBy(xpath = "//span[text()='Account Site']/parent::label/following-sibling::input" )
+    private WebElement siteAccountTxtBox;
+
+    @FindBy(xpath = "//span[text()='Ticker Symbol']/parent::label/following-sibling::input" )
+    private WebElement tickerTxtBox;
+
+    @FindBy(xpath = "//span[text()='Employees']/parent::label/following-sibling::input" )
+    private WebElement employeeTxtBox;
+
+    @FindBy(xpath = "//span[text()='Annual Revenue']/parent::label/following-sibling::input" )
+    private WebElement annualRevenueTxtBox;
+
+    @FindBy(xpath = "//span[text()='SIC Code']/parent::label/following-sibling::input" )
+    private WebElement sicCodeTxtBox;
+
+    @FindBy(xpath = "//span[text()='Billing Street']/parent::label/following-sibling::textarea" )
+    private WebElement billingStreeTxtBox;
+
+    @FindBy(xpath = "//span[text()='Billing City']/parent::label/following-sibling::input" )
+    private WebElement billingCityTxtBox;
+
+    @FindBy(xpath = "//span[text()='Billing State/Province']/parent::label/following-sibling::input" )
+    private WebElement billingStateTxtBox;
+
+    @FindBy(xpath = "//span[text()='Billing Zip/Postal Code']/parent::label/following-sibling::input" )
+    private WebElement billingZipTxtBox;
+
+    @FindBy(xpath = "//span[text()='Billing Country']/parent::label/following-sibling::input" )
+    private WebElement billingCountryTxtBox;
+
+    @FindBy(xpath = "//span[text()='Shipping Street']/parent::label/following-sibling::textarea" )
+    private WebElement shippingStreetTxtBox;
+
+    @FindBy(xpath = "//span[text()='Shipping City']/parent::label/following-sibling::input" )
+    private WebElement shippingCityTxtBox;
+
+    @FindBy(xpath = "//span[text()='Shipping State/Province']/parent::label/following-sibling::input" )
+    private WebElement shippingStateTxtBox;
+
+    @FindBy(xpath = "//span[text()='Shipping Zip/Postal Code']/parent::label/following-sibling::input" )
+    private WebElement shippingZipTxtBox;
+
+    @FindBy(xpath = "//span[text()='Shipping Country']/parent::label/following-sibling::input" )
+    private WebElement shippingCountryTxtBox;
+
+    @FindBy(xpath = "//span[text()='SLA Expiration Date']/parent::label/following-sibling::div/child::input")
+    private WebElement slaExpirationTxtBox;
+
+    @FindBy(xpath = "//span[text()='SLA Serial Number']/parent::label/following-sibling::input" )
+    private WebElement slaSerialNumberTxtBox;
+
+    @FindBy(xpath = "//span[text()='Description']/parent::label/following-sibling::textarea" )
+    private WebElement descriptionTxtBox;
+
+    @FindBy(xpath = "//span[text()='Number of Locations']/parent::label/following-sibling::input" )
+    private WebElement numberOfLocationsTxtBox;
+
+    @FindBy(xpath = "//span[text()='Rating']/parent::span/following-sibling::div/child::div/child::div/child::div/child::a" )
+    private WebElement ratingLstBox;
+//    Select ratingLstBoxSelect;
+//    ratingLstBoxSelect = new Select(ratingLstBox);
+//    ratingLstBoxSelect.selectByVisibleText(account.getRating());
+
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
         wait.until(ExpectedConditions.visibilityOf(nameAccountTxtBox));
     }
 
-    @Override
-    public void setFormAccount(String name) {
-        driverTools.setInputField(nameAccountTxtBox, name);
-    }
+    /**
+     * Method to access the account details page
+     *
+     */
 
     @Override
-    public AccountDetailsPage clickSaveBtn() {
-        driverTools.clickElement(buttonSave);
+    public AccountDetailsPage fillAccountForm(Account account) {
+        driverTools.setInputField(nameAccountTxtBox, account.getAccountName());
+        driverTools.clickElement(ratingLstBox);
+        //driverTools.clickElement(By.xpath("//span[text()='Rating']/parent::span/following-sibling::div/child::div/child::div/child::div/child::a[text()="+account.getRating()+"]"));
+        driverTools.setInputField(numberAccountTxtBox, account.getAccountNumber());
+        driverTools.setInputField(siteAccountTxtBox, account.getAccountSite());
+        driverTools.setInputField(annualRevenueTxtBox, account.getAnnualRevenue());
+        driverTools.setInputField(phoneTxtBox, account.getPhone());
+        driverTools.setInputField(faxTxtBox, account.getFax());
+        driverTools.setInputField(webSiteTxtBox, account.getWebSite());
+        driverTools.setInputField(tickerTxtBox, account.getTicker());
+        driverTools.setInputField(employeeTxtBox, account.getEmployees());
+        driverTools.setInputField(sicCodeTxtBox, account.getSicCode());
+        driverTools.setInputField(billingStreeTxtBox, account.getBillingStreet());
+        driverTools.setInputField(billingCityTxtBox, account.getBillingCity());
+        driverTools.setInputField(billingStateTxtBox, account.getBillingState());
+        driverTools.setInputField(billingZipTxtBox, account.getBillingZip());
+        driverTools.setInputField(billingCountryTxtBox, account.getBillingCountry());
+        driverTools.setInputField(shippingStreetTxtBox, account.getShippingStreet());
+        driverTools.setInputField(shippingCityTxtBox, account.getShippingCity());
+        driverTools.setInputField(shippingStateTxtBox, account.getShippingState());
+        driverTools.setInputField(shippingZipTxtBox, account.getShippingZip());
+        driverTools.setInputField(shippingCountryTxtBox, account.getShippingCountry());
+        driverTools.setInputField(slaExpirationTxtBox, account.getSlaExpirationDate());
+        driverTools.setInputField(slaSerialNumberTxtBox, account.getSlaSerialNumber());
+        driverTools.setInputField(numberOfLocationsTxtBox, account.getNumberOfLocations());
+        driverTools.setInputField(descriptionTxtBox, account.getDescription());
+        driverTools.clickElement(saveBtn);
         return new AccountDetailsPageLight();
     }
 

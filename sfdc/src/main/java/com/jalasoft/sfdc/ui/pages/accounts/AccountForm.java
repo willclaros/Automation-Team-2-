@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
+import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.BasePage;
 
 /**
@@ -10,6 +11,5 @@ import com.jalasoft.sfdc.ui.BasePage;
  */
 
 public abstract class AccountForm extends BasePage {
-    public abstract void setFormAccount(String name);
-    public abstract AccountDetailsPage clickSaveBtn();
+    public abstract AccountDetailsPage fillAccountForm(Account account);
 }
