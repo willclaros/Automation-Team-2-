@@ -91,7 +91,6 @@ public class AccountFormClassic extends AccountForm {
     /**
      * Method to access the account details page
      *
-     * @return
      */
     @Override
     public AccountDetailsPage fillAccountForm(Account account) {

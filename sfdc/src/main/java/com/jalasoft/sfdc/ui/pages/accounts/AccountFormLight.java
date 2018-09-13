@@ -97,14 +97,19 @@ public class AccountFormLight extends AccountForm {
 //    ratingLstBoxSelect = new Select(ratingLstBox);
 //    ratingLstBoxSelect.selectByVisibleText(account.getRating());
 
-
-
-
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
         wait.until(ExpectedConditions.visibilityOf(nameAccountTxtBox));
     }
+
+    /**
+     * Method to access the account details page
+     *
+     */
 
     @Override
     public AccountDetailsPage fillAccountForm(Account account) {
