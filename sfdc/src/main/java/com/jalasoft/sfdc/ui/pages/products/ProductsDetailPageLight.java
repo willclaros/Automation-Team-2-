@@ -31,6 +31,12 @@ public class ProductsDetailPageLight extends ProductsDetailPage {
     @FindBy(css = ".unchecked")
     private WebElement activeChkBox;
 
+    @FindBy(xpath = "//*[@class='slds-grid slds-grid--vertical-align-center slds-grid--align-center sldsButtonHeightFix']")
+    private WebElement iconEditChkList;
+
+    @FindBy(xpath = "//*[@title='Edit' and @role='menuitem']")
+    private WebElement editChkList;
+
 
     /**
      * Method that is responsible for obtaining the text of a WebElement.
@@ -50,6 +56,13 @@ public class ProductsDetailPageLight extends ProductsDetailPage {
     @Override
     public boolean getStatusChkBox() {
         return activeChkBox.isSelected();
+    }
+
+    @Override
+    public ProductsForm clickEditBtn() {
+        driverTools.clickElement(iconEditChkList);
+        driverTools.clickElement(editChkList);
+        return new ProductsFormLight();
     }
 
     /**

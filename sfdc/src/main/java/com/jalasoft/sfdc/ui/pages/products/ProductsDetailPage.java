@@ -32,4 +32,6 @@ public abstract class ProductsDetailPage extends BasePage {
 
     public abstract boolean getStatusChkBox();
 
+    public abstract ProductsForm clickEditBtn();
+
 }
