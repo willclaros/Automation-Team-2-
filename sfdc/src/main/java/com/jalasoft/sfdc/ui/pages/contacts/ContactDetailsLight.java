@@ -11,10 +11,34 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ContactDetailsLight extends ContactDetails {
 
-    private static final String NAME = "(//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon']//child::span)[1]";
+    private static final String NAME = "//span[text()='Name']/parent::div/following-sibling::div/span/child::span";
 
     @FindBy(xpath = NAME)
     private WebElement contactNameLbl;
+
+    @FindBy(xpath = "//span[text()='Phone']/parent::div/following-sibling::div/span/child::span")
+    private WebElement phoneTextBox;
+
+    @FindBy(xpath = "//span[text()='First Name']/parent::label/following-sibling::input")
+    private WebElement firstNameTextBox;
+
+    @FindBy(xpath = "//span[text()='Last Name']/parent::label/following-sibling::input")
+    private WebElement lastNameTextBox;
+
+    @FindBy(xpath = "//span[text()='Email']/parent::div/following-sibling::div/span/child::span")
+    private WebElement emailTextBox;
+
+    @FindBy(xpath = "//span[text()='Other Street']/parent::label/following-sibling::textarea")
+    private WebElement otherStreetTextBox;
+
+    @FindBy(xpath = "//span[text()='Other City']/parent::label/following-sibling::input")
+    private WebElement otherCityTextBox;
+
+    @FindBy(xpath = "//span[text()='Other State/Province']/parent::label/following-sibling::input")
+    private WebElement otherStateTextBox;
+
+    @FindBy(xpath = "//span[contains(text(),'Details')]")
+    private WebElement detailsLink;
 
     /**
      * get a element name of contact create.
@@ -23,8 +47,87 @@ public class ContactDetailsLight extends ContactDetails {
      */
     @Override
     public String getContactNameLbl(){
-
         return contactNameLbl.getText();
+    }
+
+    /**
+     * get a element ValidateContact.
+     *
+     * @return link detailsLink.
+     */
+    @Override
+    public void getValidateContact() {
+        driverTools.clickElement(detailsLink);
+    }
+
+    /**
+     * get a element Phone.
+     *
+     * @return TextBox name contact.
+     */
+    @Override
+    public String getPhoneTextBox() {
+        return phoneTextBox.getText();
+    }
+
+    /**
+     * get a element name of contact create.
+     *
+     * @return label name contact.
+     */
+    @Override
+    public String getFirstNameTextBox() {
+        return firstNameTextBox.getText();
+    }
+
+    /**
+     * get a element LastName.
+     *
+     * @return label Last Name.
+     */
+    @Override
+    public String getLastNameTextBox() {
+        return lastNameTextBox.getText();
+    }
+
+    /**
+     * get a element name of Email.
+     *
+     * @return TextBox name Email.
+     */
+    @Override
+    public String getEmailTextBox() {
+        return emailTextBox.getText();
+    }
+
+    /**
+     * get a element Other Street.
+     *
+     * @return TextBox OtherStreet.
+     */
+    @Override
+    public String getOtherStreetTextBox() {
+        return otherStreetTextBox.getText();
+    }
+
+    /**
+     * get a element name of OtherCity.
+     *
+     * @return TextBox name contact.
+     */
+    @Override
+    public String getOtherCityTextBox() {
+        return otherCityTextBox.getText();
+    }
+
+    /**
+     * get a element name of Other State.
+     *
+     * @return TextBox name OtherState.
+     */
+    @Override
+    public String getOtherStateTextBox() {
+        return otherStateTextBox.getText();
     }
 
     @Override

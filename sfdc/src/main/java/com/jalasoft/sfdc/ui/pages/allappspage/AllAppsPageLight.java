@@ -27,10 +27,13 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(linkText = "Price Books")
     private WebElement priceBooks;
 
+    @FindBy(css = "[title|='Service']")
+    private WebElement serviceLink;
+
     @Override
     public void waitUntilPageObjectIsLoaded() {
         //wait.until(ExpectedConditions.visibilityOf(productsBtn));
-        driverTools.scrollToBottomOfPage();
+        //driverTools.scrollToBottomOfPage();
     }
 
     public void moveOverElement(WebElement productsButton)
@@ -69,7 +72,6 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @Override
     public ContactListPage goToContact() {
-
         driverTools.scrollDown(4);
         wait.until(ExpectedConditions.visibilityOf(contactBtn));
         driverTools.clickElement(contactBtn);
