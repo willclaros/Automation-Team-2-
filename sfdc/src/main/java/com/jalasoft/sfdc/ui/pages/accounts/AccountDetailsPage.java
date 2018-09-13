@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
+import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.BasePage;
 
 /**
@@ -16,5 +17,5 @@ public abstract class AccountDetailsPage extends BasePage {
      *
      * @return tex of WebElement.
      */
-    public abstract String getNameAccount();
+    public abstract void verifyDataAccount(Account account);
 }

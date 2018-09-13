@@ -27,7 +27,7 @@ public class AccountFormClassic extends AccountForm {
     @FindBy(xpath = "//*[@name='acc23']" )
     private WebElement siteAccountTxtBox;
 
-    @FindBy(xpath = "//*[@name='acc23']" )
+    @FindBy(xpath = "//*[@name='acc8']" )
     private WebElement annualRevenueTxtBox;
 
     @FindBy(xpath = "//*[@name='acc10']" )

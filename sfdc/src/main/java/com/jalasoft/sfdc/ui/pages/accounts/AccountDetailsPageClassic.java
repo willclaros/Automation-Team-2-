@@ -1,8 +1,11 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
+import com.jalasoft.sfdc.entities.Account;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * AccountDetailsPageClassic class.
@@ -13,11 +16,27 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountDetailsPageClassic extends AccountDetailsPage {
 
-    private static final String NAME_ACCOUNT = "//*[@class='topName']";
+    @FindBy(xpath = "//div[@id='acc2_ileinner']")
+    private WebElement nameAccountLbl;
+
+    @FindBy(xpath = "//input[@title='Edit']")
+    private WebElement DetailsBtn;
+
+    //span[text()='Phone']/parent::div/following-sibling::div
+    @FindBy(xpath = "//div[@id='acc10_ileinner']")
+    private WebElement phoneLbl;
+
+    //span[text()='Fax']/parent::div/following-sibling::div/child::span/child::span
+    @FindBy(xpath = "//div[@id='acc11_ileinner']")
+    private WebElement faxLbl;
+
+    @FindBy(xpath = "//div[@id='acc5_ileinner']")
+    private WebElement numberAccountLbl;
+
+    @FindBy(xpath = "//div[@id='acc12_ileinner']")
+    private WebElement webSiteLbl;
 
 
-    @FindBy(xpath = NAME_ACCOUNT)
-    private WebElement nameDetailsLbl;
 
     /**
      * Take the webElement chain.
@@ -25,10 +44,13 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
      * @return the text of the webElement.
      */
     @Override
-    public String getNameAccount() {
-
-        wait.until(ExpectedConditions.visibilityOf(nameDetailsLbl));
-        return nameDetailsLbl.getText();
+    public void verifyDataAccount(Account account) {
+        //driverTools.clickElement(DetailsBtn);
+        //assertEquals(nameAccountLbl.getText(),account.getAccountName());
+        assertEquals(phoneLbl.getText(),account.getPhone());
+        assertEquals(faxLbl.getText(),account.getFax());
+        assertEquals(numberAccountLbl.getText(),account.getAccountNumber());
+        //assertEquals(webSiteLbl.getText(),account.getWebSite());
     }
 
     /**
@@ -37,6 +59,7 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
-        wait.until(ExpectedConditions.visibilityOf(nameDetailsLbl));
+        wait.until(ExpectedConditions.visibilityOf(nameAccountLbl));
     }
+
 }

@@ -46,6 +46,7 @@ public class AccountsStep {
 
     @Then("^the created account should be displayed in account details page$")
     public void theCreatedAccountShouldBeDisplayedInDetailsAccountPage() {
-        assertEquals(account.getAccountName(),accountDetailsPage.getNameAccount());
-    }
+        //assertEquals(account.getAccountName(),accountDetailsPage.getNameAccount());
+        accountDetailsPage.verifyDataAccount(account);
+}
 }
