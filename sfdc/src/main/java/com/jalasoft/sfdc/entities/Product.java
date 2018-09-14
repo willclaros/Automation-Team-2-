@@ -13,6 +13,9 @@
  */
 package com.jalasoft.sfdc.entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Product class contains the product information.
  *
@@ -25,6 +28,7 @@ public class Product {
     private String productCode = "";
     private String productDescription = "";
     private String active = "";
+    private String productFamily = "";
 
     /**
      * Method that obtains the information of the name of the Product.
@@ -41,7 +45,8 @@ public class Product {
      * @param productName new input value so that it modifies the current value.
      */
     public void setProductName(String productName) {
-        this.productName = productName;
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        this.productName = productName.concat(timeStamp);
     }
 
     /**
@@ -96,5 +101,23 @@ public class Product {
      */
     public void setStatusActive(String active) {
         this.active = active;
+    }
+
+    /**
+     * Method that obtains the information of the option the combo box of the Product.
+     *
+     * @return returns the a option of the combo box of the product.
+     */
+    public String getProductFamily() {
+        return productFamily;
+    }
+
+    /**
+     * Method that setting the information of the option of the combo box of the Product.
+     *
+     * @param productFamily new input value so that it modifies the current value.
+     */
+    public void setProductFamily(String productFamily) {
+        this.productFamily = productFamily;
     }
 }

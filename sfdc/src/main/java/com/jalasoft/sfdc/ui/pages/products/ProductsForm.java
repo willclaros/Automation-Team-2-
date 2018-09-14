@@ -15,6 +15,9 @@ package com.jalasoft.sfdc.ui.pages.products;
 
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.BasePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Abstract class that has the form to create and update the information of a product.
@@ -29,5 +32,12 @@ public abstract class ProductsForm extends BasePage {
      *
      * @param product value of the field to be set.
      */
-    public abstract ProductsDetailPage setFormProduct(Product product);
+    public abstract ProductsDetailPage createProduct(Product product);
+
+    /**
+     * Method that edit the information of the fields of the form.
+     *
+     * @param product value of the field to be set.
+     */
+    public abstract ProductsDetailPage editProduct(Product product);
 }
