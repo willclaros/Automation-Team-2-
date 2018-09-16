@@ -160,8 +160,6 @@ public class AccountFormLight extends AccountForm {
      */
     @Override
     public AccountDetailsPage editAccountData(Account account) {
-        driverTools.clickElement(moreBtn);
-        driverTools.clickElement(editBtn);
         driverTools.clearTextField(editNameTxtBox);
         driverTools.setInputField(editNameTxtBox, account.getAccountName());
         driverTools.clearTextField(editPhoneTxtBox);
@@ -178,6 +176,12 @@ public class AccountFormLight extends AccountForm {
         } catch (TimeoutException e) {
             System.out.println("catch timeout");
         }
+        account.setId(getUrlCurrent(driver.getCurrentUrl()));
         return  new AccountDetailsPageLight();
+    }
+    private String getUrlCurrent(String currentUrl){
+        String[] currentUrlList = currentUrl.split("/");
+        String idUrl = currentUrlList[currentUrlList.length - 2];
+        return idUrl;
     }
 }

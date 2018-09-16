@@ -37,6 +37,7 @@ public class Account {
     private String numberOfLocations = "";
     private String description = "";
     private String rating ="";
+    private String id = "";
 
     /**
      * Gets the account name.
@@ -51,8 +52,8 @@ public class Account {
      * @param accountName user name to set.
      */
     public void setAccountName(final String accountName) {
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        this.accountName = accountName.concat(" ").concat(timeStamp);
+//        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        this.accountName = accountName;
     }
 
     /**
@@ -445,5 +446,13 @@ public class Account {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

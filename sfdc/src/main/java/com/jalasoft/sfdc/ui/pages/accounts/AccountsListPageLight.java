@@ -43,6 +43,12 @@ public class AccountsListPageLight extends AccountsListPage {
         return driverTools.isElementDisplayed(By.xpath("//a[text()='"+nameAccountDelete+"']"));
     }
 
+    @Override
+    public AccountDetailsPage goToTheDetailsPage(Account account) {
+        driver.navigate().to("https://na49.lightning.force.com/lightning/r/Account/"+account.getId()+"/view");
+        return new AccountDetailsPageLight();
+    }
+
     /**
      * Waits until page object is loaded.
      */
