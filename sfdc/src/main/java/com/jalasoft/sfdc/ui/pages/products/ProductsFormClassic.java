@@ -71,6 +71,8 @@ public class ProductsFormClassic extends ProductsForm {
         chooseProductFamilyClassicCmbBox(product.getProductFamily());
 
         driverTools.clickElement(saveBtn);
+        String a = driver.getCurrentUrl();
+        System.out.println("7777777777777777777"+a);
         return new ProductsDetailPageClassic();
     }
 

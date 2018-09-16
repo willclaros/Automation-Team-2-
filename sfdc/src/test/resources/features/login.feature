@@ -15,7 +15,7 @@ Feature: Login
   @SmokeTest @Logout
   Scenario: Users should be able to login using valid credentials
     Given I navigate to Login page
-    When I login as "admin user" User
+    When I login as "william" User
     Then I should login successfully
 
 

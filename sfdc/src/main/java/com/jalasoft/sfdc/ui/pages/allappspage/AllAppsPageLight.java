@@ -30,11 +30,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class AllAppsPageLight extends AllAppsPage {
 
-    @FindBy(css = ".slds-input[placeholder *='Find an app']")
-    private WebElement searchTxtBox;
-
     @FindBy(css = ".uiInputText .slds-input.input")
-    private WebElement searchTxtBx;
+    private WebElement searchTxtBox;
 
     @FindBy(linkText = "Accounts")
     private WebElement accountsBtn;
@@ -42,17 +39,17 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(xpath = "//mark[text()='Accounts']")
     private WebElement accountButton;
 
-    @FindBy(css = ".app-launcher-link[title*='Product'] .label-ctr .slds-text-link")
+    @FindBy(css = ".app-launcher-link[title='Products']")
     private WebElement productsBtn;
 
-    @FindBy(css = ".app-launcher-link[title*='Price Books'] .label-ctr .slds-text-link")
+    @FindBy(css = ".app-launcher-link[title='Price Books'] .label-ctr .slds-text-link")
     private WebElement priceBooksBtn;
 
     @FindBy(css = "a[title|='Contacts']")
     private WebElement contactsBtn;
 
-    @FindBy(css = ".uiInputText .slds-input.input")
-    private WebElement searchTextBox;
+    @FindBy(xpath = "//h2[contains(text(),'App Launcher')]")
+    private WebElement titleTxt;
 
     /**
      * Method that waits until the page element is loaded.
@@ -68,7 +65,7 @@ public class AllAppsPageLight extends AllAppsPage {
      * @return returns the Accounts List Page
      */
     public AccountsListPage goToaccount() {
-        driverTools.setInputField(searchTxtBx, "Accounts");
+        driverTools.setInputField(searchTxtBox, "Accounts");
         wait.until(ExpectedConditions.visibilityOf(accountButton));
         driverTools.clickElement(accountButton);
         return new AccountsListPageLight();
@@ -81,7 +78,8 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public ProductsListPage goToProductsListPage() {
-        setSearchTxtBox(productsBtn);
+        driverTools.setInputField(searchTxtBox, "Products");
+        driverTools.clickElement(productsBtn);
         return new ProductsListPageLight();
     }
 

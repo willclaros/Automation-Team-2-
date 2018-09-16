@@ -28,6 +28,9 @@ public class PriceBookDetailPageLight  extends PriceBookDetailPage{
     @FindBy(xpath = "//span[text()='Price Book Name']/parent::div/following-sibling::div/child::span/child::span[@class='uiOutputText']")
     private WebElement priceBookNameTxt;
 
+    @FindBy(xpath = "//span[text()='Description']/parent::div/following-sibling::div/child::span/child::span[@class='uiOutputText']")
+    private WebElement priceBookDescriptionTxt;
+
     /**
      * Method that waits until the page element is loaded.
      */
@@ -44,5 +47,15 @@ public class PriceBookDetailPageLight  extends PriceBookDetailPage{
     @Override
     public String getPriceBookNameTxt() {
         return priceBookNameTxt.getText();
+    }
+
+    /**
+     * Method that is responsible for obtaining text of a WebElement.
+     *
+     * @return returns the text of the WebElement.
+     */
+    @Override
+    public String getPriceBookDescriptionTxt() {
+        return priceBookDescriptionTxt.getText();
     }
 }

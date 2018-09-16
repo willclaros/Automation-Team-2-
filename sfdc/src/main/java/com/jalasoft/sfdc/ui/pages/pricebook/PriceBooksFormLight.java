@@ -55,7 +55,9 @@ public class PriceBooksFormLight extends PriceBooksForm {
     public PriceBookDetailPage setFormPriceBook(PriceBook priceBook) {
         driverTools.setInputField(nameTxtBox, priceBook.getPriceBookName());
         driverTools.setInputField(descriptionTxtBox, priceBook.getDescription());
-        if (priceBook.getStatus().equalsIgnoreCase("true")) {
+        if(priceBook.getStatus().equalsIgnoreCase("false") || priceBook.getStatus().isEmpty()){
+            driverTools.clearChkBox(statusChkBox);
+        }else{
             driverTools.selectChkBox(statusChkBox);
         }
         driverTools.clickElement(saveBtn);
