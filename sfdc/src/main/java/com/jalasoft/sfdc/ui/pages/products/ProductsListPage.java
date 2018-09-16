@@ -13,6 +13,7 @@
  */
 package com.jalasoft.sfdc.ui.pages.products;
 
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.BasePage;
 
 /**
@@ -29,4 +30,12 @@ public abstract class ProductsListPage extends BasePage {
      * @return returns the Product form.
      */
     public abstract ProductsForm clickNewBtn();
+
+    /**
+     * Method that an Entity receives and through its ID navigate to a Product Detail Page.
+     *
+     *  @param product an Entity of type Product.
+     * @return returns a Product Detail Page.
+     */
+    public abstract ProductsDetailPage goToTheDetailsPage(Product product);
 }

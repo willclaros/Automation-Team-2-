@@ -17,6 +17,8 @@ import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageLight;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPageLight;
+import com.jalasoft.sfdc.ui.pages.opportunity.OpportunityListPage;
+import com.jalasoft.sfdc.ui.pages.opportunity.OpportunityListPageLight;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
@@ -47,6 +49,9 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @FindBy(css = "a[title|='Contacts']")
     private WebElement contactsBtn;
+
+    @FindBy(css = ".app-launcher-link[title='Opportunities'] .label-ctr .slds-text-link")
+    private WebElement opportunityBtn;
 
     @FindBy(xpath = "//h2[contains(text(),'App Launcher')]")
     private WebElement titleTxt;
@@ -92,6 +97,13 @@ public class AllAppsPageLight extends AllAppsPage {
     public ContactListPage goToContact() {
         setSearchTxtBox(contactsBtn);
         return new ContactListPageLight();
+    }
+
+    @Override
+    public OpportunityListPage goToOpportunityListPage() {
+        driverTools.setInputField(searchTxtBox, "Opportunities");
+        driverTools.clickElement(opportunityBtn);
+        return new OpportunityListPageLight();
     }
 
     /**

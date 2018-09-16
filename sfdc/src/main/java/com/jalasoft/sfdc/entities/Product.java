@@ -32,7 +32,7 @@ public class Product {
     private String id = "";
 
     /**
-     * Method that obtains the informatio name of the Product.
+     * Method that obtains the information of the name of the Product.
      *
      * @return returns the name of the product.
      */
@@ -47,6 +47,7 @@ public class Product {
      */
     public void setProductName(String productName) {
         //String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        //this.productName = productName.concat(timeStamp);
         this.productName = productName;
     }
 
@@ -139,4 +140,13 @@ public class Product {
     public void setId(String id) {
         this.id = id;
     }
+
+    /**
+     * Method that adds a TimeStamp to the name so that it works as an ID making it unique in the list of Products.
+     */
+    public void updateName() {
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        productName = productName.concat(timeStamp);
+    }
+
 }

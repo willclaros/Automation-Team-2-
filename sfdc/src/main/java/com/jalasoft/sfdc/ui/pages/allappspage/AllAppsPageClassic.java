@@ -4,6 +4,8 @@ import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageClassic;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPageClassic;
+import com.jalasoft.sfdc.ui.pages.opportunity.OpportunityListPage;
+import com.jalasoft.sfdc.ui.pages.opportunity.OpportunityListPageClassic;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPageClassic;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
@@ -25,6 +27,9 @@ public class AllAppsPageClassic extends AllAppsPage {
 
     @FindBy(css = ".pricebook2Block .title")
     private WebElement priceBooksBtn;
+
+    @FindBy(css = ".opportunityBlock .listRelatedObject")
+    private WebElement opportunityBtn;
 
     /**
      * Method that waits until the page element is loaded.
@@ -80,5 +85,12 @@ public class AllAppsPageClassic extends AllAppsPage {
         wait.until(ExpectedConditions.visibilityOf(contactBtn));
         driverTools.clickElement(contactBtn);
         return new ContactListPageClassic();
+    }
+
+    @Override
+    public OpportunityListPage goToOpportunityListPage() {
+        wait.until(ExpectedConditions.visibilityOf(opportunityBtn));
+        driverTools.clickElement(opportunityBtn);
+        return new OpportunityListPageClassic();
     }
 }

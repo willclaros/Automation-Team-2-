@@ -3,6 +3,7 @@ package com.jalasoft.sfdc.ui.pages.allappspage;
 import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
+import com.jalasoft.sfdc.ui.pages.opportunity.OpportunityListPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
 
@@ -20,4 +21,7 @@ public abstract class AllAppsPage extends BasePage {
     public abstract PriceBookListPage goToPriceBooksListPage();
 
     public abstract ContactListPage goToContact();
+
+    public abstract OpportunityListPage goToOpportunityListPage();
+
 }

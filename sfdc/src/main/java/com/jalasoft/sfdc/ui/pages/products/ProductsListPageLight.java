@@ -13,6 +13,7 @@
  */
 package com.jalasoft.sfdc.ui.pages.products;
 
+import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +25,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @since 9/11/2018
  */
 public class ProductsListPageLight extends ProductsListPage {
+
+    private static final String INIT_URL_LIGHT = "https://na49.lightning.force.com/lightning/r/Product2/";
+    private static final String END_URL = "/view";
 
     @FindBy(css = ".forceActionLink[title='New']")
     private WebElement newBtn;
@@ -46,5 +50,17 @@ public class ProductsListPageLight extends ProductsListPage {
         wait.until(ExpectedConditions.visibilityOf(newBtn));
         driverTools.clickElement(newBtn);
         return new ProductsFormLight();
+    }
+
+    /**
+     * Method that an Entity receives and through its ID navigate to a Product Detail Page in the skin light.
+     *
+     * @param product an Entity of type Product.
+     * @return returns a Product Detail Page Light.
+     */
+    @Override
+    public ProductsDetailPage goToTheDetailsPage(Product product) {
+        driver.navigate().to(INIT_URL_LIGHT + product.getId() + END_URL);
+        return new ProductsDetailPageLight();
     }
 }
