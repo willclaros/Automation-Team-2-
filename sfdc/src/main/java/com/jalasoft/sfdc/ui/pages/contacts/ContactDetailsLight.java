@@ -40,6 +40,9 @@ public class ContactDetailsLight extends ContactDetails {
     @FindBy(xpath = "//span[contains(text(),'Details')]")
     private WebElement detailsLink;
 
+    @FindBy(css = "button[title='Edit Name']")
+    private WebElement editBtn;
+
     /**
      * get a element name of contact create.
      *
@@ -58,6 +61,14 @@ public class ContactDetailsLight extends ContactDetails {
     @Override
     public void getValidateContact() {
         driverTools.clickElement(detailsLink);
+        driverTools.clickElement(editBtn);
+    }
+
+    @Override
+    public ContactForm goToEditContactNewForm() {
+        driverTools.clickElement(detailsLink);
+        driverTools.clickElement(editBtn);
+        return new ContactFormLight();
     }
 
     /**

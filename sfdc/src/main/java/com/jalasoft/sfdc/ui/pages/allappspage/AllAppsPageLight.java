@@ -33,9 +33,6 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(css = ".slds-input[placeholder *='Find an app']")
     private WebElement searchTxtBox;
 
-    @FindBy(linkText = "Contacts")
-    private WebElement contactsBtn;
-
     @FindBy(linkText = "Accounts")
     private WebElement accountsBtn;
 
@@ -44,6 +41,12 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @FindBy(css = ".app-launcher-link[title*='Price Books'] .label-ctr .slds-text-link")
     private WebElement priceBooksBtn;
+
+    @FindBy(css = "a[title|='Contacts']")
+    private WebElement contactsBtn;
+
+    @FindBy(css = ".uiInputText .slds-input.input")
+    private WebElement searchTextBox;
 
     /**
      * Method that waits until the page element is loaded.

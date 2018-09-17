@@ -25,6 +25,9 @@ public class ContactDetailsClassic extends ContactDetails {
     @FindBy(css = "#con15_ileinner a")
     private WebElement emailTextBox;
 
+    @FindBy(css = "#topButtonRow > input[value=' Edit ']")
+    private WebElement editBtn;
+
     /**
      * get a element name of contact create.
      *
@@ -38,6 +41,12 @@ public class ContactDetailsClassic extends ContactDetails {
     @Override
     public void getValidateContact() {
 
+    }
+
+    @Override
+    public ContactForm goToEditContactNewForm() {
+        driverTools.clickElement(editBtn);
+        return new ContactFormClassic();
     }
 
     @Override
