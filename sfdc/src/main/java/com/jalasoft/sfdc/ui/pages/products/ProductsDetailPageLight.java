@@ -31,6 +31,13 @@ public class ProductsDetailPageLight extends ProductsDetailPage {
     @FindBy(css = ".unchecked")
     private WebElement activeChkBox;
 
+    /**
+     * Method that waits until the page element is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(productNameTxt));
+    }
 
     /**
      * Method that is responsible for obtaining the text of a WebElement.
@@ -50,13 +57,5 @@ public class ProductsDetailPageLight extends ProductsDetailPage {
     @Override
     public boolean getStatusChkBox() {
         return activeChkBox.isSelected();
-    }
-
-    /**
-     * Method that waits until the object of the page is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(productNameTxt));
     }
 }
