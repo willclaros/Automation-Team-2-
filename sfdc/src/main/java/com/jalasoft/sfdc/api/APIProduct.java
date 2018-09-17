@@ -77,18 +77,24 @@ public class APIProduct {
 
     /**
      * Method to create a Product through API.
+     *
+     * @return response return.
      */
-    public void createProductByAPI() {
+    public Response createProductByAPI() {
         response = apiManager.post(PRODUCTS, fieldsMap);
         System.out.println("Query response create: " + response.asString());
         product.setId(response.jsonPath().get(ID).toString());
+        return response;
     }
 
     /**
      * Method to delete a Product through API.
+     *
+     * @return response return.
      */
-    public void deleteProductByAPI() {
+    public Response deleteProductByAPI() {
         response = apiManager.delete(PRODUCTS, product.getId());
         System.out.println("Query response delete: " + response.asString());
+        return response;
     }
 }

@@ -30,6 +30,9 @@ import static org.junit.Assert.assertEquals;
  */
 public class ProductsDetailPageClassic extends ProductsDetailPage {
 
+    private static final String PRODUCT_LIST_INI = "//a[text()='";
+    private static final String PRODUCT_LIST_END = "']";
+
     @FindBy(css = ".inlineEditWrite div[id='Name_ileinner']")
     private WebElement productNameTxt;
 
@@ -60,6 +63,8 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
     @FindBy(xpath = "//*[@class='dialogClose']" )
     private WebElement exitBtn;
 
+    @FindBy(xpath = "(//a[@title='Close'])[last()]")
+    private WebElement adExitBtn;
 
     @Override
     public ProductAddStandardPrice gotoAddStandardPrice() {
@@ -143,6 +148,9 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
      */
     @Override
     public ProductsForm clickEditBtn() {
+        if (driverTools.isElementDisplayed(exitBtn)) {
+            driverTools.clickElement(exitBtn);
+        }
         driverTools.clickElement(editBtn);
         return new ProductsFormClassic();
     }
@@ -154,6 +162,14 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
      */
     @Override
     public ProductsListPage clickDeleteBtn() {
+        if (driverTools.isElementDisplayed(exitBtn)) {
+            driverTools.clickElement(exitBtn);
+        }
+        wait.until(ExpectedConditions.invisibilityOf(exitBtn));
+        if (driverTools.isElementDisplayed(adExitBtn)) {
+            driverTools.clickElement(adExitBtn);
+        }
+        driver.switchTo().activeElement();
         driverTools.clickElement(deleteBtn);
         acceptAlertDialog();
         return new ProductsListPageClassic();
@@ -166,6 +182,6 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
      */
     @Override
     public boolean verifyDeletedProduct(Product product) {
-        return driverTools.isElementDisplayed((By.xpath("//a[text()= '"+product.getProductName()+"']")));
+        return driverTools.isElementDisplayed((By.xpath(PRODUCT_LIST_INI + product.getProductName() + PRODUCT_LIST_END)));
     }
 }

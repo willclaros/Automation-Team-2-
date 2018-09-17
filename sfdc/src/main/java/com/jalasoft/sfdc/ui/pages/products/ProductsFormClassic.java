@@ -27,6 +27,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ProductsFormClassic extends ProductsForm {
 
+    private static final String PRODUCT_FAMILY_INI = "[value=";
+    private static final String PRODUCT_FAMILY_END = "]";
+
     @FindBy(xpath = "//input[@id='Name']")
     private WebElement productNameTxtBox;
 
@@ -63,11 +66,11 @@ public class ProductsFormClassic extends ProductsForm {
         driverTools.setInputField(productNameTxtBox, product.getProductName());
         driverTools.setInputField(productCodeTxtBox, product.getProductCode());
         driverTools.setInputField(descriptionTxtBox, product.getProductDescription());
-        if(product.getStatusActive().equalsIgnoreCase("false") || product.getStatusActive().isEmpty()){
+        /*if(product.getStatusActive().equalsIgnoreCase("false") || product.getStatusActive().isEmpty()){
             driverTools.clearChkBox(activeChkBox);
         }else{
             driverTools.selectChkBox(activeChkBox);
-        }
+        }*/
         //chooseProductFamilyClassicCmbBox(product.getProductFamily());
         driverTools.clickElement(saveBtn);
         product.setId(getUrlCurrent(driver.getCurrentUrl()));
@@ -103,7 +106,7 @@ public class ProductsFormClassic extends ProductsForm {
         wait.until(ExpectedConditions.elementToBeClickable(productFamilyLabel));
         driverTools.clickElement(productFamilyLabel);
         if (!productFamily.isEmpty()) {
-            driverTools.clickElement(driver.findElement(By.cssSelector("[value=" + productFamily + "]")));
+            driverTools.clickElement(driver.findElement(By.cssSelector(PRODUCT_FAMILY_INI + productFamily + PRODUCT_FAMILY_END)));
         }
         return this;
     }

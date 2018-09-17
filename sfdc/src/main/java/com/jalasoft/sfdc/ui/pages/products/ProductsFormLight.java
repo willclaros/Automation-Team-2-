@@ -27,6 +27,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ProductsFormLight extends ProductsForm {
 
+    private static final String PRODUCT_FAMILY_INI = "//a[text()='";
+    private static final String PRODUCT_FAMILY_END = "']";
+
     @FindBy(xpath = "//*[@aria-required='true']")
     private WebElement productNameTxtBox;
 
@@ -112,7 +115,7 @@ public class ProductsFormLight extends ProductsForm {
         wait.until(ExpectedConditions.elementToBeClickable(productFamilyLabel));
         driverTools.clickElement(productFamilyLabel);
         if (!productFamily.isEmpty()) {
-            driverTools.clickElement(driver.findElement(By.xpath("//a[text()='" + productFamily + "']")));
+            driverTools.clickElement(driver.findElement(By.xpath(PRODUCT_FAMILY_INI + productFamily + PRODUCT_FAMILY_END)));
         }
         return this;
     }

@@ -14,12 +14,13 @@
 package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.api.APIProduct;
-import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.products.*;
+import com.jalasoft.sfdc.ui.pages.products.ProductsForm;
+import com.jalasoft.sfdc.ui.pages.products.ProductsDetailPage;
+import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
@@ -27,7 +28,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-import javax.xml.ws.Response;
+import io.restassured.response.Response;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
@@ -49,15 +50,9 @@ public class ProductsSteps {
     private ProductsDetailPage productsDetailPage;
     private Product product;
     private Response response;
-    private Account account;
+
     private Product productAPI;
     private APIProduct apiProduct;
-    private ProductAddStandardPrice productAddStandardPrice;
-    private ProductAddPriceBooks productAddPriceBooks;
-
-    public ProductsSteps (Product product){
-        this.product = product;
-    }
 
     @And("^I go to Products page$")
     public void iGoToProductsPage() {
@@ -91,7 +86,6 @@ public class ProductsSteps {
         productsDetailPage = productsForm.editProduct(product);
     }
 
-    //(?:am logged in|login)
     @Then("^the (?:created|edited) product should be displayed in the Product Detail Page$")
     public void theProductInformationCreatedShouldBeDisplayedInTheProductsListPage() {
         assertEquals(product.getProductName(), productsDetailPage.getProductNameTxt());
@@ -105,14 +99,17 @@ public class ProductsSteps {
         productsListPage = productsDetailPage.clickDeleteBtn();
     }
 
-    @Then("^The product deleted shouldn't be displayed in the Product Detail Page$")
+    @Then("^the Product deleted shouldn't be displayed in the Product Detail Page$")
     public void theProductInformationDeleteShouldnTBeDisplayedInTheProductDetailPage()  {
-       assertFalse(productsDetailPage.verifyDeletedProduct(product), "The product wasn't removed correctly");
+        assertFalse(productsDetailPage.verifyDeletedProduct(product), "The product wasn't removed correctly");
     }
 
     @Then("^the Product should be (?:created|updated)$")
     public void theProductShouldBeVerifiedByAPI() {
+        apiProduct = new APIProduct(product);
+        apiProduct.createProductByAPI();
         productAPI = apiProduct.getProductsValuesByAPI();
+        System.out.println("1111111111111111111111111"+product.getId());
         System.out.println("Expected-----------.--"+product.getProductName());
         System.out.println("esperado-------------"+productAPI.getProductName());
         assertEquals(product.getProductName(), productAPI.getProductName());
@@ -122,12 +119,12 @@ public class ProductsSteps {
 
     @Then("^the Product should be deleted$")
     public void theProductShouldDeletedByAPI() {
-        apiProduct.deleteProductByAPI();
-        //assertTrue(response.toString().isEmpty());
+        response = apiProduct.deleteProductByAPI();
+        assertTrue(response.asString().contains("entity is deleted"));
     }
 
     @After(value = "@DeleteProduct", order = 999)
-    public void afterAccountScenario() {
+    public void afterProductScenario() {
         apiProduct.deleteProductByAPI();
     }
 
@@ -135,24 +132,11 @@ public class ProductsSteps {
     public void iHaveCreatedAProductWithTheFollowingInformation(final List<Product> productList) {
         this.product = productList.get(0);
         apiProduct = new APIProduct(product);
-        apiProduct.createProductByAPI();
+        response = apiProduct.createProductByAPI();
     }
 
     @And("^I go by URL to the Product Details page$")
-    public void iSelectTheProductByURL() {
-       productsDetailPage = productsListPage.goToTheDetailsPage(product);
-    }
-
-
-    @And("^I add the Product to the Standard Price Book$")
-    public void iAddTheProductToTheStandardPriceBook() throws Throwable {
-        iGoToProductsPage();
-        System.out.println("product---------------------"+product.getId());
+    public void iSelectTheProductByURL()  {
         productsDetailPage = productsListPage.goToTheDetailsPage(product);
-        productAddStandardPrice = productsDetailPage.gotoAddStandardPrice();
-        productsDetailPage = productAddStandardPrice.goToDetailPage();
-        productAddPriceBooks = productsDetailPage.gotoAddPriceBook();
-        productsDetailPage = productAddPriceBooks.filldataPriceBook();
-
     }
 }

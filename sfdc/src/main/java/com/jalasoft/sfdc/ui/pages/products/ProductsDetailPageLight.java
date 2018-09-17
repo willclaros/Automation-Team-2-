@@ -29,6 +29,9 @@ import static org.junit.Assert.assertEquals;
  */
 public class ProductsDetailPageLight extends ProductsDetailPage {
 
+    private static final String PRODUCT_LIST_INI = "//a[text()='";
+    private static final String PRODUCT_LIST_END = "']";
+
     @FindBy(xpath = "//span[text()='Product Name']/parent::div/following-sibling::div/child::span/child::span")
     private WebElement productNameTxt;
 
@@ -149,7 +152,7 @@ public class ProductsDetailPageLight extends ProductsDetailPage {
      */
     @Override
     public boolean verifyDeletedProduct(Product product) {
-        return driverTools.isElementDisplayed((By.xpath("//a[text()= '"+product.getProductName()+"']")));
+        return driverTools.isElementDisplayed((By.xpath(PRODUCT_LIST_INI + product.getProductName() + PRODUCT_LIST_END)));
     }
 
     @Override
