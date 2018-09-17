@@ -15,6 +15,13 @@ public class TopMenuClassic extends TopMenu {
     @FindBy(css = ".allTabsArrow")
     private WebElement louncherBtn;
 
+    /**
+     * Method that waits until the page element is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(louncherBtn));
+    }
 
     @Override
     public AllAppsPage goToAllPages() {
@@ -31,10 +38,6 @@ public class TopMenuClassic extends TopMenu {
     public ProfilePage goToProfilePage() {
         wait.until(ExpectedConditions.visibilityOf(louncherBtn));
         return new ProfilePageClassic();
-    }
-
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
     }
 
     @Override

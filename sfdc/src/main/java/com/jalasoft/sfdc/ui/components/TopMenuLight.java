@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopMenuLight extends TopMenu {
+
     @FindBy(css = ".branding-user-profile")
     private WebElement userProfile;
 
@@ -20,9 +21,19 @@ public class TopMenuLight extends TopMenu {
     @FindBy(xpath = "//*[@class='slds-icon-waffle']")
     private WebElement louncherBtn;
 
+    @FindBy(css = ".setupGear .uiMenu")
+    private WebElement setupBtn;
+
+    /**
+     * Method that waits until the page element is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(setupBtn));
+    }
+
     @Override
     public AllAppsPage goToAllPages() {
-        //wait.until(ExpectedConditions.visibilityOf(louncherBtn));
         driverTools.clickElement(louncherBtn);
         return new AllAppsPageLight();
     }
@@ -37,10 +48,6 @@ public class TopMenuLight extends TopMenu {
         wait.until(ExpectedConditions.visibilityOf(userProfile));
         driverTools.clickElement(userProfileBtn);
         return new ProfilePageLight();
-    }
-
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
     }
 
     @Override
