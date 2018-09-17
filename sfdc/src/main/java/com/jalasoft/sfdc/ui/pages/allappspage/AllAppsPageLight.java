@@ -29,10 +29,16 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(css = "[title|='Service']")
     private WebElement serviceLink;
 
+    @FindBy(css = "a[title|='Contacts']")
+    private WebElement contactslink;
+
+    @FindBy(css = ".uiInputText .slds-input.input")
+    private WebElement searchTextBox;
+
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        driverTools.scrollToBottomOfPage();
-        wait.until(ExpectedConditions.visibilityOf(productsBtn));
+        //driverTools.scrollToBottomOfPage();
+
     }
 
     @Override
@@ -58,9 +64,9 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @Override
     public ContactListPage goToContact() {
-        driverTools.scrollDown(4);
-        wait.until(ExpectedConditions.visibilityOf(contactBtn));
-        driverTools.clickElement(contactBtn);
+        driverTools.setInputField(searchTextBox, "contacts");
+        wait.until(ExpectedConditions.visibilityOf(contactslink));
+        driverTools.clickElement(contactslink);
         return new ContactListPageLight();
     }
 }
