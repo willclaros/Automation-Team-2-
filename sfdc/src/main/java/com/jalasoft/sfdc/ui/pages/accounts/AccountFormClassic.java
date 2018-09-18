@@ -87,6 +87,9 @@ public class AccountFormClassic extends AccountForm {
     @FindBy(xpath = "//*[@name='acc20']" )
     private WebElement descriptionTxtBox;
 
+    @FindBy(xpath = "//*[@title='Edit']" )
+    private WebElement editBtn;
+
 
     /**
      * Method to access the account details page
@@ -96,29 +99,28 @@ public class AccountFormClassic extends AccountForm {
     public AccountDetailsPage fillAccountForm(Account account) {
         driverTools.setInputField(nameAccountTxtBox, account.getAccountName());
         driverTools.setInputField(numberAccountTxtBox, account.getAccountNumber());
-        driverTools.setInputField(siteAccountTxtBox, account.getAccountSite());
-        driverTools.setInputField(annualRevenueTxtBox, account.getAnnualRevenue());
         driverTools.setInputField(phoneTxtBox, account.getPhone());
         driverTools.setInputField(faxTxtBox, account.getFax());
-        driverTools.setInputField(webSiteTxtBox, account.getWebSite());
         driverTools.setInputField(tickerTxtBox, account.getTicker());
-        driverTools.setInputField(employeeTxtBox, account.getEmployees());
-        driverTools.setInputField(sicCodeTxtBox, account.getSicCode());
-        driverTools.setInputField(billingStreeTxtBox, account.getBillingStreet());
-        driverTools.setInputField(billingCityTxtBox, account.getBillingCity());
-        driverTools.setInputField(billingStateTxtBox, account.getBillingState());
-        driverTools.setInputField(billingZipTxtBox, account.getBillingZip());
-        driverTools.setInputField(billingCountryTxtBox, account.getBillingCountry());
-        driverTools.setInputField(shippingStreetTxtBox, account.getShippingStreet());
-        driverTools.setInputField(shippingCityTxtBox, account.getShippingCity());
-        driverTools.setInputField(shippingStateTxtBox, account.getShippingState());
-        driverTools.setInputField(shippingZipTxtBox, account.getShippingZip());
-        driverTools.setInputField(shippingCountryTxtBox, account.getShippingCountry());
-        driverTools.setInputField(slaExpirationTxtBox, account.getSlaExpirationDate());
-        driverTools.setInputField(slaSerialNumberTxtBox, account.getSlaSerialNumber());
-        driverTools.setInputField(descriptionTxtBox, account.getDescription());
         driverTools.clickElement(saveBtn);
         return new AccountDetailsPageClassic();
+    }
+
+    @Override
+    public AccountDetailsPage editAccountData(Account account) {
+        driverTools.clickElement(editBtn);
+        driverTools.clearTextField(nameAccountTxtBox);
+        driverTools.setInputField(nameAccountTxtBox, account.getAccountName());
+        driverTools.clearTextField(phoneTxtBox);
+        driverTools.setInputField(phoneTxtBox, account.getPhone());
+        driverTools.clearTextField(faxTxtBox);
+        driverTools.setInputField(faxTxtBox, account.getFax());
+        driverTools.clearTextField(numberAccountTxtBox);
+        driverTools.setInputField(numberAccountTxtBox, account.getAccountNumber());
+        driverTools.clearTextField(tickerTxtBox);
+        driverTools.setInputField(tickerTxtBox, account.getTicker());
+        driverTools.clickElement(saveBtn);
+        return  new AccountDetailsPageClassic();
     }
 
     /**

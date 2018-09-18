@@ -1,5 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
+import com.jalasoft.sfdc.entities.Account;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -34,6 +36,13 @@ public class AccountsListPageClassic extends AccountsListPage {
         }
         driverTools.clickElement(newBtn);
         return new AccountFormClassic();
+    }
+
+
+    @Override
+    public boolean verifyDeleteAccount(Account account) {
+        String nameAccountDelete = account.getAccountName();
+        return driverTools.isElementDisplayed(By.xpath("//a[text()='"+nameAccountDelete+"']"));
     }
 
     /**
