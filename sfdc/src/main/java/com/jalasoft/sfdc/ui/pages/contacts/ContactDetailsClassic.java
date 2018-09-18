@@ -84,6 +84,11 @@ public class ContactDetailsClassic extends ContactDetails {
         return null;
     }
 
+    @Override
+    public ContactListPage goToDeleteContact() {
+        return null;
+    }
+
 
     @Override
     public void waitUntilPageObjectIsLoaded() { }

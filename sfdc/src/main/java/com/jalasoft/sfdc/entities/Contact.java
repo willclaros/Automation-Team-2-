@@ -1,5 +1,8 @@
 package com.jalasoft.sfdc.entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Contact {
     private String salutation = "";
     private String firstName = "";
@@ -51,6 +54,52 @@ public class Contact {
      * Gets the first name.
      * @return the current first name.
      */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -68,7 +117,8 @@ public class Contact {
      * @return the current getLastName.
      */
     public String getLastName() {
-        return lastName;
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        return lastName.concat(" ").concat(timeStamp);
     }
 
     /**
@@ -500,7 +550,8 @@ public class Contact {
      * @return the current fullName.
      */
     public String getFullName(){
-        return firstName.concat(" ").concat(lastName);
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        return firstName.concat(" ").concat(lastName).concat(" ").concat(timeStamp);
     }
 
     /**
@@ -508,6 +559,12 @@ public class Contact {
      * @return the current FullOtherAddress.
      */
     public String getFullOtherAddress(){
+        return null;
+    }
+
+    public String getNameWithTimeStamp(){
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        firstName.concat(" ").concat(timeStamp);
         return null;
     }
 }

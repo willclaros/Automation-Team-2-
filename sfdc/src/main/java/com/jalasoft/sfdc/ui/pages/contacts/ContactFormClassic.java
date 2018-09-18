@@ -99,5 +99,10 @@ public class ContactFormClassic extends ContactForm {
     }
 
     @Override
+    public ContactDetails editContact(Contact contact) {
+        return null;
+    }
+
+    @Override
     public void waitUntilPageObjectIsLoaded() { }
 }

@@ -43,7 +43,7 @@ public class ContactFormLight extends ContactForm {
     @FindBy(xpath = "//span[text()='Other Country']/parent::label/following-sibling::input")
     private WebElement countryTxtBox;
 
-    @FindBy(css = "button[title|='Save']")
+    @FindBy(css = "button[title ='Save']")
     private WebElement saveBtn;
 
     /**
@@ -63,6 +63,30 @@ public class ContactFormLight extends ContactForm {
         driverTools.setInputField(cityTxtBox, contact.getOtherCity());
         driverTools.setInputField(stateTxtBox, contact.getOtherState());
         driverTools.setInputField(countryTxtBox, contact.getOtherCountry());
+        driverTools.clickElement(saveBtn);
+        return new ContactDetailsLight();
+    }
+
+    @Override
+    public ContactDetails editContact(Contact contact) {
+        if (contact.getFirstName()!=null)
+            driverTools.setInputField(firstNameTxtBox,contact.getFirstName());
+        if (contact.getLastName()!=null)
+            driverTools.setInputField(lastNameTxtBox,contact.getLastName());
+        if (contact.getHomePhone()!=null)
+            driverTools.setInputField(phoneTxtBox,contact.getHomePhone());
+        if (contact.getTitle()!=null)
+            driverTools.setInputField(titleTxtBox,contact.getTitle());
+        if (contact.getEmail()!=null)
+            driverTools.setInputField(emailTxtBox,contact.getEmail());
+        if (contact.getOtherCity()!=null)
+            driverTools.setInputField(cityTxtBox,contact.getOtherCity());
+        if (contact.getOtherState()!=null)
+            driverTools.setInputField(stateTxtBox,contact.getOtherState());
+        if (contact.getOtherStreet()!=null)
+            driverTools.setInputField(streetTxtBox,contact.getOtherStreet());
+        if (contact.getOtherCountry()!=null)
+            driverTools.setInputField(countryTxtBox,contact.getOtherCountry());
         driverTools.clickElement(saveBtn);
         return new ContactDetailsLight();
     }

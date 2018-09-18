@@ -8,6 +8,7 @@ import com.jalasoft.sfdc.ui.pages.contacts.ContactDetails;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactForm;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -16,6 +17,8 @@ import cucumber.api.java.en.When;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ContactStep {
     private HomePage homePage;
@@ -52,7 +55,7 @@ public class ContactStep {
 
 
     @Then("^I should see the contact created correctly$")
-    public void iShouldSeeTheContactCreatedCorrectly() throws Throwable {
+    public void iShouldSeeTheContactCreatedCorrectly() {
         contactDetails.goToValidateContact();
         assertEquals(contact.getFullName(), contactDetails.getContactNameLbl());
         //assertEquals(contact.getLastName(), contactDetails.getLastNameTextBox());
@@ -70,9 +73,9 @@ public class ContactStep {
     }
 
     @And("^I edit the following information in actual Contact$")
-    public void iEditTheFollowingInformationInActualContact(List<Contact> contactList) {
-        this.contact = contactList.get(0);
-        contactDetails = contactForm.createContact(contact);
+    public void iEditTheFollowingInformationInActualContact(List<Contact> contactListEdit) {
+        this.contact = contactListEdit.get(0);
+        contactDetails = contactForm.editContact(contact);
     }
 
     @Then("^I should see the contact edited correctly$")
@@ -85,6 +88,11 @@ public class ContactStep {
 
     @Then("^I delete this Contact create$")
     public void iShouldSeeTheContactIsDelete() throws Throwable {
+        contactListPage = contactDetails.goToDeleteContact();
+    }
 
+    @Then("^I should see the actual Contact is delete$")
+    public void iShouldSeeTheActualContactIsDelete() throws Throwable {
+        assertFalse(contactListPage.isContactSelected(contact));
     }
 }
