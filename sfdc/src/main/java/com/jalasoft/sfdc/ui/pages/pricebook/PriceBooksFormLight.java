@@ -1,5 +1,5 @@
 /*
- * @(#)ProductsFormLight.java
+ * @(#)PriceBooksFormLight.java
  *
  * Copyright (c) 2018 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
@@ -11,34 +11,31 @@
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
  */
-package com.jalasoft.sfdc.ui.pages.products;
+package com.jalasoft.sfdc.ui.pages.pricebook;
 
-import com.jalasoft.sfdc.entities.Product;
+import com.jalasoft.sfdc.entities.PriceBook;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Class that has the form to create and update the information of a product of the light skin.
+ * Class that has the form to create and update the information of a Price Books of the classic light.
  *
  * @author William Claros Revollo
- * @since 9/11/2018
+ * @since 9/16/2018
  */
-public class ProductsFormLight extends ProductsForm {
+public class PriceBooksFormLight extends PriceBooksForm {
 
     @FindBy(xpath = "//*[@aria-required='true']")
-    private WebElement productNameTxtBox;
+    private WebElement nameTxtBox;
 
-    @FindBy(xpath = "//span[text()='Product Code']/parent::label/following-sibling::input")
-    private WebElement productCodeTxtBox;
-
-    @FindBy(css = ".textarea")
+    @FindBy(xpath = "//span[text()='Description']/parent::label/following-sibling::input")
     private WebElement descriptionTxtBox;
 
     @FindBy(css = ".uiInput--checkbox input")
-    private WebElement activeChkBox;
+    private WebElement statusChkBox;
 
-    @FindBy(xpath = "//button[@title ='Save']")
+    @FindBy(xpath = "//*[@class='slds-button slds-button--neutral uiButton--default uiButton--brand uiButton forceActionButton']")
     private WebElement saveBtn;
 
     /**
@@ -52,17 +49,16 @@ public class ProductsFormLight extends ProductsForm {
     /**
      * Method that performs the setting of the information of the fields of the form.
      *
-     * @param product value of the field to be set.
+     * @param priceBook value of the field to be set.
      */
     @Override
-    public ProductsDetailPage setFormProduct(Product product) {
-        driverTools.setInputField(productNameTxtBox, product.getProductName());
-        driverTools.setInputField(productCodeTxtBox, product.getProductCode());
-        driverTools.setInputField(descriptionTxtBox, product.getProductDescription());
-        if(product.getStatusActive().equalsIgnoreCase("true")){
-            driverTools.selectChkBox(activeChkBox);
+    public PriceBookDetailPage setFormPriceBook(PriceBook priceBook) {
+        driverTools.setInputField(nameTxtBox, priceBook.getPriceBookName());
+        driverTools.setInputField(descriptionTxtBox, priceBook.getDescription());
+        if (priceBook.getStatus().equalsIgnoreCase("true")) {
+            driverTools.selectChkBox(statusChkBox);
         }
         driverTools.clickElement(saveBtn);
-        return new ProductsDetailPageLight();
+        return new PriceBookDetailPageLight();
     }
 }

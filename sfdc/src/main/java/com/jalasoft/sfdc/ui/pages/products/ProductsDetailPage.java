@@ -30,6 +30,11 @@ public abstract class ProductsDetailPage extends BasePage {
      */
     public abstract String getProductNameTxt();
 
+    /**
+     * Method that is responsible for obtaining the status of a WebElement.
+     *
+     * @return returns the status of the WebElement.
+     */
     public abstract boolean getStatusChkBox();
 
 }

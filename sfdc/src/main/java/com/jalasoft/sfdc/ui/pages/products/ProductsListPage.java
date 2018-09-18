@@ -16,7 +16,7 @@ package com.jalasoft.sfdc.ui.pages.products;
 import com.jalasoft.sfdc.ui.BasePage;
 
 /**
- * Abstract class that contains the main page of Products.
+ * Abstract class that contains the main page of Product.
  *
  * @author William Claros Revollo
  * @since 9/11/2018
@@ -24,9 +24,9 @@ import com.jalasoft.sfdc.ui.BasePage;
 public abstract class ProductsListPage extends BasePage {
 
     /**
-     * Abstract class that redirects us to the Products form by pressing the New button.
+     * Abstract method that redirects us to the Product form by pressing the New button.
      *
-     * @return returns the Products form.
+     * @return returns the Product form.
      */
     public abstract ProductsForm clickNewBtn();
 }
