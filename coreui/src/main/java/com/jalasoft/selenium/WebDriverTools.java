@@ -531,4 +531,14 @@ public class WebDriverTools {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("window.scrollBy(0,250)", "");
     }
+
+    public boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        }
+        catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
 }

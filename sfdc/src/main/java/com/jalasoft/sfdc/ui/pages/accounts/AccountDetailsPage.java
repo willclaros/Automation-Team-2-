@@ -18,4 +18,6 @@ public abstract class AccountDetailsPage extends BasePage {
      * @return tex of WebElement.
      */
     public abstract void verifyDataAccount(Account account);
+    public abstract void VerifyEditAccount(Account account);
+    public abstract AccountsListPage deleteAccount(Account account);
 }

@@ -10,11 +10,14 @@ import static org.junit.Assert.assertEquals;
 public class AccountDetailsPageLight extends AccountDetailsPage {
 
 
-    @FindBy(xpath = "(//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon']//child::span)[1]")
+    @FindBy(xpath = "//span[text()='Account Name']/parent::div/following-sibling::div/child::span/child::span")
     private WebElement nameDetailsLbl;
 
-    @FindBy(xpath = "//span[text()='Details']")
+    @FindBy(css = "a[title='Details']")
     private WebElement DetailsBtn;
+
+    @FindBy(css = "a[title='Related']")
+    private WebElement relatedBtn;
 
     //span[text()='Phone']/parent::div/following-sibling::div
     @FindBy(xpath = "//span[text()='Phone']/parent::div/following-sibling::div/child::span/child::span")
@@ -29,6 +32,19 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
 
     @FindBy(xpath = "//span[text()='Website']/parent::div/following-sibling::div/child::span/child::span")
     private WebElement webSiteLbl;
+
+    @FindBy(xpath = "//span[text()='Ticker Symbol']/parent::div/following-sibling::div/child::span/child::span")
+    private WebElement tickerLbl;
+
+    @FindBy(xpath = "//a[@title='Show 7 more actions']")
+    private WebElement moreBtn;
+
+    @FindBy(xpath = "//a[@title='Delete']")
+    private WebElement deleteBtn;
+
+    @FindBy(xpath = "//button[@title='Delete']")
+    private WebElement deletePopappBtn;
+
 
 
 
@@ -47,13 +63,33 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
         assertEquals(webSiteLbl.getText(),account.getWebSite());
     }
 
+    @Override
+    public void VerifyEditAccount(Account account) {
+//        wait.until(ExpectedConditions.visibilityOf(relatedBtn));
+//        driverTools.clickElement(DetailsBtn);
+        assertEquals(nameDetailsLbl.getText(),account.getAccountName());
+        assertEquals(phoneLbl.getText(),account.getPhone());
+        assertEquals(faxLbl.getText(),account.getFax());
+        assertEquals(numberAccountLbl.getText(),account.getAccountNumber());
+        assertEquals(tickerLbl.getText(),account.getTicker());
+    }
+
+    @Override
+    public AccountsListPage deleteAccount(Account account) {
+        driverTools.clickElement(moreBtn);
+        driverTools.clickElement(deleteBtn);
+        driverTools.clickElement(deletePopappBtn);
+        return new AccountsListPageLight();
+    }
+
+
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
-        wait.until(ExpectedConditions.visibilityOf(nameDetailsLbl));
+        wait.until(ExpectedConditions.visibilityOf(DetailsBtn));
     }
 
 }
