@@ -38,23 +38,22 @@ public class ContactStep {
         contactListPage = allAppsPage.goToContact();
     }
 
-    @And("^I click on button New$")
+    @And("^I click New button$")
     public void iClickOnButtonNew() throws Throwable {
         contactForm = contactListPage.goToContactNewForm();
     }
 
 
-    @And("^I fill all the following information")
+    @When("^I create a Contact with the following information")
     public void iFillAllTheFollowingInformation(List<Contact> contactList) {
-//        this.contact.setAccountName(contactList.get(0).getAccountName());
         this.contact = contactList.get(0);
-        contactDetails = contactForm.fillContactForm(contact);
+        contactDetails = contactForm.createContact(contact);
     }
 
 
     @Then("^I should see the contact created correctly$")
     public void iShouldSeeTheContactCreatedCorrectly() throws Throwable {
-        contactDetails.getValidateContact();
+        contactDetails.goToValidateContact();
         assertEquals(contact.getFullName(), contactDetails.getContactNameLbl());
         //assertEquals(contact.getLastName(), contactDetails.getLastNameTextBox());
         assertEquals(contact.getHomePhone(), contactDetails.getPhoneTextBox());
@@ -63,5 +62,29 @@ public class ContactStep {
         //assertEquals(contact.getOtherStreet(), contactDetails.getOtherStreetTextBox());
         //assertEquals(contact.getOtherCity(), contactDetails.getOtherCityTextBox());
         //assertEquals(contact.getOtherState(), contactDetails.getOtherStateTextBox());
+    }
+
+    @And("^I go to Contact edit page$")
+    public void iGoToContactEditPage() {
+        contactForm = contactDetails.goToEditContactForm();
+    }
+
+    @And("^I edit the following information in actual Contact$")
+    public void iEditTheFollowingInformationInActualContact(List<Contact> contactList) {
+        this.contact = contactList.get(0);
+        contactDetails = contactForm.createContact(contact);
+    }
+
+    @Then("^I should see the contact edited correctly$")
+    public void iShouldSeeTheContactEditedCorrectly() {
+        contactDetails.goToValidateContact();
+        assertEquals(contact.getFullName(), contactDetails.getContactNameLbl());
+        assertEquals(contact.getHomePhone(), contactDetails.getPhoneTextBox());
+        assertEquals(contact.getEmail(), contactDetails.getEmailTextBox());
+    }
+
+    @Then("^I delete this Contact create$")
+    public void iShouldSeeTheContactIsDelete() throws Throwable {
+
     }
 }

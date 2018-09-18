@@ -39,12 +39,12 @@ public class ContactDetailsClassic extends ContactDetails {
     }
 
     @Override
-    public void getValidateContact() {
+    public void goToValidateContact() {
 
     }
 
     @Override
-    public ContactForm goToEditContactNewForm() {
+    public ContactForm goToEditContactForm() {
         driverTools.clickElement(editBtn);
         return new ContactFormClassic();
     }

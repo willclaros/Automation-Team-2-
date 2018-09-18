@@ -80,7 +80,7 @@ public class ContactFormClassic extends ContactForm {
      * @return contact details type light.
      */
     @Override
-    public ContactDetails fillContactForm(Contact contact) {
+    public ContactDetails createContact(Contact contact) {
         wait.until(ExpectedConditions.visibilityOf(saveBtn));
         driverTools.setInputField(firtNameTxtBox, contact.getFirstName());
         driverTools.setInputField(LastNameTxtBox, contact.getLastName());
