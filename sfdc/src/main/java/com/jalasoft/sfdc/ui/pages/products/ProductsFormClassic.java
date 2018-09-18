@@ -69,11 +69,15 @@ public class ProductsFormClassic extends ProductsForm {
             driverTools.selectChkBox(activeChkBox);
         }
         chooseProductFamilyClassicCmbBox(product.getProductFamily());
-
         driverTools.clickElement(saveBtn);
-        String a = driver.getCurrentUrl();
-        System.out.println("7777777777777777777"+a);
+        product.setId(getUrlCurrent(driver.getCurrentUrl()));
         return new ProductsDetailPageClassic();
+    }
+
+    private String getUrlCurrent(String currentUrl){
+        String[] currentUrlList = currentUrl.split("/");
+        String idUrl = currentUrlList[currentUrlList.length - 1];
+        return idUrl;
     }
 
     /**

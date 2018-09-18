@@ -29,6 +29,7 @@ public class Product {
     private String productDescription = "";
     private String active = "";
     private String productFamily = "";
+    private String id = "";
 
     /**
      * Method that obtains the informatio name of the Product.
@@ -45,8 +46,8 @@ public class Product {
      * @param productName new input value so that it modifies the current value.
      */
     public void setProductName(String productName) {
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        this.productName = productName.concat(timeStamp);
+        //String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        this.productName = productName;
     }
 
     /**
@@ -119,5 +120,23 @@ public class Product {
      */
     public void setProductFamily(String productFamily) {
         this.productFamily = productFamily;
+    }
+
+    /**
+     * Method that obtains the information of the ID of the Product.
+     *
+     * @return returns the a option of the combo box of the product.
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Method that setting the information of the ID of the Product.
+     *
+     * @param id new input value so that it modifies the current value.
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }
