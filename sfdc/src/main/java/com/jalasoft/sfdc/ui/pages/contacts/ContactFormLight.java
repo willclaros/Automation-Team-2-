@@ -53,7 +53,7 @@ public class ContactFormLight extends ContactForm {
      * @return contact details type light.
      */
     @Override
-    public ContactDetails fillContactForm(Contact contact){
+    public ContactDetails createContact(Contact contact){
         driverTools.setInputField(lastNameTxtBox, contact.getLastName());
         driverTools.setInputField(firstNameTxtBox, contact.getFirstName());
         driverTools.setInputField(phoneTxtBox, contact.getHomePhone());

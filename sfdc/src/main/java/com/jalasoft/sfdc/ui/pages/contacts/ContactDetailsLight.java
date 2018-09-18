@@ -37,10 +37,10 @@ public class ContactDetailsLight extends ContactDetails {
     @FindBy(xpath = "//span[text()='Other State/Province']/parent::label/following-sibling::input")
     private WebElement otherStateTextBox;
 
-    @FindBy(xpath = "//span[contains(text(),'Details')]")
+    @FindBy(css = ".sldsButtonHeightFix[title='Show 5 more actions']")
     private WebElement detailsLink;
 
-    @FindBy(css = "button[title='Edit Name']")
+    @FindBy(css = "a[title = 'Edit']")
     private WebElement editBtn;
 
     /**
@@ -59,13 +59,13 @@ public class ContactDetailsLight extends ContactDetails {
      * @return link detailsLink.
      */
     @Override
-    public void getValidateContact() {
+    public void goToValidateContact() {
         driverTools.clickElement(detailsLink);
-        driverTools.clickElement(editBtn);
+        //driverTools.clickElement(editBtn);
     }
 
     @Override
-    public ContactForm goToEditContactNewForm() {
+    public ContactForm goToEditContactForm() {
         driverTools.clickElement(detailsLink);
         driverTools.clickElement(editBtn);
         return new ContactFormLight();
