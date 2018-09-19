@@ -33,7 +33,6 @@ public class Contact {
     private String languages = "";
     private String level = "";
     private String description = "";
-
     /**
      * Gets the Salutation.
      * @return the current Salutation.
@@ -54,52 +53,6 @@ public class Contact {
      * Gets the first name.
      * @return the current first name.
      */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public String getFirstName() {
         return firstName;
     }
@@ -117,16 +70,17 @@ public class Contact {
      * @return the current getLastName.
      */
     public String getLastName() {
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        return lastName.concat(" ").concat(timeStamp);
+        return lastName;
     }
 
     /**
      * Sets the last Name.
      * @param lastName user last Name.
      */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String lastName)
+    {
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        this.lastName = lastName.concat(timeStamp);
     }
 
     /**
@@ -550,8 +504,7 @@ public class Contact {
      * @return the current fullName.
      */
     public String getFullName(){
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        return firstName.concat(" ").concat(lastName).concat(" ").concat(timeStamp);
+        return firstName.concat(" ").concat(getLastName());
     }
 
     /**
@@ -564,7 +517,7 @@ public class Contact {
 
     public String getNameWithTimeStamp(){
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        firstName.concat(" ").concat(timeStamp);
+        lastName.concat(" ").concat(timeStamp);
         return null;
     }
 }

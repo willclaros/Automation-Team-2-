@@ -88,6 +88,8 @@ public class ContactFormLight extends ContactForm {
         if (contact.getOtherCountry()!=null)
             driverTools.setInputField(countryTxtBox,contact.getOtherCountry());
         driverTools.clickElement(saveBtn);
+        driverTools.sleepMilliSeconds(9000);
+        //driverTools.refreshPage();
         return new ContactDetailsLight();
     }
 

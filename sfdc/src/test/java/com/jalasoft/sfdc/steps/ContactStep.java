@@ -28,7 +28,6 @@ public class ContactStep {
     private ContactDetails contactDetails;
     private Contact contact;
 
-
     /*private ContactStep (Contact contact) {
         this.contact = contact;
     }*/
@@ -50,6 +49,7 @@ public class ContactStep {
     @When("^I create a Contact with the following information")
     public void iFillAllTheFollowingInformation(List<Contact> contactList) {
         this.contact = contactList.get(0);
+        contact.setLastName(contactList.get(0).getLastName());
         contactDetails = contactForm.createContact(contact);
     }
 
@@ -75,6 +75,7 @@ public class ContactStep {
     @And("^I edit the following information in actual Contact$")
     public void iEditTheFollowingInformationInActualContact(List<Contact> contactListEdit) {
         this.contact = contactListEdit.get(0);
+        contact.setLastName(contactListEdit.get(0).getLastName());
         contactDetails = contactForm.editContact(contact);
     }
 
