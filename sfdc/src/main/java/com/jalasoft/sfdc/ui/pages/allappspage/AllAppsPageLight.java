@@ -17,6 +17,8 @@ import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageLight;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPageLight;
+import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
+import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPageLight;
 import org.openqa.selenium.WebElement;
@@ -92,6 +94,17 @@ public class AllAppsPageLight extends AllAppsPage {
     public ContactListPage goToContact() {
         setSearchTxtBox(contactsBtn);
         return new ContactListPageLight();
+    }
+
+    /**
+     * Method that redirects to Price Books List Page of skin light when pressing the WebElement.
+     *
+     * @return returns the Price Books List Page
+     */
+    @Override
+    public PriceBookListPage goToPriceBooksListPage() {
+        setSearchTxtBox(priceBooksBtn);
+        return new PriceBookListPageLight();
     }
 
     /**

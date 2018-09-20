@@ -18,7 +18,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Class that contains the main page of Products of the light skin.
+ * Class that contains the main page of Product of the light skin.
  *
  * @author William Claros Revollo
  * @since 9/11/2018
@@ -29,22 +29,22 @@ public class ProductsListPageLight extends ProductsListPage {
     private WebElement newBtn;
 
     /**
-     * Abstract class that redirects us to the Products form by pressing the New button.
+     * Method that waits until the page element is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(newBtn));
+    }
+
+    /**
+     * Method that redirects us to Product form by pressing the New button.
      *
-     * @return returns the Products form.
+     * @return returns the Product form.
      */
     @Override
     public ProductsForm clickNewBtn() {
         wait.until(ExpectedConditions.visibilityOf(newBtn));
         driverTools.clickElement(newBtn);
         return new ProductsFormLight();
-    }
-
-    /**
-     * Method that waits until the object of the page is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(newBtn));
     }
 }

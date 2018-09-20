@@ -1,5 +1,5 @@
 /*
- * @(#)Products.java
+ * @(#)Product.java
  *
  * Copyright (c) 2018 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
@@ -13,21 +13,25 @@
  */
 package com.jalasoft.sfdc.entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
- * Products class contains the product information.
+ * Product class contains the product information.
  *
  * @author William Claros Revollo
  * @since 9/12/2018
  */
-public class Products {
+public class Product {
 
     private String productName = "";
     private String productCode = "";
     private String productDescription = "";
-    private boolean active = false;
+    private String active = "";
+    private String productFamily = "";
 
     /**
-     * Method that obtains the information of the name of the Product.
+     * Method that obtains the information of name of the Product.
      *
      * @return returns the name of the product.
      */
@@ -41,7 +45,8 @@ public class Products {
      * @param productName new input value so that it modifies the current value.
      */
     public void setProductName(String productName) {
-        this.productName = productName;
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        this.productName = productName.concat(timeStamp);
     }
 
     /**
@@ -85,7 +90,7 @@ public class Products {
      *
      * @return returns the state of the product.
      */
-    public boolean isActive() {
+    public String getStatusActive() {
         return active;
     }
 
@@ -94,7 +99,25 @@ public class Products {
      *
      * @param active new input value so that it modifies the current value.
      */
-    public void setActive(boolean active) {
+    public void setStatusActive(String active) {
         this.active = active;
+    }
+
+    /**
+     * Method that obtains the information of the option the combo box of the Product.
+     *
+     * @return returns the a option of the combo box of the product.
+     */
+    public String getProductFamily() {
+        return productFamily;
+    }
+
+    /**
+     * Method that setting the information of the option of the combo box of the Product.
+     *
+     * @param productFamily new input value so that it modifies the current value.
+     */
+    public void setProductFamily(String productFamily) {
+        this.productFamily = productFamily;
     }
 }
