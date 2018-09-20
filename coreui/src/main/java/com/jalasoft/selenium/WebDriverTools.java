@@ -111,17 +111,6 @@ public class WebDriverTools {
     /**
      * Waits and click on the webElement.
      *
-     * @param webElement WebElement to wait and click.
-     */
-    public void clickElementSpanLink(WebElement webElement) {
-        wait.until(ExpectedConditions.visibilityOf(webElement));
-        webElement.click();
-    }
-
-
-    /**
-     * Waits and click on the webElement.
-     *
      * @param by By to wait and click.
      */
     public void clickElement(By by) {
@@ -541,15 +530,5 @@ public class WebDriverTools {
     public void scroll(){
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("window.scrollBy(0,250)", "");
-    }
-
-    public boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        }
-        catch (org.openqa.selenium.NoSuchElementException e) {
-            return false;
-        }
     }
 }

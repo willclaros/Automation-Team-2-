@@ -5,6 +5,7 @@ import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageClassic;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPageClassic;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
+import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPageClassic;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPageClassic;
 import org.openqa.selenium.WebElement;
@@ -22,6 +23,10 @@ public class AllAppsPageClassic extends AllAppsPage {
     @FindBy(css = "a.contactBlock")
     private WebElement contactBtn;
 
+    @FindBy(css = ".pricebook2Block .title")
+    private WebElement priceBooksBtn;
+
+
     @Override
     public AccountsListPage goToaccount() {
         wait.until(ExpectedConditions.visibilityOf(accountsBtn));
@@ -36,6 +41,18 @@ public class AllAppsPageClassic extends AllAppsPage {
         return new ProductsListPageClassic();
     }
 
+    /**
+     * Method that redirects to Price Books List Page of skin classic when pressing the WebElement.
+     *
+     * @return returns the Price Books List Page
+     */
+    @Override
+    public PriceBookListPage goToPriceBooksListPage() {
+        wait.until(ExpectedConditions.visibilityOf(priceBooksBtn));
+        driverTools.clickElement(priceBooksBtn);
+        return new PriceBookListPageClassic();
+    }
+
 
     @Override
     public ContactListPage goToContact() {
@@ -43,6 +60,7 @@ public class AllAppsPageClassic extends AllAppsPage {
         driverTools.clickElement(contactBtn);
         return new ContactListPageClassic();
     }
+
 
     @Override
     public void waitUntilPageObjectIsLoaded() {

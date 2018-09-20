@@ -13,14 +13,13 @@
  */
 package com.jalasoft.sfdc.steps;
 
-import com.jalasoft.sfdc.entities.Products;
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsForm;
 import com.jalasoft.sfdc.ui.pages.products.ProductsDetailPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -28,6 +27,8 @@ import cucumber.api.java.en.When;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Class that contains the steps to execute the Product scenarios.
@@ -42,9 +43,10 @@ public class ProductsSteps {
     private HomePage homePage;
     private ProductsForm productsForm;
     private ProductsDetailPage productsDetailPage;
-    private Products products;
+    private Product product;
+    private Product productEdit;
 
-    @When("^I go to Products page$")
+    @And("^I go to Products page$")
     public void iGoToProductsPage() {
         homePage = PageFactory.getHomePage();
         allAppsPage = homePage.topMenu.goToAllPages();
@@ -56,19 +58,39 @@ public class ProductsSteps {
         productsForm = productsListPage.clickNewBtn();
     }
 
-    @And("^I fill the following information$")
-    public void iFillTheFollowingInformation(final List<Products> productsList) {
-        this.products = productsList.get(0);
-        productsForm.setFormProduct(products);
+    @And("^I create a new Product$")
+    public void iCreateANewProduct(final List<Product> productList) {
+        this.product = productList.get(0);
+        product.setProductName(productList.get(0).getProductName());
+        productsDetailPage = productsForm.createProduct(product);
     }
 
-    @And("^I click the Save button$")
-    public void iClickTheSaveButton() {
-        productsDetailPage = productsForm.clickSaveBtn();
+    @When("^I click Edit button$")
+    public void iClickEditButton() {
+        productsForm = productsDetailPage.clickEditBtn();
     }
 
-    @Then("^The product information created should be displayed in the Products List Page$")
+    @And("^I edit information of Product$")
+    public void iEditInformationOfAProduct(final List<Product> productListEdit)  {
+        this.product = productListEdit.get(0);
+        product.setProductName(productListEdit.get(0).getProductName());
+        productsDetailPage = productsForm.editProduct(product);
+    }
+
+    @Then("^The product information created should be displayed in the Product Detail Page$")
     public void theProductInformationCreatedShouldBeDisplayedInTheProductsListPage() {
-        assertEquals(products.getProductName(), productsDetailPage.getProductNameTxt(), "The product name wasn't correctly created and saved.");
+        assertEquals(product.getProductName(), productsDetailPage.getProductNameTxt());
+        assertEquals(product.getProductCode(), productsDetailPage.getProductCodeTxt());
+        assertEquals(product.getProductDescription(), productsDetailPage.getProductDescriptionTxt());
+    }
+
+    @When("^I click Delete button$")
+    public void iClickDeleteButton() {
+        productsListPage = productsDetailPage.clickDeleteBtn();
+    }
+
+    @Then("^The product information delete shouldn't be displayed in the Product Detail Page$")
+    public void theProductInformationDeleteShouldnTBeDisplayedInTheProductDetailPage()  {
+       assertFalse(productsDetailPage.verifyDeletedProduct(product), "The product wasn't removed correctly");
     }
 }
