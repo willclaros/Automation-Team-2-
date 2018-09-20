@@ -18,7 +18,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Class that contains the main page of Product of the classic skin.
+ * Class that contains the main page of Products of the classic skin.
  *
  * @author William Claros Revollo
  * @since 9/11/2018
@@ -32,9 +32,9 @@ public class ProductsListPageClassic extends ProductsListPage {
     private WebElement exitBtn;
 
     /**
-     * Abstract class that redirects us to the Product form by pressing the New button.
+     * Abstract class that redirects us to the Products form by pressing the New button.
      *
-     * @return returns the Product form.
+     * @return returns the Products form.
      */
     @Override
     public ProductsForm clickNewBtn() {
@@ -46,7 +46,7 @@ public class ProductsListPageClassic extends ProductsListPage {
     }
 
     /**
-     * Method that waits until the page element is loaded..
+     * Method that waits until the object of the page is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {

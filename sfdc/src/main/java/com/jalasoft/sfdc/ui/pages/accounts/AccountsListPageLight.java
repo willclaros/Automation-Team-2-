@@ -15,11 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountsListPageLight extends AccountsListPage {
 
-    private static final String BUTTON_ACCOUNTS = "//a[@title='New']" ;
-
-    @FindBy(xpath = BUTTON_ACCOUNTS )
+    @FindBy(xpath = "//a[@title='New']" )
     private WebElement accountsBtn;
-
 
 
     /**
@@ -33,6 +30,13 @@ public class AccountsListPageLight extends AccountsListPage {
         return new AccountFormLight();
     }
 
+    /**
+     * Method that verifies if the element is displayed in the page
+     *
+     * @param account entities
+     *
+     * @return true or false
+     */
     @Override
     public boolean verifyDeleteAccount(Account account) {
         String nameAccountDelete = account.getAccountName();

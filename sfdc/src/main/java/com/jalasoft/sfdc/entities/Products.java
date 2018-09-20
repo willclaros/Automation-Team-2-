@@ -1,5 +1,5 @@
 /*
- * @(#)Product.java
+ * @(#)Products.java
  *
  * Copyright (c) 2018 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
@@ -14,17 +14,17 @@
 package com.jalasoft.sfdc.entities;
 
 /**
- * Product class contains the product information.
+ * Products class contains the product information.
  *
  * @author William Claros Revollo
  * @since 9/12/2018
  */
-public class Product {
+public class Products {
 
     private String productName = "";
     private String productCode = "";
     private String productDescription = "";
-    private String active = "";
+    private boolean active = false;
 
     /**
      * Method that obtains the information of the name of the Product.
@@ -85,7 +85,7 @@ public class Product {
      *
      * @return returns the state of the product.
      */
-    public String getStatusActive() {
+    public boolean isActive() {
         return active;
     }
 
@@ -94,7 +94,7 @@ public class Product {
      *
      * @param active new input value so that it modifies the current value.
      */
-    public void setStatusActive(String active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 }

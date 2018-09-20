@@ -62,20 +62,13 @@ public class ContactFormClassic extends ContactForm {
     private WebElement asstPhoneTxtBox;
 
     @FindBy(css = "#con19street")
-    private WebElement streetTxtBox;
+    private WebElement mailingStreetTxtBox;
 
     @FindBy(css = "#con19zip")
     private WebElement MailingZipTxtBox;
 
     @FindBy(css = "#con19city")
-    private WebElement cityTxtBox;
-
-    @FindBy(css = "#con18state")
-    private WebElement stateTxtBox;
-
-    @FindBy(css = "#con18country")
-    private WebElement countryTxtBox;
-
+    private WebElement mailingCityTxtBox;
 
     @FindBy(xpath = SAVE)
     private WebElement saveBtn;
@@ -84,51 +77,24 @@ public class ContactFormClassic extends ContactForm {
      * fill all fields of contact form.
      *
      * @param contact - last name of the contact.
-     * @return contact details type classic.
+     * @return contact details type light.
      */
     @Override
-    public ContactDetails createContact(Contact contact) {
-        driverTools.setInputField(LastNameTxtBox, contact.getLastName());
+    public ContactDetails fillContactForm(Contact contact) {
+        wait.until(ExpectedConditions.visibilityOf(saveBtn));
         driverTools.setInputField(firtNameTxtBox, contact.getFirstName());
-        driverTools.setInputField(phoneTxtBox, contact.getHomePhone());
+        driverTools.setInputField(LastNameTxtBox, contact.getLastName());
+        //driverTools.setInputField(accountNameTxtBox, contact.getAccountName());
         driverTools.setInputField(titleTxtBox, contact.getTitle());
+        driverTools.setInputField(departamentTxtBox, contact.getDepartament());
+        driverTools.setInputField(phoneTxtBox, contact.getAsstPhone());
+        driverTools.setInputField(reportToTxtBox, contact.getReportTo());
+        driverTools.setInputField(homePhoneTxtBox, contact.getHomePhone());
+        driverTools.setInputField(mobileTxtBox, contact.getMobile());
+        driverTools.setInputField(otherPhoneTxtBox, contact.getOtherPhone());
+        driverTools.setInputField(faxTxtBox, contact.getFax());
         driverTools.setInputField(emailTxtBox, contact.getEmail());
-        driverTools.setInputField(streetTxtBox, contact.getOtherStreet());
-        driverTools.setInputField(cityTxtBox, contact.getOtherCity());
-        driverTools.setInputField(stateTxtBox, contact.getOtherState());
-        driverTools.setInputField(countryTxtBox, contact.getOtherCountry());
         driverTools.clickElement(saveBtn);
-        return new ContactDetailsClassic();
-    }
-
-    /**
-     * fill all fields of edit contact form.
-     *
-     * @param contact - entity Contact.
-     * @return contact details type classic.
-     */
-    @Override
-    public ContactDetails editContact(Contact contact) {
-        if (contact.getFirstName()!=null)
-            driverTools.setInputField(firtNameTxtBox,contact.getFirstName());
-        if (contact.getLastName()!=null)
-            driverTools.setInputField(LastNameTxtBox,contact.getLastName());
-        if (contact.getHomePhone()!=null)
-            driverTools.setInputField(phoneTxtBox,contact.getHomePhone());
-        if (contact.getTitle()!=null)
-            driverTools.setInputField(titleTxtBox,contact.getTitle());
-        if (contact.getEmail()!=null)
-            driverTools.setInputField(emailTxtBox,contact.getEmail());
-        if (contact.getOtherCity()!=null)
-            driverTools.setInputField(cityTxtBox,contact.getOtherCity());
-        if (contact.getOtherState()!=null)
-            driverTools.setInputField(stateTxtBox,contact.getOtherState());
-        if (contact.getOtherStreet()!=null)
-            driverTools.setInputField(streetTxtBox,contact.getOtherStreet());
-        if (contact.getOtherCountry()!=null)
-            driverTools.setInputField(countryTxtBox,contact.getOtherCountry());
-        driverTools.clickElement(saveBtn);
-        driverTools.sleepMilliSeconds(9000);
         return new ContactDetailsClassic();
     }
 

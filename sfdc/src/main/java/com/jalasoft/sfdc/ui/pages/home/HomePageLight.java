@@ -9,9 +9,11 @@ public class HomePageLight extends HomePage {
     @FindBy(xpath = "//span[contains(text(), 'Go Mobile')]")
     private WebElement goMobiloeLbl;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(goMobiloeLbl));
     }
-
 }

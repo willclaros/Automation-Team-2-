@@ -1,8 +1,5 @@
 package com.jalasoft.sfdc.entities;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Contact {
     private String salutation = "";
     private String firstName = "";
@@ -33,6 +30,7 @@ public class Contact {
     private String languages = "";
     private String level = "";
     private String description = "";
+
     /**
      * Gets the Salutation.
      * @return the current Salutation.
@@ -77,10 +75,8 @@ public class Contact {
      * Sets the last Name.
      * @param lastName user last Name.
      */
-    public void setLastName(String lastName)
-    {
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        this.lastName = lastName.concat(timeStamp);
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**
@@ -504,7 +500,7 @@ public class Contact {
      * @return the current fullName.
      */
     public String getFullName(){
-        return firstName.concat(" ").concat(getLastName());
+        return firstName.concat(" ").concat(lastName);
     }
 
     /**
@@ -512,12 +508,6 @@ public class Contact {
      * @return the current FullOtherAddress.
      */
     public String getFullOtherAddress(){
-        return null;
-    }
-
-    public String getNameWithTimeStamp(){
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        lastName.concat(" ").concat(timeStamp);
         return null;
     }
 }

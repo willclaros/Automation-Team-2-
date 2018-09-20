@@ -1,6 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.contacts;
 
-import com.jalasoft.sfdc.ui.HomeBasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -12,23 +11,19 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ContactDetailsClassic extends ContactDetails {
 
+    private static final String NAME_CONTACT = "#con2_ileinner";
+
     @FindBy(css = "//span[text()='Details']")
     private WebElement detailsLbl;
 
-    @FindBy(css = "#con2_ileinner")
+    @FindBy(css = NAME_CONTACT)
     private WebElement nameLbl;
 
-    @FindBy(css = "#con10_ileinner")
+    @FindBy(css = "#con13_ileinner")
     private WebElement phoneTextBox;
 
     @FindBy(css = "#con15_ileinner a")
     private WebElement emailTextBox;
-
-    @FindBy(css = "#topButtonRow input[title=Edit]")
-    private WebElement editBtn;
-
-    @FindBy(css = "#topButtonRow input[value='Delete']")
-    private WebElement deleteBtn;
 
     /**
      * get a element name of contact create.
@@ -40,113 +35,47 @@ public class ContactDetailsClassic extends ContactDetails {
         return nameLbl.getText();
     }
 
-    /**
-     *go to page validate contact.
-     */
     @Override
-    public void goToValidateContact() {
+    public void getValidateContact() {
 
     }
 
-    /**
-     * go to page edit contact form.
-     *
-     * @return contact of form type classic.
-     */
-    @Override
-    public ContactForm goToEditContactForm() {
-        driverTools.clickElement(editBtn);
-        return new ContactFormClassic();
-    }
-
-    /**
-     * get phone of text box.
-     *
-     * @return phone of text box.
-     */
     @Override
     public String getPhoneTextBox() {
         return phoneTextBox.getText();
     }
 
-    /**
-     * get first name of text box.
-     *
-     * @return first name of contact.
-     */
     @Override
     public String getFirstNameTextBox() {
         return null;
     }
 
-    /**
-     *
-     *
-     * @return
-     */
     @Override
     public String getLastNameTextBox() {
         return null;
     }
 
-    /**
-     * get email of text box.
-     *
-     * @return email of contact.
-     */
     @Override
     public String getEmailTextBox() {
         return emailTextBox.getText();
     }
 
-    /**
-     * get other Street of text box.
-     *
-     * @return other street of contact.
-     */
     @Override
     public String getOtherStreetTextBox() {
         return null;
     }
 
-    /**
-     * get other city of text box.
-     *
-     * @return other city of contact.
-     */
     @Override
     public String getOtherCityTextBox() {
         return null;
     }
 
-    /**
-     * get other state of text box.
-     *
-     * @return other state contact.
-     */
     @Override
     public String getOtherStateTextBox() {
         return null;
     }
 
-    /**
-     * go to delete contact.
-     *
-     * @return a new contact list page classic.
-     */
+
     @Override
-    public ContactListPage goToDeleteContact() {
-        driverTools.clickElement(deleteBtn);
-        acceptAlertDialog();
-        return new ContactListPageClassic();
-    }
-
-
-    /**
-     * wait a element of actual page.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-
-    }
+    public void waitUntilPageObjectIsLoaded() { }
 }

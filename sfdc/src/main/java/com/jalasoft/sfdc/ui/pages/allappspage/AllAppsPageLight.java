@@ -33,8 +33,9 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(css = ".slds-input[placeholder *='Find an app']")
     private WebElement searchTxtBox;
 
-    @FindBy(linkText = "Accounts")
-    private WebElement accountsBtn;
+    @FindBy(xpath = "//mark[text()='Accounts']")
+    private WebElement accountButton;
+
 
     @FindBy(css = ".app-launcher-link[title*='Product'] .label-ctr .slds-text-link")
     private WebElement productsBtn;
@@ -46,7 +47,8 @@ public class AllAppsPageLight extends AllAppsPage {
     private WebElement contactsBtn;
 
     @FindBy(css = ".uiInputText .slds-input.input")
-    private WebElement searchTextBox;
+    private WebElement searchTxtBx;
+
 
     /**
      * Method that waits until the page element is loaded.
@@ -63,7 +65,9 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public AccountsListPage goToaccount() {
-        setSearchTxtBox(accountsBtn);
+        driverTools.setInputField(searchTxtBx,"Accounts");
+        wait.until(ExpectedConditions.visibilityOf(accountButton));
+        driverTools.clickElement(accountButton);
         return new AccountsListPageLight();
     }
 

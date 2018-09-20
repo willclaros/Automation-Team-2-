@@ -33,7 +33,7 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
 
 
     /**
-     * Method that waits until the page element is loaded.
+     * Method that waits until the object of the page is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {

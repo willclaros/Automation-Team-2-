@@ -2,6 +2,7 @@ package com.jalasoft.sfdc.ui.pages.accounts;
 
 import com.jalasoft.sfdc.entities.Account;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,13 +16,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountsListPageClassic extends AccountsListPage {
 
-    private static final String BUTTON_NEW = "//*[@title='New']";
-    private static final String BUTTON_EXIT = "//*[@class='dialogClose']";
-
-    @FindBy(xpath = BUTTON_NEW )
+    @FindBy(xpath = "//*[@title='New']" )
     private WebElement newBtn;
 
-    @FindBy(xpath = BUTTON_EXIT )
+    @FindBy(xpath = "//*[@class='dialogClose']" )
     private WebElement exitBtn;
 
     /**
@@ -31,14 +29,21 @@ public class AccountsListPageClassic extends AccountsListPage {
      */
     @Override
     public AccountForm createNewAccount() {
-        if(exitBtn.isDisplayed()) {
+        try {
             driverTools.clickElement(exitBtn);
+        } catch (TimeoutException e) {
         }
         driverTools.clickElement(newBtn);
         return new AccountFormClassic();
     }
 
-
+    /**
+     * Method that verifies if the element is displayed in the page
+     *
+     * @param account entities
+     *
+     * @return true or false
+     */
     @Override
     public boolean verifyDeleteAccount(Account account) {
         String nameAccountDelete = account.getAccountName();

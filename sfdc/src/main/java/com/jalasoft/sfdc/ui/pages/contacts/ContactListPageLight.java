@@ -1,7 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.contacts;
 
-import com.jalasoft.sfdc.entities.Contact;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,11 +17,6 @@ public class ContactListPageLight extends ContactListPage {
     @FindBy(xpath = NEW_CONTACT)
     private WebElement newButton;
 
-    public ContactListPageLight() {
-    }
-
-
-    //a[text()='Estalin yerel 2018.09.18.15.35.27']
     /**
      * this method return contact form type light.
      *
@@ -34,16 +27,5 @@ public class ContactListPageLight extends ContactListPage {
         wait.until(ExpectedConditions.visibilityOf(newButton));
         driverTools.clickElement(newButton);
         return new ContactFormLight();
-    }
-
-    /**
-     * this method is contact select.
-     *
-     * @param contact - entity contact.
-     * @return xpath full name.
-     */
-    @Override
-    public boolean isContactSelected(Contact contact) {
-        return driverTools.isElementDisplayed(By.xpath("//a[text()='"+ contact.getFullName() + "']"));
     }
 }

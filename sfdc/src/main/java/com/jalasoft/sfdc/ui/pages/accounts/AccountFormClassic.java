@@ -90,10 +90,12 @@ public class AccountFormClassic extends AccountForm {
     @FindBy(xpath = "//*[@title='Edit']" )
     private WebElement editBtn;
 
-
     /**
-     * Method to access the account details page
+     * Method to enter the values ​​from the entity
      *
+     * @param account entity
+     *
+     * @return page Accounts Details Classic
      */
     @Override
     public AccountDetailsPage fillAccountForm(Account account) {
@@ -106,6 +108,14 @@ public class AccountFormClassic extends AccountForm {
         return new AccountDetailsPageClassic();
     }
 
+    /**
+     *
+     Method to change the values ​​that are edited for account
+     *
+     * @param account entity
+     *
+     * @return page Accounts Details Classic
+     */
     @Override
     public AccountDetailsPage editAccountData(Account account) {
         driverTools.clickElement(editBtn);

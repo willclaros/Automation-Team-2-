@@ -37,20 +37,8 @@ public class ContactDetailsLight extends ContactDetails {
     @FindBy(xpath = "//span[text()='Other State/Province']/parent::label/following-sibling::input")
     private WebElement otherStateTextBox;
 
-    @FindBy(css = "a[title = 'Details']")
+    @FindBy(xpath = "//span[contains(text(),'Details')]")
     private WebElement detailsLink;
-
-    @FindBy(css = ".sldsButtonHeightFix[title='Show 5 more actions']")
-    private WebElement moreActionBtn;
-
-    @FindBy(css = "a[title = 'Edit']")
-    private WebElement editBtn;
-
-    @FindBy(css = "a[title = 'Delete']")
-    private WebElement deleteContactBtn;
-
-    @FindBy(css = ".forceModalActionContainer button:nth-child(2)")
-    private WebElement deleteContactAcceptBtn;
 
     /**
      * get a element name of contact create.
@@ -68,15 +56,8 @@ public class ContactDetailsLight extends ContactDetails {
      * @return link detailsLink.
      */
     @Override
-    public void goToValidateContact() {
+    public void getValidateContact() {
         driverTools.clickElement(detailsLink);
-    }
-
-    @Override
-    public ContactForm goToEditContactForm() {
-        driverTools.clickElement(moreActionBtn);
-        driverTools.clickElement(editBtn);
-        return new ContactFormLight();
     }
 
     /**
@@ -149,25 +130,6 @@ public class ContactDetailsLight extends ContactDetails {
         return otherStateTextBox.getText();
     }
 
-    /**
-     * method go to delete contact.
-     *
-     * @return contact list page light.
-     */
     @Override
-    public ContactListPage goToDeleteContact() {
-        driverTools.clickElement(moreActionBtn);
-        driverTools.clickElement(deleteContactBtn);
-        driverTools.clickElement(deleteContactAcceptBtn);
-        return new ContactListPageLight();
-    }
-
-    /**
-     * wait a element of actual page.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-
-    }
-
+    public void waitUntilPageObjectIsLoaded() { }
 }

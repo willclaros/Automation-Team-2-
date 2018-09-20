@@ -1,7 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.contacts;
 
-import com.jalasoft.sfdc.entities.Contact;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -36,13 +34,5 @@ public class ContactListPageClassic extends ContactListPage {
         }
         driverTools.clickElement(newButton);
         return new ContactFormClassic();
-    }
-
-    /**
-     * wait a element of actual page.
-     */
-    @Override
-    public boolean isContactSelected(Contact contact) {
-        return driverTools.isElementDisplayed(By.xpath("//a[text()='"+ contact.getFullName() + "']"));
     }
 }

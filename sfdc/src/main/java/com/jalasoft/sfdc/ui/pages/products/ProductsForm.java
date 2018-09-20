@@ -13,7 +13,7 @@
  */
 package com.jalasoft.sfdc.ui.pages.products;
 
-import com.jalasoft.sfdc.entities.Product;
+import com.jalasoft.sfdc.entities.Products;
 import com.jalasoft.sfdc.ui.BasePage;
 
 /**
@@ -27,7 +27,14 @@ public abstract class ProductsForm extends BasePage {
     /**
      * Method that performs the setting of the information of the fields of the form.
      *
-     * @param product value of the field to be set.
+     * @param products value of the field to be set.
      */
-    public abstract ProductsDetailPage setFormProduct(Product product);
+    public abstract void setFormProduct(Products products);
+
+    /**
+     * Method that saves the form information by pressing the Save button.
+     *
+     * @return returns the page that contains the product detail.
+     */
+    public abstract ProductsDetailPage clickSaveBtn();
 }
