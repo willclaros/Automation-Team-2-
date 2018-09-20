@@ -23,7 +23,7 @@ Feature: create contact in Salesforce
 
   Scenario: Verify that is possible to delete a Contact to created
     When I create a Contact with the following information
-      | Salutation | firstName | lastName | homePhone | accountName | mobile | title     | otherPhone | departament | fax | birthdate | email                  | reportTo | assistant | leadSource | asstPhone | mailingStreet | mailingZip | mailingCity | mailingState | mailingCountry | otherStreet     | otherZip | otherCity  | otherState | otherCountry | languages | level     | description |
-      | Mr.        | Yerel     | Hurtado  | 123456    |             |        | title one |            |             |     |           | estalinyerel@gmail.com |          |           | Web        | 5874123   |               |            |             |              |                | av. perez olgin | 07036    | cochabamba | Bolivia    | Cercado      |           | Secondary |             |
+      | Salutation | firstName | lastName | homePhone | accountName | mobile | title | otherPhone | departament | fax | birthdate | email                  | reportTo | assistant | leadSource | asstPhone | mailingStreet | mailingZip | mailingCity | mailingState | mailingCountry | otherStreet     | otherZip | otherCity  | otherState | otherCountry | languages | level     | description |
+      | Mr.        | cristian  | Hurtado  | 123256    |             |        | title |            |             |     |           | estalinyerel@gmail.com |          |           | Web        | 5874123   |               |            |             |              |                | av. perez olgin | 07036    | cochabamba | Bolivia    | Cercado      |           | Secondary |             |
     And I delete this Contact create
     Then I should see the actual Contact is delete

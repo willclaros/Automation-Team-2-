@@ -36,6 +36,12 @@ public class ContactListPageLight extends ContactListPage {
         return new ContactFormLight();
     }
 
+    /**
+     * this method is contact select.
+     *
+     * @param contact - entity contact.
+     * @return xpath full name.
+     */
     @Override
     public boolean isContactSelected(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//a[text()='"+ contact.getFullName() + "']"));

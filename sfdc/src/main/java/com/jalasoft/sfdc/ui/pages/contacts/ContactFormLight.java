@@ -19,9 +19,6 @@ public class ContactFormLight extends ContactForm {
     @FindBy(css = "input.firstName")
     private WebElement firstNameTxtBox;
 
-    //@FindBy(xpath = "//span[text()='Last Name']/parent::label/following-sibling::input")
-    //private WebElement lastNameTxt;
-
     @FindBy(xpath = "//span[text()='Title']/parent::label/following-sibling::input")
     private WebElement titleTxtBox;
 
@@ -67,6 +64,12 @@ public class ContactFormLight extends ContactForm {
         return new ContactDetailsLight();
     }
 
+    /**
+     * fill all fields of edit contact form.
+     *
+     * @param contact - entity contact.
+     * @return contact details type light.
+     */
     @Override
     public ContactDetails editContact(Contact contact) {
         if (contact.getFirstName()!=null)
@@ -94,7 +97,7 @@ public class ContactFormLight extends ContactForm {
     }
 
     /**
-     *
+     * wait a element of actual page.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {

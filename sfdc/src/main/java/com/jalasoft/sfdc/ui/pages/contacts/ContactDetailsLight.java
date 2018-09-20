@@ -149,6 +149,11 @@ public class ContactDetailsLight extends ContactDetails {
         return otherStateTextBox.getText();
     }
 
+    /**
+     * method go to delete contact.
+     *
+     * @return contact list page light.
+     */
     @Override
     public ContactListPage goToDeleteContact() {
         driverTools.clickElement(moreActionBtn);
@@ -157,7 +162,12 @@ public class ContactDetailsLight extends ContactDetails {
         return new ContactListPageLight();
     }
 
+    /**
+     * wait a element of actual page.
+     */
     @Override
-    public void waitUntilPageObjectIsLoaded() { }
+    public void waitUntilPageObjectIsLoaded() {
+
+    }
 
 }
