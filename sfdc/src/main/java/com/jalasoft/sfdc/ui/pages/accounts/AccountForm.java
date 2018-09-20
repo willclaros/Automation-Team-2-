@@ -12,4 +12,5 @@ import com.jalasoft.sfdc.ui.BasePage;
 
 public abstract class AccountForm extends BasePage {
     public abstract AccountDetailsPage fillAccountForm(Account account);
+    public abstract AccountDetailsPage editAccountData(Account account);
 }

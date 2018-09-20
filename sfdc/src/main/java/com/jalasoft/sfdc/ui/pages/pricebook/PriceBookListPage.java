@@ -24,7 +24,7 @@ import com.jalasoft.sfdc.ui.BasePage;
 public abstract class PriceBookListPage extends BasePage {
 
     /**
-     * Abstract method that redirects us to the Product form by pressing the New button.
+     * Abstract method that redirects us to Product form by pressing the New button.
      *
      * @return returns the Product form.
      */

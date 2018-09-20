@@ -33,8 +33,14 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(css = ".slds-input[placeholder *='Find an app']")
     private WebElement searchTxtBox;
 
+    @FindBy(css = ".uiInputText .slds-input.input")
+    private WebElement searchTxtBx;
+
     @FindBy(linkText = "Accounts")
     private WebElement accountsBtn;
+
+    @FindBy(xpath = "//mark[text()='Accounts']")
+    private WebElement accountButton;
 
     @FindBy(css = ".app-launcher-link[title*='Product'] .label-ctr .slds-text-link")
     private WebElement productsBtn;
@@ -61,9 +67,10 @@ public class AllAppsPageLight extends AllAppsPage {
      *
      * @return returns the Accounts List Page
      */
-    @Override
     public AccountsListPage goToaccount() {
-        setSearchTxtBox(accountsBtn);
+        driverTools.setInputField(searchTxtBx, "Accounts");
+        wait.until(ExpectedConditions.visibilityOf(accountButton));
+        driverTools.clickElement(accountButton);
         return new AccountsListPageLight();
     }
 
@@ -79,17 +86,6 @@ public class AllAppsPageLight extends AllAppsPage {
     }
 
     /**
-     * Method that redirects to Price Books List Page of skin light when pressing the WebElement.
-     *
-     * @return returns the Price Books List Page
-     */
-    @Override
-    public PriceBookListPage goToPriceBooksListPage() {
-        setSearchTxtBox(priceBooksBtn);
-        return new PriceBookListPageLight();
-    }
-
-    /**
      * Method that redirects to Contacts List Page of skin light when pressing the WebElement.
      *
      * @return returns the Contacts List Page
@@ -98,6 +94,17 @@ public class AllAppsPageLight extends AllAppsPage {
     public ContactListPage goToContact() {
         setSearchTxtBox(contactsBtn);
         return new ContactListPageLight();
+    }
+
+    /**
+     * Method that redirects to Price Books List Page of skin light when pressing the WebElement.
+     *
+     * @return returns the Price Books List Page
+     */
+    @Override
+    public PriceBookListPage goToPriceBooksListPage() {
+        setSearchTxtBox(priceBooksBtn);
+        return new PriceBookListPageLight();
     }
 
     /**

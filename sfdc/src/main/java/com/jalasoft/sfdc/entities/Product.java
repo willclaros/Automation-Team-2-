@@ -31,7 +31,7 @@ public class Product {
     private String productFamily = "";
 
     /**
-     * Method that obtains the information of the name of the Product.
+     * Method that obtains the information of name of the Product.
      *
      * @return returns the name of the product.
      */

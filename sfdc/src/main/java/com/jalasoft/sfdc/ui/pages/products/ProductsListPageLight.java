@@ -37,7 +37,7 @@ public class ProductsListPageLight extends ProductsListPage {
     }
 
     /**
-     * Method that redirects us to the Product form by pressing the New button.
+     * Method that redirects us to Product form by pressing the New button.
      *
      * @return returns the Product form.
      */

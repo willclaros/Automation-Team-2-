@@ -28,7 +28,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public abstract class ProductsForm extends BasePage {
 
     /**
-     * Method that performs the setting of the information of the fields of the form.
+     * Method that performs the setting of the information of fields of the form.
      *
      * @param product value of the field to be set.
      */

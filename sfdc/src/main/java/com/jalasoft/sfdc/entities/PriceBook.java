@@ -26,7 +26,7 @@ public class PriceBook {
     private String status = "";
 
     /**
-     * Method that obtains the information of the name of the Price Books.
+     * Method that obtains the information of name of the Price Books.
      *
      * @return returns the name of the product.
      */

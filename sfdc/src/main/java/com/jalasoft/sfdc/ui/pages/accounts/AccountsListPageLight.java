@@ -1,5 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
+import com.jalasoft.sfdc.entities.Account;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,10 +15,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountsListPageLight extends AccountsListPage {
 
-    private static final String BUTTON_ACCOUNTS = "//a[@title='New']" ;
-
-    @FindBy(xpath = BUTTON_ACCOUNTS )
+    @FindBy(xpath = "//a[@title='New']" )
     private WebElement accountsBtn;
+
 
     /**
      * Method to click on the account button to create a new one.
@@ -27,6 +28,19 @@ public class AccountsListPageLight extends AccountsListPage {
 
         driverTools.clickElement(accountsBtn);
         return new AccountFormLight();
+    }
+
+    /**
+     * Method that verifies if the element is displayed in the page
+     *
+     * @param account entities
+     *
+     * @return true or false
+     */
+    @Override
+    public boolean verifyDeleteAccount(Account account) {
+        String nameAccountDelete = account.getAccountName();
+        return driverTools.isElementDisplayed(By.xpath("//a[text()='"+nameAccountDelete+"']"));
     }
 
     /**

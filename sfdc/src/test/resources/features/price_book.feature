@@ -10,4 +10,4 @@ Feature: Create a price book.
     And I fill the following information in form Price Book
       | priceBookName        | description | status |
       | Selenium for dummies | Good book   | true   |
-    Then The Price Book information created should be displayed in the Price Book Detail Page
+    Then The Price Book is information created should be displayed in the Price Book Detail Page

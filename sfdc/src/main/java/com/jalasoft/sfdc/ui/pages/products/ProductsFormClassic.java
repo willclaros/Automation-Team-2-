@@ -75,7 +75,7 @@ public class ProductsFormClassic extends ProductsForm {
     }
 
     /**
-     * Method that edit the information of the fields of the form in the skin classic.
+     * Method that edit the information of fields of the form in the skin classic.
      *
      * @param product value of the field to be set.
      */

@@ -1,5 +1,9 @@
 package com.jalasoft.sfdc.entities;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * User class contains the account information.
  *
@@ -39,7 +43,7 @@ public class Account {
      * @return the current account name.
      */
     public String getAccountName() {
-        return accountName;
+        return  accountName;
     }
 
     /**
@@ -47,7 +51,8 @@ public class Account {
      * @param accountName user name to set.
      */
     public void setAccountName(final String accountName) {
-        this.accountName = accountName;
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        this.accountName = accountName.concat(" ").concat(timeStamp);
     }
 
     /**

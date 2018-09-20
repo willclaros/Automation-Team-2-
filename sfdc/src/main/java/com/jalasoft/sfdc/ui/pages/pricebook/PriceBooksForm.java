@@ -25,7 +25,7 @@ import com.jalasoft.sfdc.ui.BasePage;
 public abstract class PriceBooksForm extends BasePage {
 
     /**
-     * Abstract method that performs the setting of the information of the fields of the form.
+     * Abstract method that performs the setting of information of the fields of the form.
      *
      * @param priceBook value of the field to be set.
      */

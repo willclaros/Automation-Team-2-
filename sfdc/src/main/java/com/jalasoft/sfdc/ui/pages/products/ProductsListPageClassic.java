@@ -32,7 +32,7 @@ public class ProductsListPageClassic extends ProductsListPage {
     private WebElement exitBtn;
 
     /**
-     * Abstract class that redirects us to the Product form by pressing the New button.
+     * Abstract class that redirects us to Product form by pressing the New button.
      *
      * @return returns the Product form.
      */

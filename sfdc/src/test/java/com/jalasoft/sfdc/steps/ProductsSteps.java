@@ -70,7 +70,7 @@ public class ProductsSteps {
         productsForm = productsDetailPage.clickEditBtn();
     }
 
-    @And("^I edit information of a Product$")
+    @And("^I edit information of Product$")
     public void iEditInformationOfAProduct(final List<Product> productListEdit)  {
         this.product = productListEdit.get(0);
         product.setProductName(productListEdit.get(0).getProductName());

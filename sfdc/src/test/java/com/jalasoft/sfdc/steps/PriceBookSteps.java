@@ -61,7 +61,7 @@ public class PriceBookSteps {
         priceBookDetailPage = priceBooksForm.setFormPriceBook(priceBook);
     }
 
-    @Then("^The Price Book information created should be displayed in the Price Book Detail Page$")
+    @Then("^The Price Book is information created should be displayed in the Price Book Detail Page$")
     public void thePriceBookInformationCreatedShouldBeDisplayedInThePriceBookDetailPage() {
         assertEquals(priceBook.getPriceBookName(), priceBookDetailPage.getPriceBookNameTxt(), "The product name wasn't correctly created and saved.");
     }

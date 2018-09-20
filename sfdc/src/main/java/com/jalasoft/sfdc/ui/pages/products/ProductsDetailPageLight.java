@@ -81,7 +81,7 @@ public class ProductsDetailPageLight extends ProductsDetailPage {
     }
 
     /**
-     * Method that is responsible for obtaining the text of a WebElement in the skin light.
+     * Method that is responsible for obtaining text of a WebElement in the skin light.
      *
      * @return returns the text of product code of the WebElement.
      */

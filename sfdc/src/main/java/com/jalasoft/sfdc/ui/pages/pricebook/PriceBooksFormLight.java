@@ -47,7 +47,7 @@ public class PriceBooksFormLight extends PriceBooksForm {
     }
 
     /**
-     * Method that performs the setting of the information of the fields of the form.
+     * Method that performs the setting of information of the fields of the form.
      *
      * @param priceBook value of the field to be set.
      */

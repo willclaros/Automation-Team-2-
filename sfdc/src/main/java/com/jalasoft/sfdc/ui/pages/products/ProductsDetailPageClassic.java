@@ -110,7 +110,7 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
     }
 
     /**
-     * Method responsible for clicking the Edit button and redirecting to ProductsFormClassic.
+     * Method responsible for clicking Edit button and redirecting to ProductsFormClassic.
      *
      * @return return a ProductsFormClassic page.
      */

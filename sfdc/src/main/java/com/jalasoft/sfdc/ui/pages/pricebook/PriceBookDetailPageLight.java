@@ -37,7 +37,7 @@ public class PriceBookDetailPageLight  extends PriceBookDetailPage{
     }
 
     /**
-     * Method that is responsible for obtaining the text of a WebElement.
+     * Method that is responsible for obtaining text of a WebElement.
      *
      * @return returns the text of the WebElement.
      */

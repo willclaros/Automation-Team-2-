@@ -36,7 +36,7 @@ public class PriceBookListPageLight extends PriceBookListPage {
     }
 
     /**
-     * Method that redirects us to the Price Book form by pressing the New button.
+     * Method that redirects us to Price Book form by pressing the New button.
      *
      * @return returns the Price Book Light form.
      */

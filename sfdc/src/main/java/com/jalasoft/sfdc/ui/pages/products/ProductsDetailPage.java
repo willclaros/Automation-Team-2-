@@ -60,7 +60,7 @@ public abstract class ProductsDetailPage extends BasePage {
     public abstract String getProductFamilyCmbBox();
 
     /**
-     * Method responsible for clicking the Edit button and redirecting to ProductsForm.
+     * Method responsible for clicking Edit button and redirecting to ProductsForm.
      *
      * @return return a ProductsForm page.
      */

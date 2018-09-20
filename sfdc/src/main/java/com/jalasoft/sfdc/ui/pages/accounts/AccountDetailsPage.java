@@ -18,4 +18,16 @@ public abstract class AccountDetailsPage extends BasePage {
      * @return tex of WebElement.
      */
     public abstract void verifyDataAccount(Account account);
+    public abstract String getAccountName();
+    public abstract String getAccountNumber();
+    public abstract String getAccountPhone();
+    public abstract String getAccountFax();
+    public abstract String getAccountTicker();
+    public abstract void goToDetailsTab(Account account);
+    public abstract boolean isAccountNameDisplayed(Account account);
+    public abstract boolean isAccountNumberDisplayed(Account account);
+    public abstract boolean isAccountFaxDisplayed(Account account);
+    public abstract boolean isAccountTickerDisplayed(Account account);
+    public abstract boolean isAccountPhoneDisplayed(Account account);
+    public abstract AccountsListPage deleteAccount(Account account);
 }
