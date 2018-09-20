@@ -19,9 +19,6 @@ public class ContactFormLight extends ContactForm {
     @FindBy(css = "input.firstName")
     private WebElement firstNameTxtBox;
 
-    //@FindBy(xpath = "//span[text()='Last Name']/parent::label/following-sibling::input")
-    //private WebElement lastNameTxt;
-
     @FindBy(xpath = "//span[text()='Title']/parent::label/following-sibling::input")
     private WebElement titleTxtBox;
 
@@ -43,7 +40,7 @@ public class ContactFormLight extends ContactForm {
     @FindBy(xpath = "//span[text()='Other Country']/parent::label/following-sibling::input")
     private WebElement countryTxtBox;
 
-    @FindBy(css = "button[title|='Save']")
+    @FindBy(css = "button[title ='Save']")
     private WebElement saveBtn;
 
     /**
@@ -68,7 +65,39 @@ public class ContactFormLight extends ContactForm {
     }
 
     /**
+     * fill all fields of edit contact form.
      *
+     * @param contact - entity contact.
+     * @return contact details type light.
+     */
+    @Override
+    public ContactDetails editContact(Contact contact) {
+        if (contact.getFirstName()!=null)
+            driverTools.setInputField(firstNameTxtBox,contact.getFirstName());
+        if (contact.getLastName()!=null)
+            driverTools.setInputField(lastNameTxtBox,contact.getLastName());
+        if (contact.getHomePhone()!=null)
+            driverTools.setInputField(phoneTxtBox,contact.getHomePhone());
+        if (contact.getTitle()!=null)
+            driverTools.setInputField(titleTxtBox,contact.getTitle());
+        if (contact.getEmail()!=null)
+            driverTools.setInputField(emailTxtBox,contact.getEmail());
+        if (contact.getOtherCity()!=null)
+            driverTools.setInputField(cityTxtBox,contact.getOtherCity());
+        if (contact.getOtherState()!=null)
+            driverTools.setInputField(stateTxtBox,contact.getOtherState());
+        if (contact.getOtherStreet()!=null)
+            driverTools.setInputField(streetTxtBox,contact.getOtherStreet());
+        if (contact.getOtherCountry()!=null)
+            driverTools.setInputField(countryTxtBox,contact.getOtherCountry());
+        driverTools.clickElement(saveBtn);
+        driverTools.sleepMilliSeconds(9000);
+        //driverTools.refreshPage();
+        return new ContactDetailsLight();
+    }
+
+    /**
+     * wait a element of actual page.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {

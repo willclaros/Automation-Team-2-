@@ -13,5 +13,6 @@ public abstract class ContactDetails extends BasePage {
     public abstract String getOtherStreetTextBox();
     public abstract String getOtherCityTextBox();
     public abstract String getOtherStateTextBox();
+    public abstract ContactListPage goToDeleteContact();
 
 }
