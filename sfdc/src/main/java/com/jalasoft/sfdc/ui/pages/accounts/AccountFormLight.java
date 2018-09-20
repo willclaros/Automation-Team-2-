@@ -1,7 +1,9 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
 import com.jalasoft.sfdc.entities.Account;
+import org.junit.rules.Timeout;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -131,10 +133,12 @@ public class AccountFormLight extends AccountForm {
     }
 
     /**
-     * Method to access the account details page
+     * Method to enter the values ​​from the entity
      *
+     * @param account entity
+     *
+     * @return page Accounts Details Classic
      */
-
     @Override
     public AccountDetailsPage fillAccountForm(Account account) {
         driverTools.setInputField(nameAccountTxtBox, account.getAccountName());
@@ -146,6 +150,14 @@ public class AccountFormLight extends AccountForm {
         return new AccountDetailsPageLight();
     }
 
+    /**
+     *
+     Method to change the values ​​that are edited for account
+     *
+     * @param account entity
+     *
+     * @return page Accounts Details Classic
+     */
     @Override
     public AccountDetailsPage editAccountData(Account account) {
         driverTools.clickElement(moreBtn);
@@ -161,7 +173,11 @@ public class AccountFormLight extends AccountForm {
         driverTools.clearTextField(editTickerTxtBox);
         driverTools.setInputField(editTickerTxtBox, account.getTicker());
         driverTools.clickElement(saveBtn);
+        try {
+            wait.until(ExpectedConditions.invisibilityOf(saveBtn));
+        } catch (TimeoutException e) {
+            System.out.println("catch timeout");
+        }
         return  new AccountDetailsPageLight();
     }
-
 }

@@ -111,6 +111,17 @@ public class WebDriverTools {
     /**
      * Waits and click on the webElement.
      *
+     * @param webElement WebElement to wait and click.
+     */
+    public void clickElementSpanLink(WebElement webElement) {
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+        webElement.click();
+    }
+
+
+    /**
+     * Waits and click on the webElement.
+     *
      * @param by By to wait and click.
      */
     public void clickElement(By by) {

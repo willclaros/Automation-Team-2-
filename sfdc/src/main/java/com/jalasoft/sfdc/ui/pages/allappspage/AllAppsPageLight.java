@@ -17,7 +17,7 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(linkText = "Contacts")
     private WebElement contactBtn;
 
-    @FindBy(linkText = "Accounts")
+    @FindBy(xpath = "//mark[text()='Accounts']")
     private WebElement accountButton;
 
     @FindBy(css = ".app-launcher-link[title|='Products']")
@@ -29,6 +29,9 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(css = "[title|='Service']")
     private WebElement serviceLink;
 
+    @FindBy(xpath = "//input[@class='slds-input input']")
+    private WebElement searchTxtBx;
+
     @Override
     public void waitUntilPageObjectIsLoaded() {
         driverTools.scrollToBottomOfPage();
@@ -37,6 +40,8 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @Override
     public AccountsListPage goToaccount() {
+        driverTools.setInputField(searchTxtBx,"Accounts");
+        wait.until(ExpectedConditions.visibilityOf(accountButton));
         driverTools.clickElement(accountButton);
         return new AccountsListPageLight();
     }
