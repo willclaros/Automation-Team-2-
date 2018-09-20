@@ -17,8 +17,6 @@ import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPageLight;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactListPageLight;
-import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
-import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPageLight;
 import org.openqa.selenium.WebElement;
@@ -33,9 +31,14 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(css = ".slds-input[placeholder *='Find an app']")
     private WebElement searchTxtBox;
 
+    @FindBy(css = ".uiInputText .slds-input.input")
+    private WebElement searchTxtBx;
+
+    @FindBy(linkText = "Accounts")
+    private WebElement accountsBtn;
+
     @FindBy(xpath = "//mark[text()='Accounts']")
     private WebElement accountButton;
-
 
     @FindBy(css = ".app-launcher-link[title*='Product'] .label-ctr .slds-text-link")
     private WebElement productsBtn;
@@ -47,8 +50,7 @@ public class AllAppsPageLight extends AllAppsPage {
     private WebElement contactsBtn;
 
     @FindBy(css = ".uiInputText .slds-input.input")
-    private WebElement searchTxtBx;
-
+    private WebElement searchTextBox;
 
     /**
      * Method that waits until the page element is loaded.
@@ -63,9 +65,8 @@ public class AllAppsPageLight extends AllAppsPage {
      *
      * @return returns the Accounts List Page
      */
-    @Override
     public AccountsListPage goToaccount() {
-        driverTools.setInputField(searchTxtBx,"Accounts");
+        driverTools.setInputField(searchTxtBx, "Accounts");
         wait.until(ExpectedConditions.visibilityOf(accountButton));
         driverTools.clickElement(accountButton);
         return new AccountsListPageLight();
@@ -80,17 +81,6 @@ public class AllAppsPageLight extends AllAppsPage {
     public ProductsListPage goToProductsListPage() {
         setSearchTxtBox(productsBtn);
         return new ProductsListPageLight();
-    }
-
-    /**
-     * Method that redirects to Price Books List Page of skin light when pressing the WebElement.
-     *
-     * @return returns the Price Books List Page
-     */
-    @Override
-    public PriceBookListPage goToPriceBooksListPage() {
-        setSearchTxtBox(priceBooksBtn);
-        return new PriceBookListPageLight();
     }
 
     /**

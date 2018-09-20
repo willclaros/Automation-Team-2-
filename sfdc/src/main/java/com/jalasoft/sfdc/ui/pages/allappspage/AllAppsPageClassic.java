@@ -36,14 +36,9 @@ public class AllAppsPageClassic extends AllAppsPage {
         return new ProductsListPageClassic();
     }
 
-    @Override
-    public PriceBookListPage goToPriceBooks() {
-        return null;
-    }
 
     @Override
     public ContactListPage goToContact() {
-        driverTools.scrollDown(3);
         wait.until(ExpectedConditions.visibilityOf(contactBtn));
         driverTools.clickElement(contactBtn);
         return new ContactListPageClassic();
