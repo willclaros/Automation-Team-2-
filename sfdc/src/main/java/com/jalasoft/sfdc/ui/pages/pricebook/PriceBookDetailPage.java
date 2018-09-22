@@ -29,4 +29,11 @@ public abstract class PriceBookDetailPage extends BasePage {
      * @return returns the text of the WebElement.
      */
     public abstract String getPriceBookNameTxt();
+    /**
+     * Abstract method that is responsible for obtaining the text a WebElement.
+     *
+     * @return returns the text of the WebElement.
+     */
+    public abstract String getPriceBookDescriptionTxt();
+
 }

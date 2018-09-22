@@ -15,7 +15,6 @@ public class TopMenuClassic extends TopMenu {
     @FindBy(css = ".allTabsArrow")
     private WebElement louncherBtn;
 
-
     @Override
     public AllAppsPage goToAllPages() {
         driverTools.clickElement(louncherBtn);
@@ -33,8 +32,12 @@ public class TopMenuClassic extends TopMenu {
         return new ProfilePageClassic();
     }
 
+    /**
+     * Method that waits until the page element is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(louncherBtn));
     }
 
     @Override

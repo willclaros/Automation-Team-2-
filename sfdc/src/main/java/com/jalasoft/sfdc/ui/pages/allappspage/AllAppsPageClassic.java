@@ -26,7 +26,19 @@ public class AllAppsPageClassic extends AllAppsPage {
     @FindBy(css = ".pricebook2Block .title")
     private WebElement priceBooksBtn;
 
+    /**
+     * Method that waits until the page element is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(accountsBtn));
+    }
 
+    /**
+     * Method that redirects to Accounts List Page of skin classic when pressing the WebElement.
+     *
+     * @return returns the Accounts List Page
+     */
     @Override
     public AccountsListPage goToaccount() {
         wait.until(ExpectedConditions.visibilityOf(accountsBtn));
@@ -34,6 +46,11 @@ public class AllAppsPageClassic extends AllAppsPage {
         return new AccountsListPageClassic();
     }
 
+    /**
+     * Method that redirects to Products List Page of skin classic when pressing the WebElement.
+     *
+     * @return returns the Products List Page
+     */
     @Override
     public ProductsListPage goToProductsListPage() {
         wait.until(ExpectedConditions.visibilityOf(productsBtn));
@@ -53,17 +70,15 @@ public class AllAppsPageClassic extends AllAppsPage {
         return new PriceBookListPageClassic();
     }
 
-
+    /**
+     * Method that redirects to Contacts List Page of skin classic when pressing the WebElement.
+     *
+     * @return returns the Contacts List Page
+     */
     @Override
     public ContactListPage goToContact() {
         wait.until(ExpectedConditions.visibilityOf(contactBtn));
         driverTools.clickElement(contactBtn);
         return new ContactListPageClassic();
-    }
-
-
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(accountsBtn));
     }
 }

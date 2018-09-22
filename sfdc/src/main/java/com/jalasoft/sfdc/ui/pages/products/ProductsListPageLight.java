@@ -25,7 +25,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ProductsListPageLight extends ProductsListPage {
 
-    @FindBy(css = ".forceActionLink")
+    @FindBy(css = ".forceActionLink[title='New']")
     private WebElement newBtn;
 
     /**

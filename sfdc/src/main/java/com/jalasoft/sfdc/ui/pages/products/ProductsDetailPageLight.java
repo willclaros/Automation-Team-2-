@@ -29,16 +29,13 @@ import static org.junit.Assert.assertEquals;
  */
 public class ProductsDetailPageLight extends ProductsDetailPage {
 
-    @FindBy(xpath = "//span[contains(text(),'Details')]")
-    private WebElement detailBtn;
-
     @FindBy(xpath = "//span[text()='Product Name']/parent::div/following-sibling::div/child::span/child::span")
     private WebElement productNameTxt;
 
     @FindBy(xpath = "//span[text()='Product Code']/parent::div/following-sibling::div/child::span/child::span")
     private WebElement productCodeTxt;
 
-    @FindBy(xpath = "//span[text()='Product Description']/parent::div/following-sibling::div/child::span/child::span")
+        @FindBy(xpath = "//span[text()='Product Description']/parent::div/following-sibling::div/child::span/child::span")
     private WebElement descriptionTxt;
 
     @FindBy(css = ".uiOutputCheckbox .unchecked")

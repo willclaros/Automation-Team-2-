@@ -39,11 +39,11 @@ public class ProductsFormLight extends ProductsForm {
     @FindBy(css = ".uiInput--checkbox input")
     private WebElement activeChkBox;
 
-    @FindBy(xpath = "//button[@title ='Save']")
-    private WebElement saveBtn;
-
     @FindBy(css = ".select")
     private WebElement productFamilyLabel;
+
+    @FindBy(css = ".uiButton.forceActionButton[title='Save']")
+    private WebElement saveBtn;
 
     /**
      * Method that waits until the page element is loaded.
@@ -70,6 +70,8 @@ public class ProductsFormLight extends ProductsForm {
         }
         chooseProductFamilyLightCmbBox(product.getProductFamily());
         driverTools.clickElement(saveBtn);
+        //wait.until(ExpectedConditions.invisibilityOf(saveBtn));
+        //String a = driver.getCurrentUrl();
         return new ProductsDetailPageLight();
     }
 
