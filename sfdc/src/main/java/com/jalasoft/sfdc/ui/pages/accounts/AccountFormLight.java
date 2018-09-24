@@ -178,6 +178,12 @@ public class AccountFormLight extends AccountForm {
         } catch (TimeoutException e) {
             System.out.println("catch timeout");
         }
+        account.setId(getUrlCurrent(driver.getCurrentUrl()));
         return  new AccountDetailsPageLight();
+    }
+    private String getUrlCurrent(String currentUrl){
+        String[] currentUrlList = currentUrl.split("/");
+        String idUrl = currentUrlList[currentUrlList.length - 2];
+        return idUrl;
     }
 }
