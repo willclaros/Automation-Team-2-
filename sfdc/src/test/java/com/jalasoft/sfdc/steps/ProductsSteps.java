@@ -13,6 +13,7 @@
  */
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.api.APIProduct;
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
@@ -24,6 +25,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import javax.xml.ws.Response;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
@@ -45,6 +47,10 @@ public class ProductsSteps {
     private ProductsDetailPage productsDetailPage;
     private Product product;
 
+    private Product productAPI;
+    private APIProduct apiProduct;
+    private Response response;
+
     @And("^I go to Products page$")
     public void iGoToProductsPage() {
         homePage = PageFactory.getHomePage();
@@ -60,8 +66,10 @@ public class ProductsSteps {
     @And("^I create an product with information$")
     public void iCreateANewProduct(final List<Product> productList) {
         this.product = productList.get(0);
-        product.setProductName(productList.get(0).getProductName());
-        productsDetailPage = productsForm.createProduct(product);
+        //product.setProductName(productList.get(0).getProductName());
+        //productsDetailPage = productsForm.createProduct(product);
+        apiProduct = new APIProduct(product);
+        apiProduct.createProductByAPI();
     }
 
     @When("^I click Edit button$")
@@ -78,9 +86,13 @@ public class ProductsSteps {
 
     @Then("^The product should be displayed in the Product Detail Page$")
     public void theProductInformationCreatedShouldBeDisplayedInTheProductsListPage() {
-        assertEquals(product.getProductName(), productsDetailPage.getProductNameTxt());
-        assertEquals(product.getProductCode(), productsDetailPage.getProductCodeTxt());
-        assertEquals(product.getProductDescription(), productsDetailPage.getProductDescriptionTxt());
+        //assertEquals(product.getProductName(), productsDetailPage.getProductNameTxt());
+        //assertEquals(product.getProductCode(), productsDetailPage.getProductCodeTxt());
+        //assertEquals(product.getProductDescription(), productsDetailPage.getProductDescriptionTxt());
+        productAPI = apiProduct.getProductsValuesByAPI();
+        assertEquals(product.getProductName(), productAPI.getProductName());
+        assertEquals(product.getProductCode(), productAPI.getProductCode());
+        assertEquals(product.getProductDescription(), productAPI.getProductDescription());
     }
 
     @When("^I click Delete button$")

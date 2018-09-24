@@ -1,13 +1,13 @@
 {
   "william": {
-    "user name": "will@williamcompany.com",
-    "user password": "Wallace123456789",
-    "first name": "Will",
+    "user name": "will@jala.com",
+    "user password": "Wallace123456",
+    "first name": "William",
     "Last name": "Claros",
-    "user token": "",
-    "grant type": "",
-    "client id": "",
-    "client secret": ""
+    "user token": "w6kxJxV7fz5B4vK76RlZ6KVk",
+    "grant type": "password",
+    "client id": "3MVG9vrJTfRxlfl4Sjl3nA5Ig2bB5e5DwwB.3REdJKyrWfpLFVerXLCpm.EFCTESEs8ira6qtD818uMZCIDNM",
+    "client secret": "2614007429530414468"
   },
   "user admin": {
     "user name": "cesar@jala.com",

@@ -70,9 +70,14 @@ public class ProductsFormLight extends ProductsForm {
         }
         chooseProductFamilyLightCmbBox(product.getProductFamily());
         driverTools.clickElement(saveBtn);
-        //wait.until(ExpectedConditions.invisibilityOf(saveBtn));
-        //String a = driver.getCurrentUrl();
+        product.setId(getUrlCurrent(driver.getCurrentUrl()));
         return new ProductsDetailPageLight();
+    }
+
+    private String getUrlCurrent(String currentUrl){
+        String[] currentUrlList = currentUrl.split("/");
+        String idUrl = currentUrlList[currentUrlList.length - 2];
+        return idUrl;
     }
 
     /**

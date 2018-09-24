@@ -18,6 +18,14 @@ public final class SFDCConstants {
     public final static String CONTACT_OTHER_STATE = "OtherState";
     public final static String CONTACT_OTHER_COUNTRY = "OtherCountry";
 
+    //PRODUCTS
+    public final static String PRODUCTS = "Product2";
+    public final static String NAME = "Name";
+    public final static String PRODUCT_CODE = "ProductCode";
+    public final static String DESCRIPTION = "Description";
+    public final static String IS_ACTIVE = "IsActive";
+    public final static String FAMILY = "Family";
+
     public final static String ID = "id";
     public final static String TOTAL_SIZE = "totalSize";
     public final static String SOBJECTS = "sobjects";
