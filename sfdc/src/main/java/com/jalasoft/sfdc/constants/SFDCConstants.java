@@ -6,6 +6,18 @@ package com.jalasoft.sfdc.constants;
  */
 public final class SFDCConstants {
 
+    //Accounts
+    public final static String ACCOUNT = "Account";
+    public final static String ACCOUNT_NAME = "Name";
+    public final static String ACCOUNT_TYPE = "Type";
+    public final static String ACCOUNT_WEB = "Web";
+    public final static String ACCOUNT_DESCRIPTION = "Description";
+    public final static String ACCOUNT_PHONE = "Phone";
+    public final static String ACCOUNT_FAX = "Fax";
+    public final static String ACCOUNT_EMPLOYEES = "Account Employees";
+    public final static String ACCOUNT_TICKER = "TickerSymbol";
+    public final static String ACCOUNT_NUMBER = "AccountNumber";
+
     public final static String CONTACT = "Contact";
     public final static String CONTACT_LAST_NAME = "LastName";
     public final static String CONTACT_FIRST_NAME = "FirstName";

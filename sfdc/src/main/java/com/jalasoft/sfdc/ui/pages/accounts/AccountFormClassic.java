@@ -130,7 +130,14 @@ public class AccountFormClassic extends AccountForm {
         driverTools.clearTextField(tickerTxtBox);
         driverTools.setInputField(tickerTxtBox, account.getTicker());
         driverTools.clickElement(saveBtn);
+        account.setId(getUrlCurrent(driver.getCurrentUrl()));
         return  new AccountDetailsPageClassic();
+    }
+
+    private String getUrlCurrent(String currentUrl){
+        String[] currentUrlList = currentUrl.split("/");
+        String idUrl = currentUrlList[currentUrlList.length - 1];
+        return idUrl;
     }
 
     /**

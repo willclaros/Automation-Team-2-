@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.api.APIAccount;
 import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountDetailsPage;
@@ -7,6 +8,7 @@ import com.jalasoft.sfdc.ui.pages.accounts.AccountForm;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -24,6 +26,9 @@ public class AccountsStep {
     private AccountForm accountForm;
     private AccountDetailsPage accountDetailsPage;
     private Account account;
+    private Account accountApi;
+    private APIAccount apiAccount;
+    protected io.restassured.response.Response response;
 
     //****************************************************************
     //Account Step Definitions
@@ -114,5 +119,37 @@ public class AccountsStep {
     @Then("^I should see the Account is delete$")
     public void iShouldSeeTheAccountIsDelete() {
         assertFalse(accountsListPage.verifyDeleteAccount(account));
+    }
+
+    @And("^I fill the following information in accounts by API$")
+    public void iFillTheFollowingInformationInAccountsByAPI(List<Account> accountList) {
+        this.account = accountList.get(0);
+        apiAccount = new APIAccount(account);
+        apiAccount.createAccountByAPI();
+    }
+
+    @Then("^the account should be created$")
+    public void theAccountShouldBeCreated() {
+        accountApi = apiAccount.getAccountValuesByAPI();
+        assertEquals(accountApi.getAccountName(),account.getAccountName());
+        assertEquals(accountApi.getAccountNumber(),account.getAccountNumber());
+        assertEquals(accountApi.getFax(),account.getFax());
+        assertEquals(accountApi.getPhone(),account.getPhone());
+        assertEquals(accountApi.getTicker(),account.getTicker());
+    }
+
+    @When("^I create an account with information by Api$")
+    public void iCreateAnAccountWithInformationByApi(List<Account> account) {
+        iFillTheFollowingInformationInAccountsByAPI(account);
+    }
+
+    @And("^I delete this Account$")
+    public void iDeleteThisAccount() {
+        response = apiAccount.deleteAccountByAPI();
+    }
+
+    @Then("^The account must be deleted$")
+    public void theAccountMustBeDeleted() {
+        assertTrue(response.asString().isEmpty());
     }
 }
