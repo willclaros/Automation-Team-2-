@@ -1,7 +1,9 @@
 package com.jalasoft.sfdc.steps;
 
 
+import com.jalasoft.sfdc.api.APIContact;
 import com.jalasoft.sfdc.entities.Contact;
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.contacts.ContactDetails;
@@ -26,6 +28,9 @@ public class ContactStep {
     private ContactForm contactForm;
     private ContactDetails contactDetails;
     private Contact contact;
+
+    private Contact contactAPI;
+    private APIContact apiContact;
 
     /*private ContactStep (Contact contact) {
         this.contact = contact;
@@ -56,8 +61,10 @@ public class ContactStep {
     @When("^I create a Contact with the following information")
     public void iFillAllTheFollowingInformation(List<Contact> contactList) {
         this.contact = contactList.get(0);
-        contact.setLastName(contactList.get(0).getLastName());
-        contactDetails = contactForm.createContact(contact);
+//        contact.setLastName(contactList.get(0).getLastName());
+//        contactDetails = contactForm.createContact(contact);
+        apiContact = new APIContact(contact);
+        apiContact.createContactByAPI();
     }
 
 
@@ -66,12 +73,16 @@ public class ContactStep {
      */
     @Then("^I should see the contact created correctly$")
     public void iShouldSeeTheContactCreatedCorrectly() {
-        contactDetails.goToValidateContact();
-        assertEquals(contact.getFullName(), contactDetails.getContactNameLbl());
+//        contactDetails.goToValidateContact();
+//        assertEquals(contact.getFullName(), contactDetails.getContactNameLbl());
+//        assertEquals(contact.getHomePhone(), contactDetails.getPhoneTextBox());
+//        assertEquals(contact.getEmail(), contactDetails.getEmailTextBox());
+
+        contactAPI = apiContact.getContactValuesByAPI();
+        assertEquals(contact.getLastName(), contactAPI.getLastName());
+        assertEquals(contact.getEmail(), contactAPI.getEmail());
         //assertEquals(contact.getLastName(), contactDetails.getLastNameTextBox());
-        assertEquals(contact.getHomePhone(), contactDetails.getPhoneTextBox());
         //assertEquals(contact.getFirstName(), contactDetails.getFirstNameTextBox());
-        assertEquals(contact.getEmail(), contactDetails.getEmailTextBox());
         //assertEquals(contact.getOtherStreet(), contactDetails.getOtherStreetTextBox());
         //assertEquals(contact.getOtherCity(), contactDetails.getOtherCityTextBox());
         //assertEquals(contact.getOtherState(), contactDetails.getOtherStateTextBox());
@@ -113,7 +124,8 @@ public class ContactStep {
      */
     @Then("^I delete this Contact create$")
     public void iShouldSeeTheContactIsDelete() {
-        contactListPage = contactDetails.goToDeleteContact();
+        apiContact.deleteContactByAPI();
+        //contactListPage = contactDetails.goToDeleteContact();
     }
 
     /**

@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Contact {
+    private String id;
     private String salutation = "";
     private String firstName = "";
     private String lastName = "";
@@ -33,6 +34,15 @@ public class Contact {
     private String languages = "";
     private String level = "";
     private String description = "";
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     /**
      * Gets the Salutation.
      * @return the current Salutation.
@@ -80,7 +90,7 @@ public class Contact {
     public void setLastName(String lastName)
     {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        this.lastName = lastName.concat(timeStamp);
+        this.lastName = lastName;
     }
 
     /**
