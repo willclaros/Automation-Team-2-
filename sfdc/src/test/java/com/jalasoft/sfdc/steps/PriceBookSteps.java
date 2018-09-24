@@ -20,9 +20,11 @@ import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBooksForm;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookDetailPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
+import com.typesafe.config.ConfigException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.xalan.xsltc.compiler.Parser;
 
 import java.util.List;
 
@@ -55,8 +57,8 @@ public class PriceBookSteps {
         priceBooksForm = priceBookListPage.clickNewBtn();
     }
 
-    @And("^I fill the following information in form Price Book$")
-    public void fillTheFollowingInformation(final List<PriceBook> priceBookList) {
+    @And("^I create a Price Book$")
+    public void iCreatePriceBook(final List<PriceBook> priceBookList) {
         this.priceBook = priceBookList.get(0);
         priceBookDetailPage = priceBooksForm.setFormPriceBook(priceBook);
     }
@@ -64,5 +66,6 @@ public class PriceBookSteps {
     @Then("^The Price Book is information created should be displayed in the Price Book Detail Page$")
     public void thePriceBookInformationCreatedShouldBeDisplayedInThePriceBookDetailPage() {
         assertEquals(priceBook.getPriceBookName(), priceBookDetailPage.getPriceBookNameTxt(), "The product name wasn't correctly created and saved.");
+        assertEquals(priceBook.getDescription(), priceBookDetailPage.getPriceBookDescriptionTxt(), "The product description wasn't correctly created and saved.");
     }
 }

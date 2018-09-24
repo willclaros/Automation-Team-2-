@@ -44,7 +44,6 @@ public class ProductsSteps {
     private ProductsForm productsForm;
     private ProductsDetailPage productsDetailPage;
     private Product product;
-    private Product productEdit;
 
     @And("^I go to Products page$")
     public void iGoToProductsPage() {
@@ -53,12 +52,12 @@ public class ProductsSteps {
         productsListPage = allAppsPage.goToProductsListPage();
     }
 
-    @And("^I click New button Products$")
+    @And("^I click New button of Products$")
     public void iClickNewButtonProducts() {
         productsForm = productsListPage.clickNewBtn();
     }
 
-    @And("^I create a new Product$")
+    @And("^I create an product with information$")
     public void iCreateANewProduct(final List<Product> productList) {
         this.product = productList.get(0);
         product.setProductName(productList.get(0).getProductName());
@@ -77,7 +76,7 @@ public class ProductsSteps {
         productsDetailPage = productsForm.editProduct(product);
     }
 
-    @Then("^The product information created should be displayed in the Product Detail Page$")
+    @Then("^The product should be displayed in the Product Detail Page$")
     public void theProductInformationCreatedShouldBeDisplayedInTheProductsListPage() {
         assertEquals(product.getProductName(), productsDetailPage.getProductNameTxt());
         assertEquals(product.getProductCode(), productsDetailPage.getProductCodeTxt());
@@ -89,7 +88,7 @@ public class ProductsSteps {
         productsListPage = productsDetailPage.clickDeleteBtn();
     }
 
-    @Then("^The product information delete shouldn't be displayed in the Product Detail Page$")
+    @Then("^The product deleted shouldn't be displayed in the Product Detail Page$")
     public void theProductInformationDeleteShouldnTBeDisplayedInTheProductDetailPage()  {
        assertFalse(productsDetailPage.verifyDeletedProduct(product), "The product wasn't removed correctly");
     }

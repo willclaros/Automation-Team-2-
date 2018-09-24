@@ -28,6 +28,12 @@ public class PriceBookDetailPageClassic extends PriceBookDetailPage {
     @FindBy(css = "div[id*='Name_ileinner']")
     private WebElement priceBookNameTxt;
 
+    @FindBy(css = "div[id*='Description_ileinner']")
+    private WebElement priceBookDescriptionTxt;
+
+    @FindBy(css = "div[id*='IsActive_ileinner']")
+    private WebElement priceBookStatusChkBox;
+
     /**
      * Method that waits until the page element is loaded.
      */
@@ -44,5 +50,15 @@ public class PriceBookDetailPageClassic extends PriceBookDetailPage {
     @Override
     public String getPriceBookNameTxt() {
         return priceBookNameTxt.getText();
+    }
+
+    /**
+     * Method that is responsible for obtaining text of a WebElement.
+     *
+     * @return returns the text of the WebElement.
+     */
+    @Override
+    public String getPriceBookDescriptionTxt() {
+        return priceBookDescriptionTxt.getText();
     }
 }

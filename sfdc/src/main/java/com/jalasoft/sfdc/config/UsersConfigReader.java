@@ -24,10 +24,12 @@ public final class UsersConfigReader {
     private static final String USER_PASSWORD = "user password";
     private static final String FIRST_NAME = "first name";
     private static final String LAST_NAME = "Last name";
+
     private static final String USER_TOKEN = "user token";
     private static final String GRANT_TYPE = "grant type";
     private static final String CLIENT_ID = "client id";
     private static final String CLIENT_SECRET = "client secret";
+
 
 
     private static HashMap<String, User> users;

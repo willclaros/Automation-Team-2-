@@ -505,6 +505,15 @@ public class WebDriverTools {
     }
 
     /**
+     * Waits and click on the webElement.
+     *
+     * @param webElement WebElement to wait and click.
+     */
+    public void clickElementSpanLink(WebElement webElement) {
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+        webElement.click();
+    }
+    /**
      * Sets text in input field and press Enter.
      *
      * @param element - The web element.

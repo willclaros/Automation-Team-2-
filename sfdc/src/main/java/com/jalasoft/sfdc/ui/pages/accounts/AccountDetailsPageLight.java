@@ -111,8 +111,7 @@ public class  AccountDetailsPageLight extends AccountDetailsPage {
      */
     @Override
     public void goToDetailsTab(Account account) {
-        if (driverTools.isElementDisplayed(
-                By.xpath("//span[@class = 'title' and text()='Details']/../../a[@aria-selected='false']"))) {
+        if (driverTools.isElementDisplayed(By.xpath("//span[@class = 'title' and text()='Details']/../../a[@aria-selected='false']"))) {
             driverTools.clickElementSpanLink(detailsLink);
         }
     }

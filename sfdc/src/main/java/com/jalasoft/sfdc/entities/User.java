@@ -14,6 +14,7 @@ public class User {
     private String alias = "";
 
     private String grantType = "";
+
     private String clientId;
     private String clientSecret;
     private String userToken;
@@ -52,6 +53,7 @@ public class User {
 
     /**
      * Sets the user name.
+     *
      * @param userName user name to set.
      */
     public void setUserName(final String userName) {
@@ -60,6 +62,7 @@ public class User {
 
     /**
      * Gets the user name.
+     *
      * @return the current user name.
      */
     public String getUserName() {
@@ -68,6 +71,7 @@ public class User {
 
     /**
      * Sets the user password.
+     *
      * @param password user password to set.
      */
     public void setPassword(final String password) {
@@ -76,6 +80,7 @@ public class User {
 
     /**
      * Gets the user password.
+     *
      * @return the current user password.
      */
     public String getPassword() {
@@ -84,6 +89,7 @@ public class User {
 
     /**
      * Sets the user first name.
+     *
      * @param firstName user first name to set.
      */
     public void setFirstName(final String firstName) {
@@ -92,6 +98,7 @@ public class User {
 
     /**
      * Gets the user first name.
+     *
      * @return the current user first name.
      */
     public String getFirstName() {
@@ -100,6 +107,7 @@ public class User {
 
     /**
      * Sets the user last name.
+     *
      * @param lastName user last name to set
      */
     public void setLastName(final String lastName) {
@@ -108,6 +116,7 @@ public class User {
 
     /**
      * Gets the user last name.
+     *
      * @return the current user last name.
      */
     public String getLastName() {
@@ -134,10 +143,51 @@ public class User {
 
     /**
      * Sets the alias last name.
+     *
      * @param alias user last name to set
      */
     public void setAlias(String alias) {
         this.alias = alias;
     }
 
+
+    public String getGrantType() {
+        return grantType;
+    }
+
+    public void setGrantType(String grantType) {
+        this.grantType = grantType;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getClientSecret() {
+        return clientSecret;
+    }
+
+    public void setClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
+    }
+
+    public String getUserToken() {
+        return userToken;
+    }
+
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
+    }
+
+    public String getTokenBaseUri() {
+        return tokenBaseUri;
+    }
+
+    public void setTokenBaseUri(String tokenBaseUri) {
+        this.tokenBaseUri = tokenBaseUri;
+    }
 }
