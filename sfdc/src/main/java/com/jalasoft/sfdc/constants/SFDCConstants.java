@@ -6,6 +6,18 @@ package com.jalasoft.sfdc.constants;
  */
 public final class SFDCConstants {
 
+    //Accounts
+    public final static String ACCOUNT = "Account";
+    public final static String ACCOUNT_NAME = "Name";
+    public final static String ACCOUNT_TYPE = "Type";
+    public final static String ACCOUNT_WEB = "Web";
+    public final static String ACCOUNT_DESCRIPTION = "Description";
+    public final static String ACCOUNT_PHONE = "Phone";
+    public final static String ACCOUNT_FAX = "Fax";
+    public final static String ACCOUNT_EMPLOYEES = "Account Employees";
+    public final static String ACCOUNT_TICKER = "TickerSymbol";
+    public final static String ACCOUNT_NUMBER = "AccountNumber";
+
     public final static String CONTACT = "Contact";
     public final static String CONTACT_LAST_NAME = "LastName";
     public final static String CONTACT_FIRST_NAME = "FirstName";
@@ -18,6 +30,7 @@ public final class SFDCConstants {
     public final static String CONTACT_OTHER_STATE = "OtherState";
     public final static String CONTACT_OTHER_COUNTRY = "OtherCountry";
 
+    //Quote
     public final static String QUOTE = "Quote";
     public final static String NAME_QUOTE = "Name";
     public final static String CREATE_DATE_QUOTE = "CreatedDate";
@@ -33,6 +46,7 @@ public final class SFDCConstants {
     public final static String LINE_ITEM_COUNT_QUOTE = "LineItemCount";
     public final static String GRAND_TOTAL_QUOTE = "GrandTotal";
 
+    //Pricebook
     public final static String PRICEBOOK = "Pricebook2";
     public final static String IS_DELETE_PRICEBOOK = "IsDeleted";
     public final static String NAME_PRICEBOOK = "Name";
@@ -42,6 +56,14 @@ public final class SFDCConstants {
     public final static String IS_ACTIVE_PRICEBOOK = "IsActive";
     public final static String DESCRIPTION_PRICEBOOK = "Description";
     public final static String IS_STANDARD_PRICEBOOK = "IsStandard";
+
+    //PRODUCTS
+    public final static String PRODUCTS = "Product2";
+    public final static String NAME = "Name";
+    public final static String PRODUCT_CODE = "ProductCode";
+    public final static String DESCRIPTION = "Description";
+    public final static String IS_ACTIVE = "IsActive";
+    public final static String FAMILY = "Family";
 
     public final static String ID = "id";
     public final static String TOTAL_SIZE = "totalSize";
