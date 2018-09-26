@@ -13,18 +13,18 @@
  */
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.api.APIPricebook;
 import com.jalasoft.sfdc.entities.PriceBook;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.pricebook.PriceBooksForm;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookDetailPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
-import com.typesafe.config.ConfigException;
+import com.jalasoft.sfdc.ui.pages.pricebook.PriceBooksForm;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.apache.xalan.xsltc.compiler.Parser;
+import io.restassured.response.Response;
 
 import java.util.List;
 
@@ -44,6 +44,8 @@ public class PriceBookSteps {
     private PriceBooksForm priceBooksForm;
     private PriceBookDetailPage priceBookDetailPage;
     private PriceBook priceBook;
+    private APIPricebook apiPricebook;
+    private Response response;
 
     @When("^I go to Price Book page$")
     public void iGoToAppListPriceBooks() {
@@ -57,15 +59,16 @@ public class PriceBookSteps {
         priceBooksForm = priceBookListPage.clickNewBtn();
     }
 
-    @And("^I create a Price Book$")
-    public void iCreatePriceBook(final List<PriceBook> priceBookList) {
+    @And("^I fill the following information in form Price Book$")
+    public void fillTheFollowingInformation(final List<PriceBook> priceBookList) {
         this.priceBook = priceBookList.get(0);
-        priceBookDetailPage = priceBooksForm.setFormPriceBook(priceBook);
+        apiPricebook = new APIPricebook(priceBook);
+        response = apiPricebook.createPricebookByAPI();
+//        priceBookDetailPage = priceBooksForm.setFormPriceBook(priceBook);
     }
 
     @Then("^The Price Book is information created should be displayed in the Price Book Detail Page$")
     public void thePriceBookInformationCreatedShouldBeDisplayedInThePriceBookDetailPage() {
         assertEquals(priceBook.getPriceBookName(), priceBookDetailPage.getPriceBookNameTxt(), "The product name wasn't correctly created and saved.");
-        assertEquals(priceBook.getDescription(), priceBookDetailPage.getPriceBookDescriptionTxt(), "The product description wasn't correctly created and saved.");
     }
 }

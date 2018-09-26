@@ -1,10 +1,11 @@
 package com.jalasoft.sfdc.ui.pages.contacts;
 
+import com.jalasoft.sfdc.entities.Contact;
 import com.jalasoft.sfdc.ui.BasePage;
 
 public abstract class ContactDetails extends BasePage {
     public abstract String getContactNameLbl();
-    public abstract void goToValidateContact();
+    public abstract void goToValidateContact(Contact contact);
     public abstract ContactForm goToEditContactForm();
     public abstract String getPhoneTextBox();
     public abstract String getFirstNameTextBox();

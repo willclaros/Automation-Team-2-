@@ -2,12 +2,12 @@ Feature: Create a price book.
 
   Background:
     Given I navigate to Login page
-    And I login as "william" User
+    And I login as "yerel" User
 
   Scenario: Verify that it possible to create a price book
     When I go to Price Book page
     And I click New button Price Book
-    And I create a Price Book
-      | Price Book name      | Description | Status |
+    And I fill the following information in form Price Book
+      | priceBookName        | description | status |
       | Selenium for dummies | Good book   | true   |
-    Then The Price Book is information created should be displayed in the Price Book Detail Page
+ #   Then The Price Book is information created should be displayed in the Price Book Detail Page
