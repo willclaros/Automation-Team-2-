@@ -88,15 +88,15 @@ public class ContactFormClassic extends ContactForm {
      */
     @Override
     public ContactDetails createContact(Contact contact) {
-        driverTools.setInputField(LastNameTxtBox, contact.getLastName());
         driverTools.setInputField(firtNameTxtBox, contact.getFirstName());
+        driverTools.setInputField(LastNameTxtBox, contact.getLastName());
         driverTools.setInputField(phoneTxtBox, contact.getHomePhone());
         driverTools.setInputField(titleTxtBox, contact.getTitle());
         driverTools.setInputField(emailTxtBox, contact.getEmail());
-        driverTools.setInputField(streetTxtBox, contact.getOtherStreet());
-        driverTools.setInputField(cityTxtBox, contact.getOtherCity());
-        driverTools.setInputField(stateTxtBox, contact.getOtherState());
-        driverTools.setInputField(countryTxtBox, contact.getOtherCountry());
+//        driverTools.setInputField(streetTxtBox, contact.getOtherStreet());
+//        driverTools.setInputField(cityTxtBox, contact.getOtherCity());
+//        driverTools.setInputField(stateTxtBox, contact.getOtherState());
+//        driverTools.setInputField(countryTxtBox, contact.getOtherCountry());
         driverTools.clickElement(saveBtn);
         return new ContactDetailsClassic();
     }
@@ -132,6 +132,9 @@ public class ContactFormClassic extends ContactForm {
         return new ContactDetailsClassic();
     }
 
+    /**
+     * wait a element of actual page.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() { }
 }

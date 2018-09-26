@@ -24,6 +24,45 @@ public class PriceBook {
     private String priceBookName = "";
     private String description = "";
     private String status = "";
+    private String isStandard;
+
+    /**
+     * Method that obtains id of is standard of the Price Books.
+     *
+     * @return returns the id of the product.
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Method that obtains the information of is standard of the Price Books.
+     *
+     * @param id new input value so that it modifies the current value.
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
+
+    /**
+     * Method that obtains the information of is standard of the Price Books.
+     *
+     * @return returns the standard of the product.
+     */
+    public String isStandard() {
+        return isStandard;
+    }
+
+    /**
+     * Method that setting the information of the state of the Price Books.
+     *
+     * @param standard new input value so that it modifies the current value.
+     */
+    public void setStandard(String standard) {
+        isStandard = standard;
+    }
 
     /**
      * Method that obtains the information of name of the Price Books.

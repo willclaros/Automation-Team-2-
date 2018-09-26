@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.contacts;
 
+import com.jalasoft.sfdc.entities.Contact;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -68,10 +69,28 @@ public class ContactDetailsLight extends ContactDetails {
      * @return link detailsLink.
      */
     @Override
-    public void goToValidateContact() {
+    public void goToValidateContact(Contact contact) {
         driverTools.clickElement(detailsLink);
+        contact.setId(getUrlCurrent(driver.getCurrentUrl()));
     }
 
+
+    /**
+     * @param currentUrl get currnet url.
+     *
+     * @return ide Url.
+     */
+    private String getUrlCurrent(String currentUrl) {
+        String[] currentUrlList = currentUrl.split("/");
+        String idUrl = currentUrlList[currentUrlList.length - 2];
+        return idUrl;
+    }
+
+    /**
+     * return a contact form.
+     *
+     * @return contact form light.
+     */
     @Override
     public ContactForm goToEditContactForm() {
         driverTools.clickElement(moreActionBtn);

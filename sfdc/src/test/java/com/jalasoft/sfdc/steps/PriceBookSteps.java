@@ -13,6 +13,7 @@
  */
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.api.APIPricebook;
 import com.jalasoft.sfdc.entities.PriceBook;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
@@ -23,6 +24,7 @@ import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.restassured.response.Response;
 
 import java.util.List;
 
@@ -42,6 +44,8 @@ public class PriceBookSteps {
     private PriceBooksForm priceBooksForm;
     private PriceBookDetailPage priceBookDetailPage;
     private PriceBook priceBook;
+    private APIPricebook apiPricebook;
+    private Response response;
 
     @When("^I go to Price Book page$")
     public void iGoToAppListPriceBooks() {
@@ -58,7 +62,9 @@ public class PriceBookSteps {
     @And("^I fill the following information in form Price Book$")
     public void fillTheFollowingInformation(final List<PriceBook> priceBookList) {
         this.priceBook = priceBookList.get(0);
-        priceBookDetailPage = priceBooksForm.setFormPriceBook(priceBook);
+        apiPricebook = new APIPricebook(priceBook);
+        response = apiPricebook.createPricebookByAPI();
+//        priceBookDetailPage = priceBooksForm.setFormPriceBook(priceBook);
     }
 
     @Then("^The Price Book is information created should be displayed in the Price Book Detail Page$")
