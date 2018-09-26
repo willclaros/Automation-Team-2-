@@ -1,6 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.contacts;
 
-import com.jalasoft.sfdc.ui.HomeBasePage;
+import com.jalasoft.sfdc.entities.Contact;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -44,8 +44,18 @@ public class ContactDetailsClassic extends ContactDetails {
      *go to page validate contact.
      */
     @Override
-    public void goToValidateContact() {
+    public void goToValidateContact(Contact contact) {
+        contact.setId(getUrlCurrent(driver.getCurrentUrl()));
+    }
 
+    /**
+     * @param currentUrl
+     * @return
+     */
+    private String getUrlCurrent(String currentUrl) {
+        String[] currentUrlList = currentUrl.split("/");
+        String idUrl = currentUrlList[currentUrlList.length - 2];
+        return idUrl;
     }
 
     /**

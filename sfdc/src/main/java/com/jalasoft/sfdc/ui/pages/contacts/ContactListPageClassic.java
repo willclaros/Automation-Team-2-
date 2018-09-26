@@ -45,4 +45,21 @@ public class ContactListPageClassic extends ContactListPage {
     public boolean isContactSelected(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//a[text()='"+ contact.getFullName() + "']"));
     }
+
+    /**
+     * @param contact contact entity.
+     * @return null.
+     */
+    @Override
+    public ContactDetails contactSelected(Contact contact) {
+        return null;
+    }
+
+    /**
+     * wait a element of actual page.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+
+    }
 }

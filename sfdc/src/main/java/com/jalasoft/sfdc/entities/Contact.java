@@ -35,10 +35,16 @@ public class Contact {
     private String level = "";
     private String description = "";
 
+    /**
+     * @return
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * @param id
+     */
     public void setId(String id) {
         this.id = id;
     }
@@ -525,9 +531,11 @@ public class Contact {
         return null;
     }
 
-    public String getNameWithTimeStamp(){
+    /**
+     * Sets the product name.
+     */
+    public void updateProductName() {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        lastName.concat(" ").concat(timeStamp);
-        return null;
+        this.lastName += timeStamp;
     }
 }

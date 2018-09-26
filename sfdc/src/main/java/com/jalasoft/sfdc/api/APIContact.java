@@ -15,6 +15,9 @@ public class APIContact {
     private Contact contactAPI;
     protected Map<String, Object> fieldsMap;
 
+    /**
+     * @param contact entity contact.
+     */
     public APIContact(Contact contact) {
         this.contact = contact;
         fieldsMap = covertEntityToMap();
@@ -33,10 +36,14 @@ public class APIContact {
         map.put(CONTACT_PHONE, contact.getHomePhone());
         map.put(CONTACT_TITLE, contact.getTitle());
         map.put(CONTACT_EMAIL, contact.getEmail());
-//    map.put("NumberOfEmployees", account.getEmployees());
         return map;
     }
 
+    /**
+     * get a contact value ide.
+     *
+     * @return Contact entity.
+     */
     public Contact getContactValuesByAPI() { //ToDo define what aee you going to return
         //response = APIManager.getInstance().get("/sobjects/Account/" + contact.getId() + "?fields=Name");
         response = APIManager.getInstance().get(SLASH.concat(SOBJECTS).concat(SLASH).concat(CONTACT).concat(SLASH).concat(contact.getId()));
@@ -47,15 +54,28 @@ public class APIContact {
         return contactAPI;
     }
 
-    public void createContactByAPI() {
+    /**
+     * create contact api.
+     *
+     * @return response method.
+     */
+    public Response createContactByAPI() {
         response = apiManager.post(CONTACT, fieldsMap);
         System.out.println("Query response create: " + response.asString());
         contact.setId(response.jsonPath().get(ID).toString());
+        return response;
     }
 
-    public void deleteContactByAPI() {
+    /**
+     * delete a element contact.
+     *
+     * @return response
+     */
+    public Response deleteContactByAPI() {
         response = apiManager.delete(CONTACT, contact.getId());
         System.out.println("Query response delete: " + response.asString());
+        System.out.println("contact id: " + contact.getId());
+        return response;
     }
 
 }

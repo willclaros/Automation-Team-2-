@@ -22,8 +22,9 @@ public class ContactListPageLight extends ContactListPage {
     public ContactListPageLight() {
     }
 
+    @Override
+    public void waitUntilPageObjectIsLoaded() { }
 
-    //a[text()='Estalin yerel 2018.09.18.15.35.27']
     /**
      * this method return contact form type light.
      *
@@ -45,5 +46,16 @@ public class ContactListPageLight extends ContactListPage {
     @Override
     public boolean isContactSelected(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//a[text()='"+ contact.getFullName() + "']"));
+    }
+
+    /**
+     * @param contact - entity contact.
+     *
+     * @return contact details light.
+     */
+    @Override
+        public ContactDetails contactSelected(Contact contact) {
+        driverTools.clickOnElementDisplayed(By.xpath("//a[text()='"+ contact.getFullName() + "']"));
+        return new ContactDetailsLight();
     }
 }
