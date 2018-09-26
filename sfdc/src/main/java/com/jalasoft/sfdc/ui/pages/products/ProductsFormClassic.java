@@ -68,7 +68,7 @@ public class ProductsFormClassic extends ProductsForm {
         }else{
             driverTools.selectChkBox(activeChkBox);
         }
-        chooseProductFamilyClassicCmbBox(product.getProductFamily());
+        //chooseProductFamilyClassicCmbBox(product.getProductFamily());
         driverTools.clickElement(saveBtn);
         product.setId(getUrlCurrent(driver.getCurrentUrl()));
         return new ProductsDetailPageClassic();

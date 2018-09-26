@@ -13,6 +13,7 @@
  */
 package com.jalasoft.sfdc.ui.pages.products;
 
+import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +25,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @since 9/11/2018
  */
 public class ProductsListPageClassic extends ProductsListPage {
+
+    private static final String INIT_URL_CLASSIC = "https://na49.salesforce.com/";
 
     @FindBy(xpath = "//*[@value = ' New ']")
     private WebElement newBtn;
@@ -43,6 +46,18 @@ public class ProductsListPageClassic extends ProductsListPage {
         }
         driverTools.clickElement(newBtn);
         return new ProductsFormClassic();
+    }
+
+    /**
+     * Method that an Entity receives and through its ID navigate to a Product Detail Page in the skin classic.
+     *
+     * @param product an Entity of type Product.
+     * @return returns a Product Detail Page Classic.
+     */
+    @Override
+    public ProductsDetailPage goToTheDetailsPage(Product product) {
+        driver.navigate().to(INIT_URL_CLASSIC + product.getId());
+        return new ProductsDetailPageClassic();
     }
 
     /**

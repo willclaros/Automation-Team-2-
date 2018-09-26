@@ -63,20 +63,22 @@ public class ProductsFormLight extends ProductsForm {
         driverTools.setInputField(productNameTxtBox, product.getProductName());
         driverTools.setInputField(productCodeTxtBox, product.getProductCode());
         driverTools.setInputField(descriptionTxtBox, product.getProductDescription());
-        if (product.getStatusActive().equalsIgnoreCase("false") || product.getStatusActive().isEmpty()) {
+        /*if (product.getStatusActive().equalsIgnoreCase("false") || product.getStatusActive().isEmpty()) {
             driverTools.clearChkBox(activeChkBox);
         } else {
             driverTools.selectChkBox(activeChkBox);
-        }
-        chooseProductFamilyLightCmbBox(product.getProductFamily());
+        }*/
+        //chooseProductFamilyLightCmbBox(product.getProductFamily());
         driverTools.clickElement(saveBtn);
+        driverTools.sleepMilliSeconds(3000);
+        //wait.until(ExpectedConditions.invisibilityOf(saveBtn));
         product.setId(getUrlCurrent(driver.getCurrentUrl()));
         return new ProductsDetailPageLight();
     }
 
     private String getUrlCurrent(String currentUrl){
         String[] currentUrlList = currentUrl.split("/");
-        String idUrl = currentUrlList[currentUrlList.length - 2];
+        String idUrl = currentUrlList[currentUrlList.length-2];
         return idUrl;
     }
 
