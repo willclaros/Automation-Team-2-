@@ -15,6 +15,9 @@ public class  AccountDetailsPageLight extends AccountDetailsPage {
     @FindBy(xpath = "//a[@title='Details']")
     private WebElement detailsLink;
 
+    @FindBy(xpath = "//a[@title='Edit']")
+    private WebElement detailsBtn;
+
     @FindBy(css = "a[title='Related']")
     private WebElement relatedBtn;
 
@@ -188,6 +191,14 @@ public class  AccountDetailsPageLight extends AccountDetailsPage {
         driverTools.clickElement(deletePopappBtn);
         return new AccountsListPageLight();
     }
+
+    @Override
+    public AccountForm getToTheDetailsAccountPage() {
+        driverTools.clickElement(moreBtn);
+        driverTools.clickElement(detailsBtn);
+        return new AccountFormClassic();
+    }
+
 
 
     /**

@@ -160,8 +160,6 @@ public class AccountFormLight extends AccountForm {
      */
     @Override
     public AccountDetailsPage editAccountData(Account account) {
-        driverTools.clickElement(moreBtn);
-        driverTools.clickElement(editBtn);
         driverTools.clearTextField(editNameTxtBox);
         driverTools.setInputField(editNameTxtBox, account.getAccountName());
         driverTools.clearTextField(editPhoneTxtBox);
