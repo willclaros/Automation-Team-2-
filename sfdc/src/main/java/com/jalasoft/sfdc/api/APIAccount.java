@@ -30,10 +30,10 @@ public class APIAccount {
     protected Map<String, Object> covertEntityToMap() {
         Map<String, Object> map = new HashMap<>();
         map.put("Name", account.getAccountName());
-    map.put("TickerSymbol", account.getTicker());
-    map.put("Phone", account.getPhone());
-    map.put("Fax", account.getFax());
-    map.put("AccountNumber", account.getAccountNumber());
+        map.put("TickerSymbol", account.getTicker());
+        map.put("Phone", account.getPhone());
+        map.put("Fax", account.getFax());
+        map.put("AccountNumber", account.getAccountNumber());
         return map;
     }
 
@@ -59,9 +59,5 @@ public class APIAccount {
         return  response;
 
     }
-
-//    public boolean searchAccountByAPI(String id) {
-//        re
-//    }
 
 }

@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
 import com.jalasoft.sfdc.entities.Account;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -89,6 +90,9 @@ public class AccountFormClassic extends AccountForm {
 
     @FindBy(xpath = "//*[@title='Edit']" )
     private WebElement editBtn;
+
+    @FindBy(xpath = "//*[@class='dialogClose']")
+    private WebElement exitBtn;
 
     /**
      * Method to enter the values ​​from the entity

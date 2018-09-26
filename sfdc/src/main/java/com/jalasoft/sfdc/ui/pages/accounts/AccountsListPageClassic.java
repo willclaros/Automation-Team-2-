@@ -50,6 +50,12 @@ public class AccountsListPageClassic extends AccountsListPage {
         return driverTools.isElementDisplayed(By.xpath("//a[text()='"+nameAccountDelete+"']"));
     }
 
+    @Override
+    public AccountDetailsPage goToTheDetailsPage(Account account) {
+        driver.navigate().to("https://na49.salesforce.com/"+account.getId());
+        return new AccountDetailsPageClassic();
+    }
+
     /**
      * Waits until page object is loaded.
      */

@@ -2,6 +2,7 @@ package com.jalasoft.sfdc.ui.pages.accounts;
 
 import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.BasePage;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,10 +29,12 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
     @FindBy(xpath = "//input[@title='Delete']")
     private WebElement deleteBtn;
 
+    @FindBy(xpath = "//input[@title='Edit']")
+    private WebElement editBtn;
+
     @FindBy(xpath = "//div[@id='acc10_ileinner']")
     private WebElement phoneLbl;
 
-    //span[text()='Fax']/parent::div/following-sibling::div/child::span/child::span
     @FindBy(xpath = "//div[@id='acc11_ileinner']")
     private WebElement faxLbl;
 
@@ -43,6 +46,9 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
 
     @FindBy(xpath = "//div[@id='acc13_ileinner']")
     private WebElement tickerLbl;
+
+    @FindBy(xpath = "//*[@class='dialogClose']")
+    private WebElement exitBtn;
 
 
     /**
@@ -119,7 +125,6 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
      * method to inspect the item is displayed
      *
      * @param account entities
-     *
      * @return the element if it is visible
      */
     @Override
@@ -132,7 +137,6 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
      * method to inspect the item is displayed
      *
      * @param account entities
-     *
      * @return the element if it is visible
      */
     @Override
@@ -144,7 +148,6 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
      * method to inspect the item is displayed
      *
      * @param account entities
-     *
      * @return the element if it is visible
      */
     @Override
@@ -156,7 +159,6 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
      * method to inspect the item is displayed
      *
      * @param account entities
-     *
      * @return the element if it is visible
      */
     @Override
@@ -168,7 +170,6 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
      * method to inspect the item is displayed
      *
      * @param account entities
-     *
      * @return the element if it is visible
      */
     @Override
@@ -180,7 +181,6 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
      * method for access to AcccountsListClassic
      *
      * @param account entities
-     *
      * @return the pague Acccounts ListClassic
      */
     @Override
@@ -188,6 +188,15 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
         driverTools.clickElement(deleteBtn);
         acceptAlertDialog();
         return new AccountsListPageClassic();
+    }
+
+    @Override
+    public AccountForm getToTheDetailsAccountPage() {
+        if (exitBtn.isDisplayed()) {
+            driverTools.clickElement(exitBtn);
+        }
+
+        return new AccountFormClassic();
     }
 
     /**

@@ -13,4 +13,5 @@ import com.jalasoft.sfdc.ui.BasePage;
 public abstract class AccountsListPage extends BasePage {
     public abstract AccountForm createNewAccount();
     public abstract boolean verifyDeleteAccount(Account account);
+    public abstract AccountDetailsPage goToTheDetailsPage(Account account);
 }

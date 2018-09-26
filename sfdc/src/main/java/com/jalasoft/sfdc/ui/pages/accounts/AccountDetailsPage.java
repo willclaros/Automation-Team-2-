@@ -30,4 +30,5 @@ public abstract class AccountDetailsPage extends BasePage {
     public abstract boolean isAccountTickerDisplayed(Account account);
     public abstract boolean isAccountPhoneDisplayed(Account account);
     public abstract AccountsListPage deleteAccount(Account account);
+    public abstract AccountForm getToTheDetailsAccountPage();
 }
