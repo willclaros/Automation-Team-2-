@@ -13,7 +13,6 @@ import org.openqa.selenium.support.FindBy;
 public class ContactFormClassic extends ContactForm {
 
     private static final int MILLSECOND = 9000;
-
     @FindBy(css = "input#name_firstcon2")
     private WebElement firtNameTxtBox;
 

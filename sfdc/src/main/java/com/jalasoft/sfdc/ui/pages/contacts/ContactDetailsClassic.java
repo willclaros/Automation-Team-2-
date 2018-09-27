@@ -14,7 +14,6 @@ public class ContactDetailsClassic extends ContactDetails {
 
     public final static int NUMBER_ONE = 1;
     public final static String SLASH = "/";
-
     @FindBy(css = "//span[text()='Details']")
     private WebElement detailsLbl;
 

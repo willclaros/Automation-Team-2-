@@ -14,7 +14,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ContactFormLight extends ContactForm {
 
     private static final int MILLSECOND = 9000;
-
     @FindBy(xpath = "//*[@class='lastName compoundBLRadius compoundBRRadius form-element__row input']")
     private WebElement lastNameTxtBox;
 

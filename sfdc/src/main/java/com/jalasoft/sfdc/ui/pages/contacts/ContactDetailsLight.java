@@ -14,7 +14,6 @@ public class ContactDetailsLight extends ContactDetails {
 
     public final static int NUMBER_TWO = 2;
     public final static String SLASH = "/";
-
     @FindBy(xpath = "//span[text()='Name']/parent::div/following-sibling::div/span/child::span")
     private WebElement contactNameLbl;
 

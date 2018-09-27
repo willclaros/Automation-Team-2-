@@ -17,7 +17,6 @@ public class ContactListPageClassic extends ContactListPage {
     private static final String CONTACT_PATH_ONE = "//a[text()='";
     private static final String CONTACT_PATH_TWO = "']";
     private static final String POINT = ", ";
-
     @FindBy(xpath = "//input[@title='New']")
     private WebElement newButton;
 

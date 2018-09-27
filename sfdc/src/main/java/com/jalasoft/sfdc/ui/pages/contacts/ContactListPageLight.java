@@ -17,7 +17,6 @@ public class ContactListPageLight extends ContactListPage {
     private static final String CONTACT_PATH_ONE = "//a[text()='";
     private static final String CONTACT_PATH_TWO = "']";
     private static final String NEW_CONTACT = "//div[@title='New']";
-
     @FindBy(xpath = NEW_CONTACT)
     private WebElement newButton;
 
