@@ -14,13 +14,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ContactListPageClassic extends ContactListPage {
 
-    private static final String TITLE_NEW = "//input[@title='New']";
-    private static final String EXIT_BUTTON = "//*[@class='dialogClose']";
-
-    @FindBy(xpath = TITLE_NEW)
+    private static final String CONTACT_PATH_ONE = "//a[text()='";
+    private static final String CONTACT_PATH_TWO = "']";
+    private static final String POINT = ", ";
+    @FindBy(xpath = "//input[@title='New']")
     private WebElement newButton;
 
-    @FindBy(xpath = EXIT_BUTTON)
+    @FindBy(xpath = "//*[@class='dialogClose']")
     private WebElement exitBtn;
 
     /**
@@ -43,7 +43,7 @@ public class ContactListPageClassic extends ContactListPage {
      */
     @Override
     public boolean isContactSelected(Contact contact) {
-        return driverTools.isElementDisplayed(By.xpath("//a[text()='"+ contact.getFullName() + "']"));
+        return driverTools.isElementDisplayed(By.xpath(CONTACT_PATH_ONE+ contact.getFullName() + CONTACT_PATH_TWO));
     }
 
     /**
@@ -52,7 +52,11 @@ public class ContactListPageClassic extends ContactListPage {
      */
     @Override
     public ContactDetails contactSelected(Contact contact) {
-        return null;
+        if (driverTools.isElementDisplayed(exitBtn)){
+            driverTools.clickElement(exitBtn);
+        }
+        driverTools.clickOnElementDisplayed(By.xpath(CONTACT_PATH_ONE+ contact.getLastName()+POINT+contact.getFirstName() + CONTACT_PATH_TWO));
+        return new ContactDetailsClassic();
     }
 
     /**

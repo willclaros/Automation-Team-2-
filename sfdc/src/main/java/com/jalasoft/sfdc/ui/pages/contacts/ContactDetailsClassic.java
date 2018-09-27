@@ -12,6 +12,8 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ContactDetailsClassic extends ContactDetails {
 
+    public final static int NUMBER_ONE = 1;
+    public final static String SLASH = "/";
     @FindBy(css = "//span[text()='Details']")
     private WebElement detailsLbl;
 
@@ -46,15 +48,18 @@ public class ContactDetailsClassic extends ContactDetails {
     @Override
     public void goToValidateContact(Contact contact) {
         contact.setId(getUrlCurrent(driver.getCurrentUrl()));
+        System.out.println(getUrlCurrent(driver.getCurrentUrl()));
     }
 
     /**
-     * @param currentUrl
-     * @return
+     * get url of contact.
+     *
+     * @param currentUrl - url of actual contact created.
+     * @return Id of contact created.
      */
     private String getUrlCurrent(String currentUrl) {
-        String[] currentUrlList = currentUrl.split("/");
-        String idUrl = currentUrlList[currentUrlList.length - 2];
+        String[] currentUrlList = currentUrl.split(SLASH);
+        String idUrl = currentUrlList[currentUrlList.length - NUMBER_ONE];
         return idUrl;
     }
 

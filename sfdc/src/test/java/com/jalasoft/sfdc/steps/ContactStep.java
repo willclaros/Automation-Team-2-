@@ -151,7 +151,8 @@ public class ContactStep {
      */
     @And("^the Contact should be deleted$")
     public void theContactShouldBeDeleted() {
-        assertTrue(response.asString().isEmpty());
+        response = apiContact.deleteContactByAPI();
+        assertTrue(response.asString().contains("entity is deleted"));
     }
 
     //****************************************************************

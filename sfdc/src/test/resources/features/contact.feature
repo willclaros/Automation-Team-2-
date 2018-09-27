@@ -44,4 +44,4 @@ Feature: create contact in Salesforce
     #UI
     Then I should see the actual Contact deleted
     #api
-  #   And the Contact should be deleted
+     And the Contact should be deleted
