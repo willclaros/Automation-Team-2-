@@ -12,9 +12,10 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ContactDetailsLight extends ContactDetails {
 
-    private static final String NAME = "//span[text()='Name']/parent::div/following-sibling::div/span/child::span";
+    public final static int NUMBER_TWO = 2;
+    public final static String SLASH = "/";
 
-    @FindBy(xpath = NAME)
+    @FindBy(xpath = "//span[text()='Name']/parent::div/following-sibling::div/span/child::span")
     private WebElement contactNameLbl;
 
     @FindBy(xpath = "//span[text()='Phone']/parent::div/following-sibling::div/span/child::span")
@@ -81,8 +82,8 @@ public class ContactDetailsLight extends ContactDetails {
      * @return ide Url.
      */
     private String getUrlCurrent(String currentUrl) {
-        String[] currentUrlList = currentUrl.split("/");
-        String idUrl = currentUrlList[currentUrlList.length - 2];
+        String[] currentUrlList = currentUrl.split(SLASH);
+        String idUrl = currentUrlList[currentUrlList.length - NUMBER_TWO];
         return idUrl;
     }
 

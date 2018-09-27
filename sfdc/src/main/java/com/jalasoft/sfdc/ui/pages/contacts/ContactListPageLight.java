@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ContactListPageLight extends ContactListPage {
 
+    private static final String CONTACT_PATH_ONE = "//a[text()='";
+    private static final String CONTACT_PATH_TWO = "']";
     private static final String NEW_CONTACT = "//div[@title='New']";
 
     @FindBy(xpath = NEW_CONTACT)
@@ -45,7 +47,7 @@ public class ContactListPageLight extends ContactListPage {
      */
     @Override
     public boolean isContactSelected(Contact contact) {
-        return driverTools.isElementDisplayed(By.xpath("//a[text()='"+ contact.getFullName() + "']"));
+        return driverTools.isElementDisplayed(By.xpath(CONTACT_PATH_ONE+ contact.getFullName() + CONTACT_PATH_TWO));
     }
 
     /**
@@ -55,7 +57,7 @@ public class ContactListPageLight extends ContactListPage {
      */
     @Override
         public ContactDetails contactSelected(Contact contact) {
-        driverTools.clickOnElementDisplayed(By.xpath("//a[text()='"+ contact.getFullName() + "']"));
+        driverTools.clickOnElementDisplayed(By.xpath(CONTACT_PATH_ONE+ contact.getFullName() + CONTACT_PATH_TWO));
         return new ContactDetailsLight();
     }
 }

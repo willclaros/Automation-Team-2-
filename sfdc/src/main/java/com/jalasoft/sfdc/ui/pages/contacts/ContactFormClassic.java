@@ -12,13 +12,12 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ContactFormClassic extends ContactForm {
 
-    private static final String LAST_NAME = "input#name_lastcon2";
-    private static final String SAVE = "(//input[@title='Save'])[1]";
+    private static final int MILLSECOND = 9000;
 
     @FindBy(css = "input#name_firstcon2")
     private WebElement firtNameTxtBox;
 
-    @FindBy(css = LAST_NAME)
+    @FindBy(css = "input#name_lastcon2")
     private WebElement LastNameTxtBox;
 
     @FindBy(css = "#con4")
@@ -76,7 +75,7 @@ public class ContactFormClassic extends ContactForm {
     private WebElement countryTxtBox;
 
 
-    @FindBy(xpath = SAVE)
+    @FindBy(xpath = "(//input[@title='Save'])[1]")
     private WebElement saveBtn;
 
     /**
@@ -127,7 +126,7 @@ public class ContactFormClassic extends ContactForm {
         if (contact.getOtherCountry()!=null)
             driverTools.setInputField(countryTxtBox,contact.getOtherCountry());
         driverTools.clickElement(saveBtn);
-        driverTools.sleepMilliSeconds(9000);
+        driverTools.sleepMilliSeconds(MILLSECOND);
         return new ContactDetailsClassic();
     }
 
