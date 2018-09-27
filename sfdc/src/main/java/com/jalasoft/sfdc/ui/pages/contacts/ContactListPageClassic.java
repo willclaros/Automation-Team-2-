@@ -52,7 +52,11 @@ public class ContactListPageClassic extends ContactListPage {
      */
     @Override
     public ContactDetails contactSelected(Contact contact) {
-        return null;
+        if (driverTools.isElementDisplayed(exitBtn)){
+            driverTools.clickElement(exitBtn);
+        }
+        driverTools.clickOnElementDisplayed(By.xpath("//a[text()='"+ contact.getLastName()+", "+contact.getFirstName() + "']"));
+        return new ContactDetailsClassic();
     }
 
     /**

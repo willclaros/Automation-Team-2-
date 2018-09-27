@@ -46,15 +46,18 @@ public class ContactDetailsClassic extends ContactDetails {
     @Override
     public void goToValidateContact(Contact contact) {
         contact.setId(getUrlCurrent(driver.getCurrentUrl()));
+        System.out.println(getUrlCurrent(driver.getCurrentUrl()));
     }
 
     /**
-     * @param currentUrl
-     * @return
+     * get url of contact.
+     *
+     * @param currentUrl - url of actual contact created.
+     * @return Id of contact created.
      */
     private String getUrlCurrent(String currentUrl) {
         String[] currentUrlList = currentUrl.split("/");
-        String idUrl = currentUrlList[currentUrlList.length - 2];
+        String idUrl = currentUrlList[currentUrlList.length - 1];
         return idUrl;
     }
 
