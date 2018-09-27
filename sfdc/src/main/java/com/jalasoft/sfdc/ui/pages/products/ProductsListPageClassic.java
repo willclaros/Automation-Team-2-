@@ -57,7 +57,7 @@ public class ProductsListPageClassic extends ProductsListPage {
     @Override
     public ProductsDetailPage goToTheDetailsPage(Product product) {
         driver.navigate().to(INIT_URL_CLASSIC + product.getId());
-        driverTools.sleepMilliSeconds(6000);
+        driverTools.sleepMilliSeconds(3000);
         while (exitBtn.isDisplayed()){
             driverTools.clickElement(exitBtn);
         }
