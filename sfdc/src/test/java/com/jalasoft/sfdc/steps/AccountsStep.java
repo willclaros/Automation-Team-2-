@@ -9,6 +9,7 @@ import com.jalasoft.sfdc.ui.pages.accounts.AccountsListPage;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -32,6 +33,12 @@ public class AccountsStep {
     private APIAccount apiAccount;
     protected io.restassured.response.Response response;
 
+    public AccountsStep (Account account){
+        this.account = account;
+//        this.product = productList.get(0):
+    }
+
+
     //****************************************************************
     //Account Step Definitions
     //****************************************************************
@@ -51,6 +58,7 @@ public class AccountsStep {
     @And("^I fill the following information in accounts$")
     public void iFillTheFollowingInformation(List<Account> accountList) {
         this.account = accountList.get(0);
+        apiAccount = new APIAccount(account);
         account.setAccountName(accountList.get(0).getAccountName());
         accountDetailsPage = accountForm.fillAccountForm(account);
     }
@@ -158,14 +166,15 @@ public class AccountsStep {
         assertEquals(accountApi.getTicker(),account.getTicker());
     }
 
-//    @After(value = "@DeleteAccount", order = 999)
-//    public void afterAccountScenario() {
-//        apiAccount.deleteAccountByAPI();
-//    }
+    @After(value = "@DeleteAccount", order = 999)
+    public void afterAccountScenario() {
+        apiAccount.deleteAccountByAPI();
+    }
 
-    @Given("^I have created the Contact with the following information$")
+    @Given("^I have created the Account with the following information$")
     public void iHaveCreatedTheContactWithTheFollowingInformation(List<Account> accountList) {
         this.account = accountList.get(0);
+        account.update();
         apiAccount = new APIAccount(account);
         apiAccount.createAccountByAPI();
     }
@@ -186,7 +195,7 @@ public class AccountsStep {
         theAccountShouldBeCreated();
     }
 
-    @Given("^I have created the Account with the following information$")
+    @Given("^I have created the Account with the following information.$")
     public void iHaveCreatedTheAccountWithTheFollowingInformation(List<Account> accountList) {
         iHaveCreatedTheContactWithTheFollowingInformation(accountList);
 
@@ -199,7 +208,9 @@ public class AccountsStep {
 
     @And("^the Account should be deleted$")
     public void theAccountShouldBeDeleted() {
-        assertTrue(response.asString().isEmpty(),"compare if response is empy");
+//        assertTrue(response.asString().isEmpty(),"compare if response is empy");
 //        assertTrue(accountApi.getAccountName().isEmpty());
+        response = apiAccount.deleteAccountByAPI();
+        assertTrue(response.asString().contains("entity is deleted"));
     }
 }

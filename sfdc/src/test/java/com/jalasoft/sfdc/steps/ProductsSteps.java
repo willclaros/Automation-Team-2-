@@ -14,13 +14,12 @@
 package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.api.APIProduct;
+import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.products.ProductsForm;
-import com.jalasoft.sfdc.ui.pages.products.ProductsDetailPage;
-import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
+import com.jalasoft.sfdc.ui.pages.products.*;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
@@ -50,9 +49,15 @@ public class ProductsSteps {
     private ProductsDetailPage productsDetailPage;
     private Product product;
     private Response response;
-
+    private Account account;
     private Product productAPI;
     private APIProduct apiProduct;
+    private ProductAddStandardPrice productAddStandardPrice;
+    private ProductAddPriceBooks productAddPriceBooks;
+
+    public ProductsSteps (Product product){
+        this.product = product;
+    }
 
     @And("^I go to Products page$")
     public void iGoToProductsPage() {
@@ -134,7 +139,20 @@ public class ProductsSteps {
     }
 
     @And("^I go by URL to the Product Details page$")
-    public void iSelectTheProductByURL() throws Throwable {
+    public void iSelectTheProductByURL() {
        productsDetailPage = productsListPage.goToTheDetailsPage(product);
+    }
+
+
+    @And("^I add the Product to the Standard Price Book$")
+    public void iAddTheProductToTheStandardPriceBook() throws Throwable {
+        iGoToProductsPage();
+        System.out.println("product---------------------"+product.getId());
+        productsDetailPage = productsListPage.goToTheDetailsPage(product);
+        productAddStandardPrice = productsDetailPage.gotoAddStandardPrice();
+        productsDetailPage = productAddStandardPrice.goToDetailPage();
+        productAddPriceBooks = productsDetailPage.gotoAddPriceBook();
+        productsDetailPage = productAddPriceBooks.filldataPriceBook();
+
     }
 }

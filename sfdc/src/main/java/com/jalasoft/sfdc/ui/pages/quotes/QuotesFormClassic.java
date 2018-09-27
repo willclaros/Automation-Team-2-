@@ -26,8 +26,6 @@ public class QuotesFormClassic extends QuotesForm {
     public QuotesDetailPage createQuote(Quote quote) {
         driverTools.setInputField(quoteNameTxt,quote.getQuoteName());
         driverTools.clickElement(saveBtn);
-        driverTools.clickElement(allQuoteBtn);
-
         return new QuotesDetailPageClassic();
     }
 }

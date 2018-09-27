@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 public class OpportunityFormClassic extends OpportunityForm {
 
@@ -42,8 +43,11 @@ public class OpportunityFormClassic extends OpportunityForm {
     public OpportunityDetailPage setFormOpportunity(Opportunity opportunity) {
         driverTools.setInputField(nameTxtBox, opportunity.getNameOpportunity());
         chooseStageClassicCmbBox(opportunity.getStage());
+
         WebElement dateBox = driver.findElement(By.cssSelector(".requiredInput input[name='opp9']"));
         dateBox.sendKeys(opportunity.getCloseDate());
+
+//        driverTools.setInputField(accountTxtBox,opportunity.getAccount.getName());
 
         driverTools.setInputField(closeDateCmbBox, opportunity.getCloseDate());
         driverTools.clickElement(saveBtn);
@@ -56,6 +60,8 @@ public class OpportunityFormClassic extends OpportunityForm {
      * @param stageFamily is a string that represents the option of the combo box that is required to select.
      */
     public OpportunityForm chooseStageClassicCmbBox(final String stageFamily) {
+        Select stageCmbBoxSelect = new Select(stageCmbBox);
+        stageCmbBoxSelect.selectByVisibleText(stageFamily);
         wait.until(ExpectedConditions.elementToBeClickable(stageCmbBox));
         driverTools.clickElement(stageCmbBox);
         if (!stageFamily.isEmpty()) {

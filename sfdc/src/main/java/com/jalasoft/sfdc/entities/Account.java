@@ -36,19 +36,21 @@ public class Account {
     private String slaSerialNumber = "";
     private String numberOfLocations = "";
     private String description = "";
-    private String rating ="";
+    private String rating = "";
     private String id = "";
 
     /**
      * Gets the account name.
+     *
      * @return the current account name.
      */
     public String getAccountName() {
-        return  accountName;
+        return accountName;
     }
 
     /**
      * Sets the account name.
+     *
      * @param accountName user name to set.
      */
     public void setAccountName(final String accountName) {
@@ -58,6 +60,7 @@ public class Account {
 
     /**
      * Gets the account phone.
+     *
      * @return the value of the phone.
      */
     public String getPhone() {
@@ -66,6 +69,7 @@ public class Account {
 
     /**
      * Sets the account phone.
+     *
      * @param phone account phone to set.
      */
     public void setPhone(final String phone) {
@@ -74,6 +78,7 @@ public class Account {
 
     /**
      * Gets the account fax.
+     *
      * @return the value of the fax.
      */
     public String getFax() {
@@ -82,6 +87,7 @@ public class Account {
 
     /**
      * Sets the account fax.
+     *
      * @param fax account fax to set.
      */
     public void setFax(final String fax) {
@@ -90,6 +96,7 @@ public class Account {
 
     /**
      * Gets the account number.
+     *
      * @return the value of the number.
      */
     public String getAccountNumber() {
@@ -98,6 +105,7 @@ public class Account {
 
     /**
      * Sets the account number.
+     *
      * @param accountNumber account number to set.
      */
     public void setAccountNumber(final String accountNumber) {
@@ -106,6 +114,7 @@ public class Account {
 
     /**
      * Gets the account Web site.
+     *
      * @return the value of the Web site.
      */
     public String getWebSite() {
@@ -114,6 +123,7 @@ public class Account {
 
     /**
      * Sets the account Web site.
+     *
      * @param webSite account Web site to set.
      */
     public void setWebSite(final String webSite) {
@@ -122,6 +132,7 @@ public class Account {
 
     /**
      * Gets the account site.
+     *
      * @return the value of the account site.
      */
     public String getAccountSite() {
@@ -130,6 +141,7 @@ public class Account {
 
     /**
      * Sets the account site.
+     *
      * @param accountSite account site to set.
      */
     public void setAccountSite(final String accountSite) {
@@ -138,6 +150,7 @@ public class Account {
 
     /**
      * Gets the account ticker.
+     *
      * @return the value of the account ticker.
      */
     public String getTicker() {
@@ -146,6 +159,7 @@ public class Account {
 
     /**
      * Sets the account ticker.
+     *
      * @param ticker account ticker to set.
      */
     public void setTicker(final String ticker) {
@@ -154,6 +168,7 @@ public class Account {
 
     /**
      * Gets the account employees.
+     *
      * @return the value of the account employees.
      */
     public String getEmployees() {
@@ -162,6 +177,7 @@ public class Account {
 
     /**
      * Sets the account employees.
+     *
      * @param employees account employees to set.
      */
     public void setEmployees(final String employees) {
@@ -170,6 +186,7 @@ public class Account {
 
     /**
      * Gets the account Annual Revenue.
+     *
      * @return the value of the account Annual Revenue.
      */
     public String getAnnualRevenue() {
@@ -178,6 +195,7 @@ public class Account {
 
     /**
      * Sets the account Annual Revenue.
+     *
      * @param annualRevenue account Annual Revenue to set.
      */
     public void setAnnualRevenue(final String annualRevenue) {
@@ -186,6 +204,7 @@ public class Account {
 
     /**
      * Gets the account Sic Code.
+     *
      * @return the value of the account Sic Code.
      */
     public String getSicCode() {
@@ -194,6 +213,7 @@ public class Account {
 
     /**
      * Sets the account Sic Code.
+     *
      * @param sicCode account Sic Code to set.
      */
     public void setSicCode(final String sicCode) {
@@ -202,6 +222,7 @@ public class Account {
 
     /**
      * Gets the account Sector.
+     *
      * @return the value of the account Sector.
      */
     public String getSector() {
@@ -210,6 +231,7 @@ public class Account {
 
     /**
      * Sets the account Sector.
+     *
      * @param sector account Sector to set.
      */
     public void setSector(final String sector) {
@@ -218,6 +240,7 @@ public class Account {
 
     /**
      * Gets the account Billing Street.
+     *
      * @return the value of the account Billing Street.
      */
     public String getBillingStreet() {
@@ -226,6 +249,7 @@ public class Account {
 
     /**
      * Sets the account Billing Street.
+     *
      * @param billingStreet account Billing Street to set.
      */
     public void setBillingStreet(final String billingStreet) {
@@ -234,6 +258,7 @@ public class Account {
 
     /**
      * Gets the account Billing City.
+     *
      * @return the value of the account Billing City.
      */
     public String getBillingCity() {
@@ -242,6 +267,7 @@ public class Account {
 
     /**
      * Sets the account Billing City.
+     *
      * @param billingCity account Billing City to set.
      */
     public void setBillingCity(final String billingCity) {
@@ -250,6 +276,7 @@ public class Account {
 
     /**
      * Gets the account Billing State.
+     *
      * @return the value of the account Billing State.
      */
     public String getBillingState() {
@@ -258,6 +285,7 @@ public class Account {
 
     /**
      * Sets the account Billing State.
+     *
      * @param billingState account Billing State to set.
      */
     public void setBillingState(final String billingState) {
@@ -266,6 +294,7 @@ public class Account {
 
     /**
      * Gets the account Billing Zip.
+     *
      * @return the value of the account Billing Zip.
      */
     public String getBillingZip() {
@@ -274,6 +303,7 @@ public class Account {
 
     /**
      * Sets the account Billing Zip.
+     *
      * @param billingZip account Billing Zip to set.
      */
     public void setBillingZip(final String billingZip) {
@@ -282,6 +312,7 @@ public class Account {
 
     /**
      * Gets the account Billing Country.
+     *
      * @return the value of the account Billing Country.
      */
     public String getBillingCountry() {
@@ -290,6 +321,7 @@ public class Account {
 
     /**
      * Sets the account Billing County.
+     *
      * @param billingCountry account Billing County to set.
      */
     public void setBillingCountry(final String billingCountry) {
@@ -298,6 +330,7 @@ public class Account {
 
     /**
      * Gets the account Shipping Street.
+     *
      * @return the value of the account Shipping Street.
      */
     public String getShippingStreet() {
@@ -306,6 +339,7 @@ public class Account {
 
     /**
      * Sets the account Shipping Street.
+     *
      * @param shippingStreet account Shipping Street to set.
      */
     public void setShippingStreet(final String shippingStreet) {
@@ -314,6 +348,7 @@ public class Account {
 
     /**
      * Gets the account Shipping City.
+     *
      * @return the value of the account Shipping City.
      */
     public String getShippingCity() {
@@ -322,6 +357,7 @@ public class Account {
 
     /**
      * Sets the account Shipping City.
+     *
      * @param shippingCity account Shipping City to set.
      */
     public void setShippingCity(final String shippingCity) {
@@ -330,6 +366,7 @@ public class Account {
 
     /**
      * Gets the account Shipping State.
+     *
      * @return the value of the account Shipping State.
      */
     public String getShippingState() {
@@ -338,6 +375,7 @@ public class Account {
 
     /**
      * Sets the account Shipping State.
+     *
      * @param shippingState account Shipping State to set.
      */
     public void setShippingState(final String shippingState) {
@@ -346,6 +384,7 @@ public class Account {
 
     /**
      * Gets the account Shipping Zip.
+     *
      * @return the value of the account Shipping Zip.
      */
     public String getShippingZip() {
@@ -354,6 +393,7 @@ public class Account {
 
     /**
      * Sets the account Shipping Zip.
+     *
      * @param shippingZip account Shipping Zip to set.
      */
     public void setShippingZip(final String shippingZip) {
@@ -362,6 +402,7 @@ public class Account {
 
     /**
      * Gets the account Shipping Country.
+     *
      * @return the value of the account Shipping Country.
      */
     public String getShippingCountry() {
@@ -370,6 +411,7 @@ public class Account {
 
     /**
      * Sets the account Shipping Country.
+     *
      * @param shippingCountry account Shipping Country to set.
      */
     public void setShippingCountry(final String shippingCountry) {
@@ -378,6 +420,7 @@ public class Account {
 
     /**
      * Gets the account Sla Expiration Date.
+     *
      * @return the value of the account Sla Expiration Date.
      */
     public String getSlaExpirationDate() {
@@ -386,6 +429,7 @@ public class Account {
 
     /**
      * Sets the account Sla Expiration Date.
+     *
      * @param slaExpirationDate account Sla Expiration Date to set.
      */
     public void setSlaExpirationDate(final String slaExpirationDate) {
@@ -394,6 +438,7 @@ public class Account {
 
     /**
      * Gets the account Sla Serial Number.
+     *
      * @return the value of the account Sla Serial Number.
      */
     public String getSlaSerialNumber() {
@@ -402,6 +447,7 @@ public class Account {
 
     /**
      * Sets the account Sla Serial Number.
+     *
      * @param slaSerialNumber account Sla Serial Number to set.
      */
     public void setSlaSerialNumber(final String slaSerialNumber) {
@@ -410,6 +456,7 @@ public class Account {
 
     /**
      * Gets the account Number Of Locations.
+     *
      * @return the value of the account Number Of Locations.
      */
     public String getNumberOfLocations() {
@@ -418,6 +465,7 @@ public class Account {
 
     /**
      * Sets the account Number Of Locations.
+     *
      * @param numberOfLocations account Number Of Locations to set.
      */
     public void setNumberOfLocations(final String numberOfLocations) {
@@ -426,6 +474,7 @@ public class Account {
 
     /**
      * Gets the account Description.
+     *
      * @return the value of the account Description.
      */
     public String getDescription() {
@@ -434,25 +483,54 @@ public class Account {
 
     /**
      * Sets the account Description.
+     *
      * @param description account Description to set.
      */
     public void setDescription(final String description) {
         this.description = description;
     }
 
+    /**
+     * Method take data of rating
+     *
+     * @return rating
+     */
     public String getRating() {
         return rating;
     }
 
+    /**
+     * Method insert data rating
+     *
+     * @param rating value
+     */
     public void setRating(String rating) {
         this.rating = rating;
     }
 
+    /**
+     * Gets the account Id.
+     *
+     * @return the value of the account Id.
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Sets the account Id.
+     *
+     * @param id account Id to set.
+     */
     public void setId(String id) {
         this.id = id;
+    }
+
+    /**
+     * Method of add timestamp
+     */
+    public void update() {
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        accountName.concat(timeStamp);
     }
 }

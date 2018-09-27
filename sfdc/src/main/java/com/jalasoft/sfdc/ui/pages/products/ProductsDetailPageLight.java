@@ -151,4 +151,14 @@ public class ProductsDetailPageLight extends ProductsDetailPage {
     public boolean verifyDeletedProduct(Product product) {
         return driverTools.isElementDisplayed((By.xpath("//a[text()= '"+product.getProductName()+"']")));
     }
+
+    @Override
+    public ProductAddStandardPrice gotoAddStandardPrice() {
+        return null;
+    }
+
+    @Override
+    public ProductAddPriceBooks gotoAddPriceBook() {
+        return null;
+    }
 }
