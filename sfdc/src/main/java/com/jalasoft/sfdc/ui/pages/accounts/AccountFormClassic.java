@@ -1,10 +1,8 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
 import com.jalasoft.sfdc.entities.Account;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 /**
@@ -122,7 +120,6 @@ public class AccountFormClassic extends AccountForm {
      */
     @Override
     public AccountDetailsPage editAccountData(Account account) {
-        driverTools.clickElement(editBtn);
         driverTools.clearTextField(nameAccountTxtBox);
         driverTools.setInputField(nameAccountTxtBox, account.getAccountName());
         driverTools.clearTextField(phoneTxtBox);
@@ -134,11 +131,18 @@ public class AccountFormClassic extends AccountForm {
         driverTools.clearTextField(tickerTxtBox);
         driverTools.setInputField(tickerTxtBox, account.getTicker());
         driverTools.clickElement(saveBtn);
-        account.setId(getUrlCurrent(driver.getCurrentUrl()));
+        account.setId(getIdUrl(driver.getCurrentUrl()));
         return  new AccountDetailsPageClassic();
     }
 
-    private String getUrlCurrent(String currentUrl){
+    /**
+     * Method for take URL
+     *
+     * @param currentUrl string of Url
+     *
+     * @return  String Id of Account created
+     */
+    private String getIdUrl(String currentUrl){
         String[] currentUrlList = currentUrl.split("/");
         String idUrl = currentUrlList[currentUrlList.length - 1];
         return idUrl;
@@ -150,6 +154,5 @@ public class AccountFormClassic extends AccountForm {
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
-        wait.until(ExpectedConditions.visibilityOf(nameAccountTxtBox));
     }
 }

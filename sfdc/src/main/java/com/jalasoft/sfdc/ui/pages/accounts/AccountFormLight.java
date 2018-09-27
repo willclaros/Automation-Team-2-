@@ -1,13 +1,10 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
 import com.jalasoft.sfdc.entities.Account;
-import org.junit.rules.Timeout;
-import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 
 /**
  * AccountFormLight class.
@@ -95,9 +92,7 @@ public class AccountFormLight extends AccountForm {
 
     @FindBy(xpath = "//span[text()='Rating']/parent::span/following-sibling::div/child::div/child::div/child::div/child::a" )
     private WebElement ratingLstBox;
-//    Select ratingLstBoxSelect;
-//    ratingLstBoxSelect = new Select(ratingLstBox);
-//    ratingLstBoxSelect.selectByVisibleText(account.getRating());
+
     @FindBy(xpath = "//*[text()='Details']" )
     private WebElement detailsBtn;
 
@@ -176,10 +171,18 @@ public class AccountFormLight extends AccountForm {
         } catch (TimeoutException e) {
             System.out.println("catch timeout");
         }
-        account.setId(getUrlCurrent(driver.getCurrentUrl()));
+        account.setId(getIdUrl(driver.getCurrentUrl()));
         return  new AccountDetailsPageLight();
     }
-    private String getUrlCurrent(String currentUrl){
+
+    /**
+     * Method for take URL
+     *
+     * @param currentUrl string of Url
+     *
+     * @return  String Id of Account created
+     */
+    private String getIdUrl(String currentUrl){
         String[] currentUrlList = currentUrl.split("/");
         String idUrl = currentUrlList[currentUrlList.length - 2];
         return idUrl;

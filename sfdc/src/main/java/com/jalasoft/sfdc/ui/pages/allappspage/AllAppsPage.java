@@ -6,6 +6,7 @@ import com.jalasoft.sfdc.ui.pages.contacts.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.opportunity.OpportunityListPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
+import com.jalasoft.sfdc.ui.pages.quotes.QuotesListPage;
 
 public abstract class AllAppsPage extends BasePage {
 
@@ -23,5 +24,6 @@ public abstract class AllAppsPage extends BasePage {
     public abstract ContactListPage goToContact();
 
     public abstract OpportunityListPage goToOpportunityListPage();
+
 
 }

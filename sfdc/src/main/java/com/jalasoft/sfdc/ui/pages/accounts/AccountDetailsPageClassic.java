@@ -1,13 +1,10 @@
 package com.jalasoft.sfdc.ui.pages.accounts;
 
 import com.jalasoft.sfdc.entities.Account;
-import com.jalasoft.sfdc.ui.BasePage;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.junit.Assert.assertEquals;
 
 /**
  * AccountDetailsPageClassic class.
@@ -17,8 +14,6 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class AccountDetailsPageClassic extends AccountDetailsPage {
-
-    private BasePage basePage;
 
     @FindBy(xpath = "//div[@id='acc2_ileinner']")
     private WebElement nameAccountLbl;
@@ -50,6 +45,12 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
     @FindBy(xpath = "//*[@class='dialogClose']")
     private WebElement exitBtn;
 
+    @FindBy(xpath = "//div[@class='innerMain']")
+    private WebElement adLbl;
+
+
+    @FindBy(xpath = "(//a[@title='Close'])[last()]")
+    private WebElement adExitBtn;
 
     /**
      * Take the webElement chain.
@@ -190,12 +191,20 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
         return new AccountsListPageClassic();
     }
 
+    /**
+     * method for access to AccountFormClassic
+     *
+     * @return the pague AccountFormClassic
+     */
     @Override
     public AccountForm getToTheDetailsAccountPage() {
         if (exitBtn.isDisplayed()) {
             driverTools.clickElement(exitBtn);
         }
-
+        if(adExitBtn.isDisplayed()) {
+            driverTools.clickElement(adExitBtn);
+        }
+        driverTools.clickElement(editBtn);
         return new AccountFormClassic();
     }
 

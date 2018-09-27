@@ -4,7 +4,8 @@ import com.jalasoft.sfdc.entities.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import static org.junit.Assert.assertEquals;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 public class  AccountDetailsPageLight extends AccountDetailsPage {
 
@@ -184,19 +185,33 @@ public class  AccountDetailsPageLight extends AccountDetailsPage {
                 "following-sibling::div/span/span[text()='" + account.getPhone() + "']"));
     }
 
+
+    /**
+     * Method for deleted Account
+     *
+     * @param account Entity
+     *
+     * @return AccountsListPageLight
+     */
     @Override
     public AccountsListPage deleteAccount(Account account) {
         driverTools.clickElement(moreBtn);
+        wait.until(ExpectedConditions.visibilityOf(deleteBtn));
         driverTools.clickElement(deleteBtn);
         driverTools.clickElement(deletePopappBtn);
         return new AccountsListPageLight();
     }
 
+    /**
+     * Method for get page Form
+     *
+     * @returnAccountFormLight
+     */
     @Override
     public AccountForm getToTheDetailsAccountPage() {
         driverTools.clickElement(moreBtn);
         driverTools.clickElement(detailsBtn);
-        return new AccountFormClassic();
+        return new AccountFormLight();
     }
 
 

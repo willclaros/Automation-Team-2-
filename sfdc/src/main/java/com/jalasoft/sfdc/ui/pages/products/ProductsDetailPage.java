@@ -79,4 +79,10 @@ public abstract class ProductsDetailPage extends BasePage {
      * @return returns a boolean indicating if the product has been removed.
      */
     public abstract boolean verifyDeletedProduct(Product product);
+
+
+    public abstract ProductAddStandardPrice gotoAddStandardPrice();
+
+
+    public abstract ProductAddPriceBooks gotoAddPriceBook();
 }

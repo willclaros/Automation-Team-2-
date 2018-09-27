@@ -37,6 +37,11 @@ public class APIAccount {
         return map;
     }
 
+    /**
+     * Method to establish account data
+     *
+     * @return Account
+     */
     public Account getAccountValuesByAPI() { //ToDo define what aee you going to return
         response = APIManager.getInstance().get("/sobjects/Account/" + account.getId());
         accountApi.setAccountName(response.jsonPath().get(ACCOUNT_NAME).toString());
@@ -47,12 +52,20 @@ public class APIAccount {
         return  accountApi;
     }
 
+    /**
+     * Method to establish id of Account
+     */
     public void createAccountByAPI() {
         response = apiManager.post(ACCOUNT, fieldsMap);
         System.out.println("Query response create: " + response.asString());
         account.setId(response.jsonPath().get(ID).toString());
     }
 
+    /**
+     * Method to deleted Account
+     *
+     * @return response
+     */
     public Response deleteAccountByAPI() {
         response = apiManager.delete(ACCOUNT, account.getId());
         System.out.println("Query response delete: " + response.asString());

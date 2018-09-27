@@ -15,6 +15,7 @@ package com.jalasoft.sfdc.ui.pages.products;
 
 import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -49,6 +50,32 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
 
     @FindBy(css = ".btn[title='Delete']")
     private WebElement deleteBtn;
+
+    @FindBy(xpath = "//input[@title='Add']")
+    private WebElement addBtn;
+
+    @FindBy(xpath = "//input[@title='Add to Price Book']")
+    private WebElement addPriceBookBtn;
+
+    @FindBy(xpath = "//*[@class='dialogClose']" )
+    private WebElement exitBtn;
+
+
+    @Override
+    public ProductAddStandardPrice gotoAddStandardPrice() {
+        if (exitBtn.isDisplayed()){
+            driverTools.clickElement(exitBtn);
+        }
+        driverTools.clickElement(addBtn);
+        return new ProductAddStandardPriceClassic();
+    }
+
+    @Override
+    public ProductAddPriceBooks gotoAddPriceBook() {
+        wait.until(ExpectedConditions.visibilityOf(addPriceBookBtn));
+        driverTools.clickElement(addPriceBookBtn);
+        return new ProductAddPriceBooksClassic();
+    }
 
     /**
      * Method that waits until the page element is loaded.

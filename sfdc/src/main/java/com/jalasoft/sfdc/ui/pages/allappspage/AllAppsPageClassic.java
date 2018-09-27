@@ -10,6 +10,8 @@ import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.pricebook.PriceBookListPageClassic;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductsListPageClassic;
+import com.jalasoft.sfdc.ui.pages.quotes.QuotesListPage;
+import com.jalasoft.sfdc.ui.pages.quotes.QuotesListPageClassic;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,6 +32,9 @@ public class AllAppsPageClassic extends AllAppsPage {
 
     @FindBy(css = ".opportunityBlock .listRelatedObject")
     private WebElement opportunityBtn;
+
+    @FindBy(xpath = "//*[@title='Quotes']/parent::a")
+    private WebElement quotesBtn;
 
     /**
      * Method that waits until the page element is loaded.
@@ -93,4 +98,7 @@ public class AllAppsPageClassic extends AllAppsPage {
         driverTools.clickElement(opportunityBtn);
         return new OpportunityListPageClassic();
     }
+
+
+
 }

@@ -16,6 +16,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountsListPageClassic extends AccountsListPage {
 
+    private static String VERIFY_TEXT_INIT = "//a[text()='";
+    private static String VERIFY_TEXT_END = "']";
+    private static String TEXT_URL = "https://na49.salesforce.com/";
+
     @FindBy(xpath = "//*[@title='New']" )
     private WebElement newBtn;
 
@@ -47,12 +51,19 @@ public class AccountsListPageClassic extends AccountsListPage {
     @Override
     public boolean verifyDeleteAccount(Account account) {
         String nameAccountDelete = account.getAccountName();
-        return driverTools.isElementDisplayed(By.xpath("//a[text()='"+nameAccountDelete+"']"));
+        return driverTools.isElementDisplayed(By.xpath(VERIFY_TEXT_INIT+nameAccountDelete+VERIFY_TEXT_END));
     }
 
+    /**
+     * Method that get page details
+     *
+     * @param account entities
+     *
+     * @return AccountDetailsPageClassic
+     */
     @Override
     public AccountDetailsPage goToTheDetailsPage(Account account) {
-        driver.navigate().to("https://na49.salesforce.com/"+account.getId());
+        driver.navigate().to(TEXT_URL+account.getId());
         return new AccountDetailsPageClassic();
     }
 

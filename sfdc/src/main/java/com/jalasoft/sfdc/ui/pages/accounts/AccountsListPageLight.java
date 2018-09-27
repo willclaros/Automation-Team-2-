@@ -15,9 +15,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountsListPageLight extends AccountsListPage {
 
+    private static String VERIFY_TEXT_INIT = "//a[text()='";
+    private static String VERIFY_TEXT_END = "']";
+    private static String TEXT_URL_INIT = "https://na49.lightning.force.com/lightning/r/Account/";
+    private static String TEXT_URL_END = "/view";
+
+
     @FindBy(xpath = "//a[@title='New']" )
     private WebElement accountsBtn;
-
 
     /**
      * Method to click on the account button to create a new one.
@@ -40,12 +45,19 @@ public class AccountsListPageLight extends AccountsListPage {
     @Override
     public boolean verifyDeleteAccount(Account account) {
         String nameAccountDelete = account.getAccountName();
-        return driverTools.isElementDisplayed(By.xpath("//a[text()='"+nameAccountDelete+"']"));
+        return driverTools.isElementDisplayed(By.xpath(VERIFY_TEXT_INIT+nameAccountDelete+VERIFY_TEXT_END));
     }
 
+    /**
+     * Method that get page details
+     *
+     * @param account entities
+     *
+     * @return AccountDetailsPageClassic
+     */
     @Override
     public AccountDetailsPage goToTheDetailsPage(Account account) {
-        driver.navigate().to("https://na49.lightning.force.com/lightning/r/Account/"+account.getId()+"/view");
+        driver.navigate().to(TEXT_URL_INIT+account.getId()+TEXT_URL_END);
         return new AccountDetailsPageLight();
     }
 
