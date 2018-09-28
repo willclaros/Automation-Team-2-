@@ -18,17 +18,28 @@ public class QuotesDetailPageClassic extends  QuotesDetailPage {
     @FindBy(css = ".btn[title='Save']")
     private WebElement saveBtn;
 
+    @FindBy(xpath = "//div[@id='Subtotal_ileinner']")
+    private WebElement totalPriceTxt;
+
     @Override
     public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(addLineItemBtn));
     }
 
     @Override
     public AddProductsFormQuotes goToAddProducts() {
         driverTools.clickElement(addLineItemBtn);
-        wait.until(ExpectedConditions.invisibilityOf(addLineItemBtn));
-        chooseProductFamilyClassicCmbBox("Standard");
+        driverTools.sleepMilliSeconds(4000);
+        driverTools.selectListBoxByVisibleValue(listCmbBox,"Standard");
         driverTools.clickElement(saveBtn);
         return new AddProductsFormQuotesClassic();
+    }
+
+    @Override
+    public String verifyPriceTotal() {
+        String aux = totalPriceTxt.getText();
+        return aux.replace('$',' ').trim();
+
     }
 
     /**

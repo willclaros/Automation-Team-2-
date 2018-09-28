@@ -65,6 +65,12 @@ public final class SFDCConstants {
     public final static String LINE_ITEM_COUNT_QUOTE = "LineItemCount";
     public final static String GRAND_TOTAL_QUOTE = "GrandTotal";
 
+    //Opportunities
+    public final static String OPPORTUNITY = "Opportunity";
+    public final static String OPPORTUNITY_NAME = "Name";
+    public final static String OPPORTUNITY_STAGE_NAME = "StageName";
+    public final static String OPPORTUNITY_CLOSE_DATE = "CloseDate";
+
     public final static String ID = "id";
     public final static String TOTAL_SIZE = "totalSize";
     public final static String SOBJECTS = "sobjects";

@@ -34,9 +34,6 @@ public class OpportunityListPageClassic extends OpportunityListPage {
      */
     @Override
     public OpportunityForm clickNewBtn() {
-        if (driverTools.isElementDisplayed(exitBtn)) {
-            driverTools.clickElement(exitBtn);
-        }
         driverTools.clickElement(newBtn);
         return new OpportunityFormClassic();
     }

@@ -2,6 +2,7 @@ package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.api.APIAccount;
 import com.jalasoft.sfdc.entities.Account;
+import com.jalasoft.sfdc.entities.Container;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountDetailsPage;
 import com.jalasoft.sfdc.ui.pages.accounts.AccountForm;
@@ -32,10 +33,10 @@ public class AccountsStep {
     private Account accountApi;
     private APIAccount apiAccount;
     protected io.restassured.response.Response response;
+    private Container container;
 
-    public AccountsStep (Account account){
-        this.account = account;
-//        this.product = productList.get(0):
+    public AccountsStep (Container container){
+        this.container = container;
     }
 
 
@@ -59,6 +60,7 @@ public class AccountsStep {
     public void iFillTheFollowingInformation(List<Account> accountList) {
         this.account = accountList.get(0);
         apiAccount = new APIAccount(account);
+        container.setAccount(account);
         account.setAccountName(accountList.get(0).getAccountName());
         accountDetailsPage = accountForm.fillAccountForm(account);
     }
@@ -136,6 +138,7 @@ public class AccountsStep {
     public void iFillTheFollowingInformationInAccountsByAPI(List<Account> accountList) {
         this.account = accountList.get(0);
         apiAccount = new APIAccount(account);
+
         apiAccount.createAccountByAPI();
     }
 

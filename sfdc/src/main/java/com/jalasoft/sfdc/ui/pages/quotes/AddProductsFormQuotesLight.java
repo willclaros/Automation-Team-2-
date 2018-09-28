@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.quotes;
 
 import com.jalasoft.sfdc.entities.Product;
+import com.jalasoft.sfdc.entities.QuoteLineItems;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,14 +31,11 @@ public class AddProductsFormQuotesLight extends AddProductsFormQuotes {
     }
 
     @Override
-    public QuotesDetailPage fillDataProducts(Product product) {
+    public QuotesDetailPage fillDataProducts(Product product, QuoteLineItems quoteLineItems) {
         driverTools.clickElement(selectProduct);
         driverTools.clickElement(nextBtn);
         wait.until(ExpectedConditions.invisibilityOf(nextBtn));
         driverTools.clickElement(clickPriceFieldBtn);
-
-        //driverTools.setInputField(setPriceFieldBtn, );
-
         return null;
     }
 }

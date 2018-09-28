@@ -44,7 +44,7 @@ public class APIContact {
      *
      * @return Contact entity.
      */
-    public Contact getContactValuesByAPI() { //ToDo define what aee you going to return
+    public Contact getContactValuesByAPI() {
         response = APIManager.getInstance().get(SLASH.concat(SOBJECTS).concat(SLASH).concat(CONTACT).concat(SLASH).concat(contact.getId()));
         contactAPI.setLastName(response.jsonPath().get(CONTACT_LAST_NAME).toString());
         contactAPI.setEmail(response.jsonPath().get(CONTACT_EMAIL).toString());

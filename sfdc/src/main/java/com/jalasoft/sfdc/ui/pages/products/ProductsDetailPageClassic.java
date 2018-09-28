@@ -66,10 +66,16 @@ public class ProductsDetailPageClassic extends ProductsDetailPage {
     @FindBy(xpath = "(//a[@title='Close'])[last()]")
     private WebElement adExitBtn;
 
+
+
     @Override
     public ProductAddStandardPrice gotoAddStandardPrice() {
         if (exitBtn.isDisplayed()){
             driverTools.clickElement(exitBtn);
+        }
+        driverTools.sleepMilliSeconds(4000);
+        if(adExitBtn.isDisplayed()) {
+            driverTools.clickElement(adExitBtn);
         }
         driverTools.clickElement(addBtn);
         return new ProductAddStandardPriceClassic();
