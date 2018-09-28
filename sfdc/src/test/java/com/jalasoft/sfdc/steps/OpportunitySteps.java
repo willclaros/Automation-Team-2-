@@ -1,20 +1,19 @@
 package com.jalasoft.sfdc.steps;
 
-import com.jalasoft.sfdc.entities.Account;
-import com.jalasoft.sfdc.entities.Opportunity;
-import com.jalasoft.sfdc.entities.Product;
+import com.jalasoft.sfdc.api.APIQuote;
+import com.jalasoft.sfdc.entities.*;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.opportunity.OpportunityDetailPage;
 import com.jalasoft.sfdc.ui.pages.opportunity.OpportunityForm;
 import com.jalasoft.sfdc.ui.pages.opportunity.OpportunityListPage;
-import com.jalasoft.sfdc.ui.pages.products.*;
-import cucumber.api.PendingException;
+import com.jalasoft.sfdc.ui.pages.quotes.AddProductsFormQuotes;
+import com.jalasoft.sfdc.ui.pages.quotes.QuotesDetailPage;
+import com.jalasoft.sfdc.ui.pages.quotes.QuotesForm;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -27,16 +26,17 @@ public class OpportunitySteps {
     private OpportunityDetailPage opportunityDetailPage;
     private Opportunity opportunity;
     private OpportunityListPage opportunityListPage;
-    private ProductsDetailPage productsDetailPage;
-    private ProductsListPage productsListPage;
-    private ProductAddStandardPrice productAddStandardPrice;
-    private ProductAddPriceBooks productAddPriceBooks;
-    private Account account;
-    private Product product;
+    private AddProductsFormQuotes addProductsFormQuotes;
+    private QuotesForm quotesForm;
+    private QuotesDetailPage quotesDetailPage;
+    private Quote quote;
+    private APIQuote apiQuote;
+    private Container container;
+    private QuoteLineItems quoteLineItems;
+    private Quote quoteApi;
 
-    public OpportunitySteps (Account account, Product product) {
-        this.account = account;
-        this.product = product;
+    public OpportunitySteps(Container container) {
+        this.container = container;
     }
 
     @When("^I go to Opportunity page$")
@@ -54,8 +54,6 @@ public class OpportunitySteps {
     @And("^I create an Opportunity$")
     public void iCreateOpportunity(final List<Opportunity> opportunityList) {
         this.opportunity = opportunityList.get(0);
-//        opportunity.setAccount(account);
-//        account.setAccountName(account.getAccountName());
         opportunityDetailPage = opportunityForm.setFormOpportunity(opportunity);
     }
 
@@ -63,8 +61,36 @@ public class OpportunitySteps {
     public void theOpportunityInformationCreatedShouldBeDisplayedInTheOpportunityDetailPage() {
         opportunityDetailPage.goToDetails();
         assertEquals(opportunity.getNameOpportunity(), opportunityDetailPage.getNameTxt(), "The opportunity name wasn't correctly created and saved.");
-        //assertEquals(opportunity.getDescription(), opportunityDetailPage.getPriceBookDescriptionTxt(), "The product description wasn't correctly created and saved.");
-        System.out.println("account*****************--"+account.getId());
     }
 
+    @When("^I create a new Quote Name$")
+    public void iCreateANewQuoteWithName(final List<Quote> quotesList) {
+        this.quote = quotesList.get(0);
+        apiQuote = new APIQuote(quote);
+        container.setQuote(quote);
+        quotesForm = opportunityDetailPage.goToNewQuotes();
+        quotesDetailPage = quotesForm.createQuote(quote);
+        addProductsFormQuotes = quotesDetailPage.goToAddProducts();
+    }
+
+    @And("^I add the following line item$")
+    public void iAddTheFollowingLineItem(List<QuoteLineItems> quoteLineItemsList) {
+        this.quoteLineItems = quoteLineItemsList.get(0);
+        container.setQuoteLineItems(quoteLineItems);
+        quotesDetailPage = addProductsFormQuotes.fillDataProducts(container.getProduct(), container.getQuoteLineItems());
+    }
+
+    @Then("^I verify that the sum of all the prices is correct in the Quote Detail Page$")
+    public void iVerifyThatTheSumOfAllThePricesIsCorrectInTheQuoteDetailPage() {
+        quoteApi = apiQuote.getQuotesValuesByAPI();
+        assertEquals(Double.parseDouble(quotesDetailPage.verifyPriceTotal()), Double.parseDouble(quoteApi.getSubTotal()));
+    }
+
+    @And("^I verify that the sum of all the prices is correct by API$")
+    public void iVerifyThatTheSumOfAllThePricesIsCorrectByAPI() {
+        quoteApi = apiQuote.getQuotesValuesByAPI();
+        double price = Double.parseDouble(container.getQuoteLineItems().getPrice());
+        double quantity = Double.parseDouble(container.getQuoteLineItems().getQuantity());
+        assertEquals(Double.parseDouble(quoteApi.getSubTotal()), (price * quantity));
+    }
 }

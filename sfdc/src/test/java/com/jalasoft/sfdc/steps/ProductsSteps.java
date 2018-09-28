@@ -14,13 +14,12 @@
 package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.api.APIProduct;
+import com.jalasoft.sfdc.entities.Container;
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allappspage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.products.ProductsForm;
-import com.jalasoft.sfdc.ui.pages.products.ProductsDetailPage;
-import com.jalasoft.sfdc.ui.pages.products.ProductsListPage;
+import com.jalasoft.sfdc.ui.pages.products.*;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
@@ -48,11 +47,17 @@ public class ProductsSteps {
     private HomePage homePage;
     private ProductsForm productsForm;
     private ProductsDetailPage productsDetailPage;
+    private ProductAddStandardPrice productAddStandardPrice;
+    private ProductAddPriceBooks productAddPriceBooks;
     private Product product;
     private Response response;
-
+    private Container container;
     private Product productAPI;
     private APIProduct apiProduct;
+
+    public ProductsSteps(Container container) {
+        this.container = container;
+    }
 
     @And("^I go to Products page$")
     public void iGoToProductsPage() {
@@ -71,6 +76,7 @@ public class ProductsSteps {
         this.product = productList.get(0);
         apiProduct = new APIProduct(product);
         product.updateName();
+        container.setProduct(product);
         productsDetailPage = productsForm.createProduct(product);
     }
 
@@ -109,9 +115,6 @@ public class ProductsSteps {
         apiProduct = new APIProduct(product);
         apiProduct.createProductByAPI();
         productAPI = apiProduct.getProductsValuesByAPI();
-        System.out.println("1111111111111111111111111"+product.getId());
-        System.out.println("Expected-----------.--"+product.getProductName());
-        System.out.println("esperado-------------"+productAPI.getProductName());
         assertEquals(product.getProductName(), productAPI.getProductName());
         assertEquals(product.getProductCode(), productAPI.getProductCode());
         assertEquals(product.getProductDescription(), productAPI.getProductDescription());
@@ -132,6 +135,7 @@ public class ProductsSteps {
     public void iHaveCreatedAProductWithTheFollowingInformation(final List<Product> productList) {
         this.product = productList.get(0);
         apiProduct = new APIProduct(product);
+        container.setProduct(product);
         response = apiProduct.createProductByAPI();
     }
 
@@ -139,4 +143,16 @@ public class ProductsSteps {
     public void iSelectTheProductByURL()  {
         productsDetailPage = productsListPage.goToTheDetailsPage(product);
     }
+
+    @And("^I add the Product to the Standard Price Book$")
+    public void iAddTheProductToTheStandardPriceBook() {
+        iGoToProductsPage();
+        productsDetailPage = productsListPage.goToTheDetailsPage(product);
+        productAddStandardPrice = productsDetailPage.gotoAddStandardPrice();
+        productsDetailPage = productAddStandardPrice.goToDetailPage();
+        productAddPriceBooks = productsDetailPage.gotoAddPriceBook();
+        productsDetailPage = productAddPriceBooks.filldataPriceBook();
+
+    }
+
 }

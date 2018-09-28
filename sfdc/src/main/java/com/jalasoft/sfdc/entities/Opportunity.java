@@ -24,7 +24,21 @@ public class Opportunity {
     private String nameOpportunity = "";
     private String closeDate = "";
     private String stage = "";
+    private String id;
 
+    /**
+     * @return
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
     /**
      * Method that obtains the information of name of the Opportunity.
      *

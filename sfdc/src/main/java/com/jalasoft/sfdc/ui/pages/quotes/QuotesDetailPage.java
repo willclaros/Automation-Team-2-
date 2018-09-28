@@ -5,4 +5,6 @@ import com.jalasoft.sfdc.ui.BasePage;
 public abstract class QuotesDetailPage  extends BasePage {
 
     public abstract AddProductsFormQuotes goToAddProducts();
+
+    public abstract String verifyPriceTotal();
 }

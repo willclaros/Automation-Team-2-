@@ -1,8 +1,9 @@
+@Account
 Feature: create account in Salesforce
 
   Background:
     Given I navigate to Login page
-    And I login as "user admin" User
+    And I login as "william" User
 
   @DeleteAccount
   Scenario: verify that it possible to create an Account
