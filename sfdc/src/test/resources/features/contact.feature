@@ -2,7 +2,7 @@
 Feature: create contact in Salesforce
   Background:
     Given I navigate to Login page
-      And I login as "yerel" User
+      And I login as "william" User
 
   @afterContactDelete
   Scenario: Verify that it possible to create a contacts
