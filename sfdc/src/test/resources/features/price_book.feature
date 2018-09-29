@@ -1,3 +1,4 @@
+@PriceBook
 Feature: Create a price book.
 
   Background:

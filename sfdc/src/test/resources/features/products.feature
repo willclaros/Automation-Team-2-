@@ -1,3 +1,4 @@
+@Product
 Feature: Create a product.
 
   Background:

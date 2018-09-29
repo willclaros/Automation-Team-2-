@@ -1,3 +1,4 @@
+@Quote
 Feature: Create a price book.
 
   Background:
