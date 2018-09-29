@@ -1,3 +1,4 @@
+@Contact
 Feature: create contact in Salesforce
   Background:
     Given I navigate to Login page

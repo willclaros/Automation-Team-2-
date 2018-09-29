@@ -1,3 +1,4 @@
+@Opportunity
 Feature: Create a Opportunity.
 
   Background:
